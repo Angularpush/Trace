@@ -1,0 +1,87 @@
+# ==============================================================================
+# TRACE - Git Ignore Configuration
+# ==============================================================================
+
+# --- Machine Learning Model Artifacts & Heavy Weights ---
+# Note: In production or team repositories, ML binary artifacts (*.joblib, *.pkl, etc.)
+# should be managed via Git LFS (git lfs track "*.joblib") or downloaded from an S3/GCS bucket.
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.bin
+*.model
+
+# Allow gitignore exception if a lightweight tracking placeholder is needed:
+# !ml/models/.gitkeep
+
+# --- Local File & Document Storage ---
+storage/
+backend/storage/
+sample_data/raw_documents/storage/
+
+# --- Database Files ---
+*.db
+*.sqlite
+*.sqlite3
+trace.db
+backend/trace.db
+*.sqlite-journal
+
+# --- Python Environment & Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Node.js & Frontend Build Outputs ---
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+*.local
+
+# --- Environment & Secret Variables ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+
+# --- IDE & OS Files ---
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+*.log

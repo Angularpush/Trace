@@ -1,0 +1,77 @@
+services:
+  # ==============================================================================
+  # 1. PostgreSQL Database Service
+  # ==============================================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: trace-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: trace_user
+      POSTGRES_PASSWORD: trace_password
+      POSTGRES_DB: trace_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trace_user -d trace_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - trace-network
+
+  # ==============================================================================
+  # 2. FastAPI Backend Service (ML Inference, Extraction, Reconciliation)
+  # ==============================================================================
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: trace-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://trace_user:trace_password@postgres:5432/trace_db
+      - LLM_PROVIDER=offline
+      - DEFAULT_LLM_PROVIDER=offline
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - UPLOAD_DIR=/app/storage
+      - STORAGE_DIR=/app/storage
+      - EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+    ports:
+      - "8000:8000"
+    volumes:
+      - trace_storage:/app/storage
+    networks:
+      - trace-network
+
+  # ==============================================================================
+  # 3. React Frontend Service (Served via Nginx Reverse Proxy)
+  # ==============================================================================
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: trace-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    networks:
+      - trace-network
+
+networks:
+  trace-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  trace_storage:
+    driver: local

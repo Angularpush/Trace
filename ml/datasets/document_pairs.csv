@@ -1,0 +1,11 @@
+text_a,text_b,label
+Purchase Order PO-2024-1001 for 100 units SS Bolts M10,Tax Invoice INV-2024-501 against PO PO-2024-1001 for SS Bolts,1
+Delivery Challan DC-8812 delivering 100 units SS Bolts PO-2024-1001,Tax Invoice INV-2024-501 referencing PO PO-2024-1001,1
+"Payment Receipt PAY-9912 paying INR 55,000 for Invoice INV-2024-501","Tax Invoice INV-2024-501 total amount INR 55,000",1
+Quotation QUO-2024-301 for Ball Bearings 6205-2RS,Purchase Order PO-2024-1002 referencing Quote QUO-2024-301,1
+Credit Note CN-102 for rate adjustment on Invoice INV-2024-501,Tax Invoice INV-2024-501 from Apex Industrial Tools,1
+Purchase Order PO-2024-1001 for 100 units SS Bolts M10,Tax Invoice INV-2024-999 for Hydraulic Cylinders against PO-8877,0
+Delivery Challan DC-4411 for Kirloskar Pumps,Payment Receipt PAY-1200 for Apex Fasteners,0
+Quotation QUO-2024-888 for Electrical Panels,Credit Note CN-501 for Rubber O-Rings,0
+Tax Invoice INV-2024-101 for Bearing Assemblies,Purchase Order PO-2024-909 for Viton Gaskets,0
+"Payment Receipt PAY-555 for Rs 12,000","Tax Invoice INV-2024-777 for Rs 850,000",0
