@@ -1,4 +1,7 @@
-﻿# TRACE: Document-Level MSME Transaction Reconciliation & Discrepancy Detection System
+# Trace
+TRACE is an AI-powered document reconciliation system for MSMEs that analyzes invoices, purchase orders, delivery notes, and payment records to detect quantity, price, tax, total, and document inconsistencies using ML, semantic matching, and rule-based validation.
+
+# TRACE: Document-Level MSME Transaction Reconciliation & Discrepancy Detection System
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
