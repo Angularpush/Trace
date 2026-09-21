@@ -20,7 +20,14 @@ class Settings(BaseSettings):
     MODELS_DIR: str = os.path.join(os.path.dirname(BASE_DIR), "ml", "models")
     
     # Database
-    DATABASE_URL: str = "sqlite:///./trace.db"
+    DATABASE_URL: str = os.environ.get("DATABASE_URL", "sqlite:///./trace.db")
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+        
+    # Server & Networking
+    PORT: int = int(os.environ.get("PORT", "8000"))
+    CORS_ORIGINS: str = os.environ.get("CORS_ORIGINS", "*")
+    MAX_UPLOAD_SIZE_MB: int = int(os.environ.get("MAX_UPLOAD_SIZE_MB", "50"))
     
     # AI / LLM Configuration
     DEFAULT_LLM_PROVIDER: str = "offline"  # "offline", "openai", "anthropic"

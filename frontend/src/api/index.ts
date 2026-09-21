@@ -11,7 +11,8 @@ import type {
   EvidenceItem
 } from '../types';
 
-const API_BASE = '/api';
+const rawBase = (import.meta.env.VITE_API_URL as string) || '';
+const API_BASE = rawBase ? `${rawBase.replace(/\/$/, '')}/api` : '/api';
 
 export const api = {
   // 1. Documents API

@@ -11,6 +11,19 @@ from app.main import app
 client = TestClient(app)
 
 def test_full_api_endpoint_suite():
+    # 0. Health and root checks
+    root_res = client.get("/")
+    assert root_res.status_code == 200
+    assert root_res.json()["status"] == "online"
+
+    health_res = client.get("/health")
+    assert health_res.status_code == 200
+    assert health_res.json()["status"] == "healthy"
+
+    api_health_res = client.get("/api/health")
+    assert api_health_res.status_code == 200
+    assert api_health_res.json()["status"] == "healthy"
+
     # 1. Seed demo documents or upload test document
     seed_res = client.post("/api/documents/seed-demo")
     assert seed_res.status_code in [200, 201]
