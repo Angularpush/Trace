@@ -1,0 +1,456 @@
+{
+  "benchmark_metadata": {
+    "dataset_name": "TRACE 50-Document Test Pack",
+    "total_documents": 50,
+    "total_transactions": 15,
+    "evaluation_timestamp": "2026-09-21T07:42:25Z",
+    "execution_time_seconds": 0.235
+  },
+  "document_classification": {
+    "accuracy": 76.0,
+    "macro_precision": 63.46,
+    "macro_recall": 75.0,
+    "macro_f1": 67.5,
+    "per_class": {
+      "PURCHASE_ORDER": {
+        "precision": 53.85,
+        "recall": 100.0,
+        "f1": 70.0,
+        "count": 14
+      },
+      "INVOICE": {
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0,
+        "count": 14
+      },
+      "DELIVERY_NOTE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "count": 12
+      },
+      "PAYMENT_RECEIPT": {
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0,
+        "count": 10
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        14,
+        0,
+        0
+      ],
+      [
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        10
+      ]
+    ],
+    "classes": [
+      "PURCHASE_ORDER",
+      "INVOICE",
+      "DELIVERY_NOTE",
+      "PAYMENT_RECEIPT"
+    ]
+  },
+  "field_extraction": {
+    "accuracy": 62.09,
+    "total_expected": 364,
+    "correct": 226,
+    "incorrect": 4,
+    "missing": 134,
+    "per_field": {
+      "invoice_number": {
+        "total": 14,
+        "correct": 14,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "invoice_date": {
+        "total": 50,
+        "correct": 50,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "supplier": {
+        "total": 50,
+        "correct": 46,
+        "missing": 0,
+        "incorrect": 4
+      },
+      "customer": {
+        "total": 50,
+        "correct": 50,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "gstin": {
+        "total": 14,
+        "correct": 14,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "po_number": {
+        "total": 14,
+        "correct": 14,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "item_description": {
+        "total": 40,
+        "correct": 0,
+        "missing": 40,
+        "incorrect": 0
+      },
+      "quantity": {
+        "total": 40,
+        "correct": 0,
+        "missing": 40,
+        "incorrect": 0
+      },
+      "unit_price": {
+        "total": 40,
+        "correct": 0,
+        "missing": 40,
+        "incorrect": 0
+      },
+      "subtotal": {
+        "total": 14,
+        "correct": 14,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "gst": {
+        "total": 14,
+        "correct": 0,
+        "missing": 14,
+        "incorrect": 0
+      },
+      "grand_total": {
+        "total": 14,
+        "correct": 14,
+        "missing": 0,
+        "incorrect": 0
+      },
+      "payment_amount": {
+        "total": 10,
+        "correct": 10,
+        "missing": 0,
+        "incorrect": 0
+      }
+    }
+  },
+  "transaction_linking": {
+    "accuracy": 60.0,
+    "total_expected_links": 35,
+    "correct_links": 21,
+    "missed_links": 14,
+    "false_links": 14
+  },
+  "discrepancy_detection": {
+    "precision": 23.81,
+    "recall": 38.46,
+    "f1_score": 29.41,
+    "tp": 5,
+    "fp": 16,
+    "fn": 8,
+    "by_category": {
+      "Quantity mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Unit-price mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Tax/GST mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Total mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Payment mismatch": {
+        "tp": 1,
+        "fp": 4,
+        "fn": 0
+      },
+      "Date mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Supplier mismatch": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "Item mismatch": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Duplicate invoice": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Missing document": {
+        "tp": 3,
+        "fp": 12,
+        "fn": 1
+      }
+    }
+  },
+  "reconciliation": {
+    "accuracy": 86.67,
+    "correct": 13,
+    "total": 15
+  },
+  "evidence": {
+    "accuracy": 100.0,
+    "supported": 21,
+    "total": 21
+  },
+  "total_failed_cases_logged": 27,
+  "failed_cases": [
+    {
+      "transaction_id": "TXN-001",
+      "relevant_document": "TXN-001_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 28.1%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-002",
+      "relevant_document": "TXN-002_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 29.4%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-003",
+      "relevant_document": "TXN-003_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 30.7%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-004",
+      "relevant_document": "TXN-004_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 28.8%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-005",
+      "relevant_document": "TXN-005_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 28.1%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-006",
+      "relevant_document": "TXN-006_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 32.6%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-007",
+      "relevant_document": "TXN-007_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 31.0%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-008",
+      "relevant_document": "TXN-008_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 29.5%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-009",
+      "relevant_document": "TXN-009_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 31.9%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-010",
+      "relevant_document": "TXN-010_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 28.7%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-012",
+      "relevant_document": "TXN-012_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 33.1%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-013",
+      "relevant_document": "TXN-013_delivery_note.pdf",
+      "error_type": "Classification error",
+      "expected_value": "DELIVERY_NOTE",
+      "predicted_value": "PURCHASE_ORDER",
+      "possible_cause": "TF-IDF classifier misidentified DELIVERY_NOTE as PURCHASE_ORDER (confidence: 32.6%) because the test pack delivery notes contain financial headers (Tax %, Unit Price, Line Total) that heavily weight towards PO/Invoice."
+    },
+    {
+      "transaction_id": "TXN-001",
+      "relevant_document": "TXN-001_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-002",
+      "relevant_document": "TXN-002_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-002",
+      "relevant_document": "TXN-002_invoice.pdf",
+      "error_type": "Rule error",
+      "expected_value": "QUANTITY_MISMATCH",
+      "predicted_value": "['PAYMENT_MISMATCH', 'MISSING_DOCUMENT']",
+      "possible_cause": "Multi-row line items in vertical token format were not aligned due to delivery note misclassification."
+    },
+    {
+      "transaction_id": "TXN-003",
+      "relevant_document": "TXN-003_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-003",
+      "relevant_document": "TXN-003_invoice.pdf",
+      "error_type": "Rule error",
+      "expected_value": "PRICE_MISMATCH",
+      "predicted_value": "['PAYMENT_MISMATCH', 'MISSING_DOCUMENT']",
+      "possible_cause": "Vertical table line items were not extracted into structured item list due to missing horizontal delimiter."
+    },
+    {
+      "transaction_id": "TXN-004",
+      "relevant_document": "TXN-004_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-005",
+      "relevant_document": "TXN-005_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-006",
+      "relevant_document": "TXN-006_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-007",
+      "relevant_document": "TXN-007_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-007",
+      "relevant_document": "TXN-007_invoice.pdf",
+      "error_type": "Rule error",
+      "expected_value": "DATE_MISMATCH",
+      "predicted_value": "['MISSING_DOCUMENT']",
+      "possible_cause": "Date format on separate lines was extracted but chronology rule required PO reference link."
+    },
+    {
+      "transaction_id": "TXN-008",
+      "relevant_document": "TXN-008_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-009",
+      "relevant_document": "TXN-009_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-010",
+      "relevant_document": "TXN-010_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    },
+    {
+      "transaction_id": "TXN-010",
+      "relevant_document": "TXN-010_invoice.pdf",
+      "error_type": "Rule error",
+      "expected_value": "DUPLICATE_DOCUMENT",
+      "predicted_value": "['MISSING_DOCUMENT']",
+      "possible_cause": "Cross-transaction duplicate index was not populated in isolated single-transaction evaluation mode."
+    },
+    {
+      "transaction_id": "TXN-012",
+      "relevant_document": "TXN-012_delivery_note.pdf",
+      "error_type": "Missing-document detection error (Cascading from Classification error)",
+      "expected_value": "Delivery Note present and recognized",
+      "predicted_value": "MISSING_DELIVERY_NOTE",
+      "possible_cause": "Delivery note was misclassified as PURCHASE_ORDER during Step 2, so the reconciliation engine observed a missing delivery document."
+    }
+  ]
+}

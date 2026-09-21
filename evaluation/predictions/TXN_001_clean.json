@@ -1,0 +1,218 @@
+{
+  "transaction_id": "TXN_001_clean",
+  "documents": [
+    {
+      "id": "TXN_001_clean_PO-2024-101.pdf",
+      "filename": "PO-2024-101.pdf",
+      "doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.711741030216217,
+      "parsed_data": {
+        "document_number": "PO-2024-101",
+        "document_date": "2024-08-01",
+        "due_date": "2024-08-20",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": "27AABCU9812A1Z5",
+        "customer_name": null,
+        "delivery_address": "Plot 45, Chakan MIDC, Pune\nSI",
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "50000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-01"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.024844450876116753,
+          "DEBIT_NOTE": 0.01740674301981926,
+          "DELIVERY_NOTE": 0.05937815085053444,
+          "INVOICE": 0.09271209686994553,
+          "PAYMENT_RECEIPT": 0.028573449701070786,
+          "PURCHASE_ORDER": 0.711741030216217,
+          "QUOTATION": 0.03850272670388222,
+          "UNKNOWN": 0.02684137411415577
+        }
+      },
+      "raw_text": "COMMERCIAL PURCHASE ORDER\nPO Number: PO-2024-101\nDate: 2024-08-01\nRequired Delivery Date: 2024-08-20\nSupplier: Apex Industrial Tools Pvt Ltd\nGSTIN: 27AABCU9812A1Z5\nBuyer: Precision MSME Engineering Works\nDelivery Address: Plot 45, Chakan MIDC, Pune\nSI\nItem Description\nQty\nUnit Price\nTotal Amount\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTotal Order Value: INR 50000.00\nAuthorized Signatory: Head of Procurement\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_001_clean_DC-2024-101.pdf",
+      "filename": "DC-2024-101.pdf",
+      "doc_type": "DELIVERY_NOTE",
+      "classification_confidence": 0.6521304249763489,
+      "parsed_data": {
+        "document_number": "DC-2024-101",
+        "po_reference": "PO-2024-101",
+        "document_date": "2024-08-10",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "customer_name": "Precision MSME Engineering Works",
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | Qty Delivered: 100.00 PCS",
+            "page_number": 1
+          }
+        ],
+        "extra_metadata": {
+          "raw_date": "2024-08-10"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03047827258706093,
+          "DEBIT_NOTE": 0.022370390594005585,
+          "DELIVERY_NOTE": 0.6521304249763489,
+          "INVOICE": 0.09170974045991898,
+          "PAYMENT_RECEIPT": 0.04185377061367035,
+          "PURCHASE_ORDER": 0.07840559631586075,
+          "QUOTATION": 0.04323231801390648,
+          "UNKNOWN": 0.03981945663690567
+        }
+      },
+      "raw_text": "DELIVERY CHALLAN\nDelivery Challan No: DC-2024-101\nDispatch Date: 2024-08-10\nAgainst PO Ref: PO-2024-101\nConsignor: Apex Industrial Tools Pvt Ltd\nConsignee: Precision MSME Engineering Works\nSI\nItem Description\nQuantity Delivered\nUnit\n1\nStainless Steel Bolt M10\n100\nPCS\nCondition: Received in sound condition.\nStores Receiver Signature: Suresh P.\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_001_clean_INV-2024-101.pdf",
+      "filename": "INV-2024-101.pdf",
+      "doc_type": "INVOICE",
+      "classification_confidence": 0.5479460954666138,
+      "parsed_data": {
+        "document_number": "INV-2024-101",
+        "po_reference": "PO-2024-101",
+        "document_date": "2024-08-12",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": "27AABCU9812A1Z5",
+        "customer_name": "Precision MSME Engineering Works",
+        "customer_gstin": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "50000.00",
+        "tax_total": "9000.00",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-12"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04803367331624031,
+          "DEBIT_NOTE": 0.027509385719895363,
+          "DELIVERY_NOTE": 0.08267894387245178,
+          "INVOICE": 0.5479460954666138,
+          "PAYMENT_RECEIPT": 0.06831777095794678,
+          "PURCHASE_ORDER": 0.13887366652488708,
+          "QUOTATION": 0.04838365688920021,
+          "UNKNOWN": 0.03825681284070015
+        }
+      },
+      "raw_text": "TAX INVOICE\nTax Invoice No: INV-2024-101\nInvoice Date: 2024-08-12\nPO Reference: PO-2024-101\nSupplier: Apex Industrial Tools Pvt Ltd\nGSTIN: 27AABCU9812A1Z5\nBuyer: Precision MSME Engineering Works\nSI\nDescription\nQty\nUnit Rate\nTaxable Value\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTaxable Subtotal: INR 50000.00\nTotal Tax (18% GST): INR 9000.00\nTotal Invoice Amount: INR 59000.00\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_001_clean_PAY-2024-101.pdf",
+      "filename": "PAY-2024-101.pdf",
+      "doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5814700126647949,
+      "parsed_data": {
+        "document_number": "PAY-2024-101",
+        "invoice_reference": "INV-2024-101",
+        "po_reference": null,
+        "document_date": "2024-08-25",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "payment_amount": "59000.00",
+        "payment_method": "NEFT",
+        "transaction_reference": "UTR-HDFC-99182374192",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-25"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03774039447307587,
+          "DEBIT_NOTE": 0.026222001761198044,
+          "DELIVERY_NOTE": 0.09686185419559479,
+          "INVOICE": 0.088070809841156,
+          "PAYMENT_RECEIPT": 0.5814700126647949,
+          "PURCHASE_ORDER": 0.07600665092468262,
+          "QUOTATION": 0.04178783297538757,
+          "UNKNOWN": 0.05184045061469078
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nPayment Receipt No: PAY-2024-101\nPayment Date: 2024-08-25\nAgainst Invoice No: INV-2024-101\nPaid To: Apex Industrial Tools Pvt Ltd\nPaid By: Precision MSME Engineering Works\nUTR: UTR-HDFC-99182374192 | Mode of Payment: NEFT\nAmount Paid: INR 59000.00\nStatus: Settled in full.\n",
+      "page_number": 1
+    }
+  ],
+  "reconciliation": {
+    "transaction_ref": "TXN_001_clean",
+    "reconciliation_status": "RECONCILED",
+    "mode_used": "HYBRID",
+    "supplier_name": "Apex Industrial Tools Pvt Ltd",
+    "customer_name": "Precision MSME Engineering Works",
+    "total_documents": 4,
+    "documents_summary": [
+      {
+        "filename": "PO-2024-101.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "status": "Processed"
+      },
+      {
+        "filename": "DC-2024-101.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "status": "Processed"
+      },
+      {
+        "filename": "INV-2024-101.pdf",
+        "doc_type": "INVOICE",
+        "status": "Processed"
+      },
+      {
+        "filename": "PAY-2024-101.pdf",
+        "doc_type": "PAYMENT_RECEIPT",
+        "status": "Processed"
+      }
+    ],
+    "total_discrepancies": 0,
+    "discrepancies_by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "financial_variance_amount": 0,
+    "discrepancies": [],
+    "ai_grounded_explanation": "Transaction TXN_001_clean is FULLY RECONCILED. All 4 documents (Purchase Order, Delivery Challan, Tax Invoice, Payment) match with 100% mathematical and semantic consistency. Net financial variance: INR 0.00.",
+    "reconciled_at": "2026-09-21T06:26:37.852308"
+  }
+}

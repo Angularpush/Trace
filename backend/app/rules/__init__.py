@@ -11,6 +11,7 @@ from app.rules.payment_rules import PaymentMismatchRule
 from app.rules.date_rules import DateMismatchRule
 from app.rules.missing_doc_rules import MissingDocumentRule
 from app.rules.entity_rules import SupplierMismatchRule, CustomerMismatchRule, ItemMismatchRule
+from app.rules.duplicate_rules import DuplicateDocumentRule
 
 ALL_RULES: List[BaseReconciliationRule] = [
     PriceMismatchRule(),
@@ -22,12 +23,14 @@ ALL_RULES: List[BaseReconciliationRule] = [
     MissingDocumentRule(),
     SupplierMismatchRule(),
     CustomerMismatchRule(),
-    ItemMismatchRule()
+    ItemMismatchRule(),
+    DuplicateDocumentRule()
 ]
 
 __all__ = [
     "BaseReconciliationRule", "ALL_RULES",
     "PriceMismatchRule", "QuantityMismatchRule", "TotalMismatchRule",
     "TaxMismatchRule", "PaymentMismatchRule", "DateMismatchRule",
-    "MissingDocumentRule", "SupplierMismatchRule", "CustomerMismatchRule", "ItemMismatchRule"
+    "MissingDocumentRule", "SupplierMismatchRule", "CustomerMismatchRule", "ItemMismatchRule",
+    "DuplicateDocumentRule"
 ]

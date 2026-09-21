@@ -1,0 +1,2794 @@
+{
+  "benchmark_name": "TRACE 50-Document Baseline Evaluation",
+  "timestamp": "2026-09-21T07:42:25Z",
+  "total_documents": 50,
+  "total_transactions": 15,
+  "document_predictions": {
+    "TXN-001_purchase_order.pdf": {
+      "id": "doc_TXN-001_purchase_order.pdf",
+      "filename": "TXN-001_purchase_order.pdf",
+      "manifest_txn_id": "TXN-001",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5066482424736023,
+      "parsed_data": {
+        "document_number": "PO-001",
+        "document_date": "2026-07-01",
+        "due_date": null,
+        "supplier_name": "Apex Office Systems Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "Nimbus Retail Solutions",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-01"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04341329261660576,
+          "DEBIT_NOTE": 0.022627849131822586,
+          "DELIVERY_NOTE": 0.08211531490087509,
+          "INVOICE": 0.1908309906721115,
+          "PAYMENT_RECEIPT": 0.050464265048503876,
+          "PURCHASE_ORDER": 0.5066482424736023,
+          "QUOTATION": 0.051323097199201584,
+          "UNKNOWN": 0.05257692188024521
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-001\nPO Date\n2026-07-01\nSupplier\nApex Office Systems Pvt Ltd\nCustomer\nNimbus Retail Solutions\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nA4 Printer Paper 80 GSM\n20\nI320.00\n18%\nI6,400.00\nLaser Toner Cartridge\n4\nI2,850.00\n18%\nI11,400.00\n",
+      "page_count": 1
+    },
+    "TXN-001_invoice.pdf": {
+      "id": "doc_TXN-001_invoice.pdf",
+      "filename": "TXN-001_invoice.pdf",
+      "manifest_txn_id": "TXN-001",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4402965307235718,
+      "parsed_data": {
+        "document_number": "INV-001",
+        "po_reference": "PO-001",
+        "document_date": "2026-07-03",
+        "due_date": null,
+        "supplier_name": "Apex Office Systems Pvt Ltd",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Nimbus Retail Solutions",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "17800.00",
+        "tax_total": "0.00",
+        "grand_total": "21004.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-03"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05147484689950943,
+          "DEBIT_NOTE": 0.029024286195635796,
+          "DELIVERY_NOTE": 0.07565230876207352,
+          "INVOICE": 0.4402965307235718,
+          "PAYMENT_RECEIPT": 0.062114592641592026,
+          "PURCHASE_ORDER": 0.22011427581310272,
+          "QUOTATION": 0.06445121765136719,
+          "UNKNOWN": 0.05687195435166359
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-001\nInvoice Date\n2026-07-03\nSupplier\nApex Office Systems Pvt Ltd\nCustomer\nNimbus Retail Solutions\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI17,800.00\nGST\nI3,204.00\nGrand Total\nI21,004.00\nPO Reference\nPO-001\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nA4 Printer Paper 80 GSM\n20\nI320.00\n18%\nI6,400.00\nLaser Toner Cartridge\n4\nI2,850.00\n18%\nI11,400.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-001_delivery_note.pdf": {
+      "id": "doc_TXN-001_delivery_note.pdf",
+      "filename": "TXN-001_delivery_note.pdf",
+      "manifest_txn_id": "TXN-001",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.28128132224082947,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-03",
+        "due_date": null,
+        "supplier_name": "Apex Office Systems Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "Nimbus Retail Solutions",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-03"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.06011681258678436,
+          "DEBIT_NOTE": 0.03759661316871643,
+          "DELIVERY_NOTE": 0.1741064190864563,
+          "INVOICE": 0.2302054613828659,
+          "PAYMENT_RECEIPT": 0.06014721468091011,
+          "PURCHASE_ORDER": 0.28128132224082947,
+          "QUOTATION": 0.0812666267156601,
+          "UNKNOWN": 0.07527957111597061
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-001\nDelivery Date\n2026-07-03\nSupplier\nApex Office Systems Pvt Ltd\nCustomer\nNimbus Retail Solutions\nPO Reference\nPO-001\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nA4 Printer Paper 80 GSM\n20\nI320.00\n18%\nI6,400.00\nLaser Toner Cartridge\n4\nI2,850.00\n18%\nI11,400.00\n",
+      "page_count": 1
+    },
+    "TXN-001_payment_receipt.pdf": {
+      "id": "doc_TXN-001_payment_receipt.pdf",
+      "filename": "TXN-001_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-001",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5630416870117188,
+      "parsed_data": {
+        "document_number": "PAY-001",
+        "invoice_reference": "INV-001",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": "Nimbus Retail Solutions",
+        "payment_amount": "21004.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "21004.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04626951366662979,
+          "DEBIT_NOTE": 0.024529948830604553,
+          "DELIVERY_NOTE": 0.07248882204294205,
+          "INVOICE": 0.09156277030706406,
+          "PAYMENT_RECEIPT": 0.5630416870117188,
+          "PURCHASE_ORDER": 0.09383510053157806,
+          "QUOTATION": 0.043226029723882675,
+          "UNKNOWN": 0.06504610925912857
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-001\nPayment Date\n2026-08-15\nPayer\nNimbus Retail Solutions\nPayee\nApex Office Systems Pvt Ltd\nInvoice Reference\nINV-001\nAmount Paid\nI21,004.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-002_purchase_order.pdf": {
+      "id": "doc_TXN-002_purchase_order.pdf",
+      "filename": "TXN-002_purchase_order.pdf",
+      "manifest_txn_id": "TXN-002",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5312398672103882,
+      "parsed_data": {
+        "document_number": "PO-002",
+        "document_date": "2026-07-03",
+        "due_date": null,
+        "supplier_name": "Bright Components India Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "Vertex Manufacturing",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-03"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04183325171470642,
+          "DEBIT_NOTE": 0.020844249054789543,
+          "DELIVERY_NOTE": 0.07519164681434631,
+          "INVOICE": 0.18616259098052979,
+          "PAYMENT_RECEIPT": 0.04758758842945099,
+          "PURCHASE_ORDER": 0.5312398672103882,
+          "QUOTATION": 0.0506511814892292,
+          "UNKNOWN": 0.04648962616920471
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-002\nPO Date\n2026-07-03\nSupplier\nBright Components India Pvt Ltd\nCustomer\nVertex Manufacturing\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nIndustrial Sensor\n10\nI4,200.00\n18%\nI42,000.00\nControl Cable 5m\n25\nI380.00\n18%\nI9,500.00\n",
+      "page_count": 1
+    },
+    "TXN-002_invoice.pdf": {
+      "id": "doc_TXN-002_invoice.pdf",
+      "filename": "TXN-002_invoice.pdf",
+      "manifest_txn_id": "TXN-002",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4352067708969116,
+      "parsed_data": {
+        "document_number": "INV-002",
+        "po_reference": "PO-002",
+        "document_date": "2026-07-05",
+        "due_date": null,
+        "supplier_name": "Bright Components India Pvt Ltd",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Vertex Manufacturing",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "59900.00",
+        "tax_total": "0.00",
+        "grand_total": "70682.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-05"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05113278701901436,
+          "DEBIT_NOTE": 0.027714287862181664,
+          "DELIVERY_NOTE": 0.07158736884593964,
+          "INVOICE": 0.4352067708969116,
+          "PAYMENT_RECEIPT": 0.06117639318108559,
+          "PURCHASE_ORDER": 0.2316058874130249,
+          "QUOTATION": 0.0667327344417572,
+          "UNKNOWN": 0.054843753576278687
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-002\nInvoice Date\n2026-07-05\nSupplier\nBright Components India Pvt Ltd\nCustomer\nVertex Manufacturing\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI59,900.00\nGST\nI10,782.00\nGrand Total\nI70,682.00\nPO Reference\nPO-002\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nIndustrial Sensor\n12\nI4,200.00\n18%\nI42,000.00\nControl Cable 5m\n25\nI380.00\n18%\nI9,500.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-002_delivery_note.pdf": {
+      "id": "doc_TXN-002_delivery_note.pdf",
+      "filename": "TXN-002_delivery_note.pdf",
+      "manifest_txn_id": "TXN-002",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.29387062788009644,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-05",
+        "due_date": null,
+        "supplier_name": "Bright Components India Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "Vertex Manufacturing",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-05"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.059681959450244904,
+          "DEBIT_NOTE": 0.03607543557882309,
+          "DELIVERY_NOTE": 0.16534423828125,
+          "INVOICE": 0.23455868661403656,
+          "PAYMENT_RECEIPT": 0.05854199081659317,
+          "PURCHASE_ORDER": 0.29387062788009644,
+          "QUOTATION": 0.08152657747268677,
+          "UNKNOWN": 0.07040052115917206
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-002\nDelivery Date\n2026-07-05\nSupplier\nBright Components India Pvt Ltd\nCustomer\nVertex Manufacturing\nPO Reference\nPO-002\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nIndustrial Sensor\n10\nI4,200.00\n18%\nI42,000.00\nControl Cable 5m\n25\nI380.00\n18%\nI9,500.00\n",
+      "page_count": 1
+    },
+    "TXN-002_payment_receipt.pdf": {
+      "id": "doc_TXN-002_payment_receipt.pdf",
+      "filename": "TXN-002_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-002",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5655815005302429,
+      "parsed_data": {
+        "document_number": "PAY-002",
+        "invoice_reference": "INV-002",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "60770.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "60770.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04624854028224945,
+          "DEBIT_NOTE": 0.023701442405581474,
+          "DELIVERY_NOTE": 0.0668272003531456,
+          "INVOICE": 0.09599412977695465,
+          "PAYMENT_RECEIPT": 0.5655815005302429,
+          "PURCHASE_ORDER": 0.09241161495447159,
+          "QUOTATION": 0.04457888379693031,
+          "UNKNOWN": 0.06465672701597214
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-002\nPayment Date\n2026-08-15\nPayer\nVertex Manufacturing\nPayee\nBright Components India Pvt Ltd\nInvoice Reference\nINV-002\nAmount Paid\nI60,770.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-003_purchase_order.pdf": {
+      "id": "doc_TXN-003_purchase_order.pdf",
+      "filename": "TXN-003_purchase_order.pdf",
+      "manifest_txn_id": "TXN-003",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.559465229511261,
+      "parsed_data": {
+        "document_number": "PO-003",
+        "document_date": "2026-07-06",
+        "due_date": null,
+        "supplier_name": "Crown Packaging Works",
+        "supplier_gstin": null,
+        "customer_name": "Orion Foods Pvt Ltd",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-06"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03979421779513359,
+          "DEBIT_NOTE": 0.020596859976649284,
+          "DELIVERY_NOTE": 0.07187708467245102,
+          "INVOICE": 0.16261766850948334,
+          "PAYMENT_RECEIPT": 0.045333538204431534,
+          "PURCHASE_ORDER": 0.559465229511261,
+          "QUOTATION": 0.05436302348971367,
+          "UNKNOWN": 0.045952409505844116
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-003\nPO Date\n2026-07-06\nSupplier\nCrown Packaging Works\nCustomer\nOrion Foods Pvt Ltd\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nCorrugated Box Large\n100\nI85.00\n18%\nI8,500.00\nPacking Tape\n40\nI125.00\n18%\nI5,000.00\n",
+      "page_count": 1
+    },
+    "TXN-003_invoice.pdf": {
+      "id": "doc_TXN-003_invoice.pdf",
+      "filename": "TXN-003_invoice.pdf",
+      "manifest_txn_id": "TXN-003",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.42445316910743713,
+      "parsed_data": {
+        "document_number": "INV-003",
+        "po_reference": "PO-003",
+        "document_date": "2026-07-08",
+        "due_date": null,
+        "supplier_name": "Crown Packaging Works",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Orion Foods Pvt Ltd",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "38500.00",
+        "tax_total": "0.00",
+        "grand_total": "45430.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-08"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05266223102807999,
+          "DEBIT_NOTE": 0.028874719515442848,
+          "DELIVERY_NOTE": 0.07207480072975159,
+          "INVOICE": 0.42445316910743713,
+          "PAYMENT_RECEIPT": 0.06007477641105652,
+          "PURCHASE_ORDER": 0.23702457547187805,
+          "QUOTATION": 0.07022316008806229,
+          "UNKNOWN": 0.05461258813738823
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-003\nInvoice Date\n2026-07-08\nSupplier\nCrown Packaging Works\nCustomer\nOrion Foods Pvt Ltd\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI38,500.00\nGST\nI6,930.00\nGrand Total\nI45,430.00\nPO Reference\nPO-003\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nCorrugated Box Large\n100\nI335.00\n18%\nI8,500.00\nPacking Tape\n40\nI125.00\n18%\nI5,000.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-003_delivery_note.pdf": {
+      "id": "doc_TXN-003_delivery_note.pdf",
+      "filename": "TXN-003_delivery_note.pdf",
+      "manifest_txn_id": "TXN-003",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.3070041239261627,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-08",
+        "due_date": null,
+        "supplier_name": "Crown Packaging Works",
+        "supplier_gstin": null,
+        "customer_name": "Orion Foods Pvt Ltd",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-08"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.06093772128224373,
+          "DEBIT_NOTE": 0.03646223619580269,
+          "DELIVERY_NOTE": 0.16830351948738098,
+          "INVOICE": 0.20964083075523376,
+          "PAYMENT_RECEIPT": 0.05671975761651993,
+          "PURCHASE_ORDER": 0.3070041239261627,
+          "QUOTATION": 0.09115266799926758,
+          "UNKNOWN": 0.06977909803390503
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-003\nDelivery Date\n2026-07-08\nSupplier\nCrown Packaging Works\nCustomer\nOrion Foods Pvt Ltd\nPO Reference\nPO-003\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nCorrugated Box Large\n100\nI85.00\n18%\nI8,500.00\nPacking Tape\n40\nI125.00\n18%\nI5,000.00\n",
+      "page_count": 1
+    },
+    "TXN-003_payment_receipt.pdf": {
+      "id": "doc_TXN-003_payment_receipt.pdf",
+      "filename": "TXN-003_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-003",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.580814003944397,
+      "parsed_data": {
+        "document_number": "PAY-003",
+        "invoice_reference": "INV-003",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": "Orion Foods Pvt Ltd",
+        "payment_amount": "15930.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "15930.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.046743642538785934,
+          "DEBIT_NOTE": 0.02340458147227764,
+          "DELIVERY_NOTE": 0.06638633459806442,
+          "INVOICE": 0.08154214918613434,
+          "PAYMENT_RECEIPT": 0.580814003944397,
+          "PURCHASE_ORDER": 0.09286152571439743,
+          "QUOTATION": 0.04419868066906929,
+          "UNKNOWN": 0.06404919177293777
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-003\nPayment Date\n2026-08-15\nPayer\nOrion Foods Pvt Ltd\nPayee\nCrown Packaging Works\nInvoice Reference\nINV-003\nAmount Paid\nI15,930.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-004_purchase_order.pdf": {
+      "id": "doc_TXN-004_purchase_order.pdf",
+      "filename": "TXN-004_purchase_order.pdf",
+      "manifest_txn_id": "TXN-004",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5334400534629822,
+      "parsed_data": {
+        "document_number": "PO-004",
+        "document_date": "2026-07-09",
+        "due_date": null,
+        "supplier_name": "Delta Industrial Supplies",
+        "supplier_gstin": null,
+        "customer_name": "Nova Engineering",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-09"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03931818902492523,
+          "DEBIT_NOTE": 0.021449938416481018,
+          "DELIVERY_NOTE": 0.07880402356386185,
+          "INVOICE": 0.1677597016096115,
+          "PAYMENT_RECEIPT": 0.04559135437011719,
+          "PURCHASE_ORDER": 0.5334400534629822,
+          "QUOTATION": 0.05590849369764328,
+          "UNKNOWN": 0.05772820860147476
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-004\nPO Date\n2026-07-09\nSupplier\nDelta Industrial Supplies\nCustomer\nNova Engineering\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSteel Fastener Set\n50\nI240.00\n18%\nI12,000.00\nMachine Lubricant\n12\nI780.00\n18%\nI9,360.00\n",
+      "page_count": 1
+    },
+    "TXN-004_invoice.pdf": {
+      "id": "doc_TXN-004_invoice.pdf",
+      "filename": "TXN-004_invoice.pdf",
+      "manifest_txn_id": "TXN-004",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.40799686312675476,
+      "parsed_data": {
+        "document_number": "INV-004",
+        "po_reference": "PO-004",
+        "document_date": "2026-07-11",
+        "due_date": null,
+        "supplier_name": "Delta Industrial Supplies",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Nova Engineering",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "21360.00",
+        "tax_total": "0.00",
+        "grand_total": "23923.20",
+        "extra_metadata": {
+          "raw_date": "2026-07-11"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05117785558104515,
+          "DEBIT_NOTE": 0.02914038859307766,
+          "DELIVERY_NOTE": 0.07903628796339035,
+          "INVOICE": 0.40799686312675476,
+          "PAYMENT_RECEIPT": 0.05998404324054718,
+          "PURCHASE_ORDER": 0.2307528257369995,
+          "QUOTATION": 0.0759575366973877,
+          "UNKNOWN": 0.06595422327518463
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-004\nInvoice Date\n2026-07-11\nSupplier\nDelta Industrial Supplies\nCustomer\nNova Engineering\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI21,360.00\nGST\nI2,563.20\nGrand Total\nI23,923.20\nPO Reference\nPO-004\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSteel Fastener Set\n50\nI240.00\n18%\nI12,000.00\nMachine Lubricant\n12\nI780.00\n18%\nI9,360.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-004_delivery_note.pdf": {
+      "id": "doc_TXN-004_delivery_note.pdf",
+      "filename": "TXN-004_delivery_note.pdf",
+      "manifest_txn_id": "TXN-004",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.28796306252479553,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-11",
+        "due_date": null,
+        "supplier_name": "Delta Industrial Supplies",
+        "supplier_gstin": null,
+        "customer_name": "Nova Engineering",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-11"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05708012357354164,
+          "DEBIT_NOTE": 0.03733758628368378,
+          "DELIVERY_NOTE": 0.169175386428833,
+          "INVOICE": 0.20922213792800903,
+          "PAYMENT_RECEIPT": 0.056348226964473724,
+          "PURCHASE_ORDER": 0.28796306252479553,
+          "QUOTATION": 0.09686468541622162,
+          "UNKNOWN": 0.08600880205631256
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-004\nDelivery Date\n2026-07-11\nSupplier\nDelta Industrial Supplies\nCustomer\nNova Engineering\nPO Reference\nPO-004\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSteel Fastener Set\n50\nI240.00\n18%\nI12,000.00\nMachine Lubricant\n12\nI780.00\n18%\nI9,360.00\n",
+      "page_count": 1
+    },
+    "TXN-004_payment_receipt.pdf": {
+      "id": "doc_TXN-004_payment_receipt.pdf",
+      "filename": "TXN-004_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-004",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5834974646568298,
+      "parsed_data": {
+        "document_number": "PAY-004",
+        "invoice_reference": "INV-004",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": "Nova Engineering",
+        "payment_amount": "25204.80",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "25204.80",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.0436701662838459,
+          "DEBIT_NOTE": 0.023402001708745956,
+          "DELIVERY_NOTE": 0.06973540037870407,
+          "INVOICE": 0.08744261413812637,
+          "PAYMENT_RECEIPT": 0.5834974646568298,
+          "PURCHASE_ORDER": 0.0838661938905716,
+          "QUOTATION": 0.04167516157031059,
+          "UNKNOWN": 0.06671098619699478
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-004\nPayment Date\n2026-08-15\nPayer\nNova Engineering\nPayee\nDelta Industrial Supplies\nInvoice Reference\nINV-004\nAmount Paid\nI25,204.80\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-005_purchase_order.pdf": {
+      "id": "doc_TXN-005_purchase_order.pdf",
+      "filename": "TXN-005_purchase_order.pdf",
+      "manifest_txn_id": "TXN-005",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5336365699768066,
+      "parsed_data": {
+        "document_number": "PO-005",
+        "document_date": "2026-07-12",
+        "due_date": null,
+        "supplier_name": "Evergreen IT Solutions",
+        "supplier_gstin": null,
+        "customer_name": "BluePeak Services",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-12"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.039465829730033875,
+          "DEBIT_NOTE": 0.021125538274645805,
+          "DELIVERY_NOTE": 0.0763041228055954,
+          "INVOICE": 0.1777753382921219,
+          "PAYMENT_RECEIPT": 0.047494225203990936,
+          "PURCHASE_ORDER": 0.5336365699768066,
+          "QUOTATION": 0.04949837177991867,
+          "UNKNOWN": 0.05470002070069313
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-005\nPO Date\n2026-07-12\nSupplier\nEvergreen IT Solutions\nCustomer\nBluePeak Services\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nWireless Keyboard\n15\nI1,250.00\n18%\nI18,750.00\nUSB-C Dock\n5\nI4,200.00\n18%\nI21,000.00\n",
+      "page_count": 1
+    },
+    "TXN-005_invoice.pdf": {
+      "id": "doc_TXN-005_invoice.pdf",
+      "filename": "TXN-005_invoice.pdf",
+      "manifest_txn_id": "TXN-005",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4538141191005707,
+      "parsed_data": {
+        "document_number": "INV-005",
+        "po_reference": "PO-005",
+        "document_date": "2026-07-14",
+        "due_date": null,
+        "supplier_name": "Evergreen IT Solutions",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "BluePeak Services",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "39750.00",
+        "tax_total": "0.00",
+        "grand_total": "47905.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-14"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04791729152202606,
+          "DEBIT_NOTE": 0.027440160512924194,
+          "DELIVERY_NOTE": 0.07568671554327011,
+          "INVOICE": 0.4538141191005707,
+          "PAYMENT_RECEIPT": 0.059972360730171204,
+          "PURCHASE_ORDER": 0.21741905808448792,
+          "QUOTATION": 0.061076775193214417,
+          "UNKNOWN": 0.05667348951101303
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-005\nInvoice Date\n2026-07-14\nSupplier\nEvergreen IT Solutions\nCustomer\nBluePeak Services\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI39,750.00\nGST\nI7,155.00\nGrand Total\nI47,905.00\nPO Reference\nPO-005\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nWireless Keyboard\n15\nI1,250.00\n18%\nI18,750.00\nUSB-C Dock\n5\nI4,200.00\n18%\nI21,000.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-005_delivery_note.pdf": {
+      "id": "doc_TXN-005_delivery_note.pdf",
+      "filename": "TXN-005_delivery_note.pdf",
+      "manifest_txn_id": "TXN-005",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.2806529104709625,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-14",
+        "due_date": null,
+        "supplier_name": "Evergreen IT Solutions",
+        "supplier_gstin": null,
+        "customer_name": "BluePeak Services",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-14"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05648921802639961,
+          "DEBIT_NOTE": 0.03683673217892647,
+          "DELIVERY_NOTE": 0.1849641054868698,
+          "INVOICE": 0.22830736637115479,
+          "PAYMENT_RECEIPT": 0.05786815285682678,
+          "PURCHASE_ORDER": 0.2806529104709625,
+          "QUOTATION": 0.07771840691566467,
+          "UNKNOWN": 0.07716313004493713
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-005\nDelivery Date\n2026-07-14\nSupplier\nEvergreen IT Solutions\nCustomer\nBluePeak Services\nPO Reference\nPO-005\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nWireless Keyboard\n15\nI1,250.00\n18%\nI18,750.00\nUSB-C Dock\n5\nI4,200.00\n18%\nI21,000.00\n",
+      "page_count": 1
+    },
+    "TXN-005_payment_receipt.pdf": {
+      "id": "doc_TXN-005_payment_receipt.pdf",
+      "filename": "TXN-005_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-005",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5931642055511475,
+      "parsed_data": {
+        "document_number": "PAY-005",
+        "invoice_reference": "INV-005",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "46905.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "46905.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04269924759864807,
+          "DEBIT_NOTE": 0.022904029116034508,
+          "DELIVERY_NOTE": 0.06341362744569778,
+          "INVOICE": 0.08248841017484665,
+          "PAYMENT_RECEIPT": 0.5931642055511475,
+          "PURCHASE_ORDER": 0.09029529988765717,
+          "QUOTATION": 0.03986625000834465,
+          "UNKNOWN": 0.06516890227794647
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-005\nPayment Date\n2026-08-15\nPayer\nBluePeak Services\nPayee\nEvergreen IT Solutions\nInvoice Reference\nINV-005\nAmount Paid\nI46,905.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-006_purchase_order.pdf": {
+      "id": "doc_TXN-006_purchase_order.pdf",
+      "filename": "TXN-006_purchase_order.pdf",
+      "manifest_txn_id": "TXN-006",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.6090905070304871,
+      "parsed_data": {
+        "document_number": "PO-006",
+        "document_date": "2026-07-15",
+        "due_date": null,
+        "supplier_name": "Fusion Stationers",
+        "supplier_gstin": null,
+        "customer_name": "Metro Consultants",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03213546425104141,
+          "DEBIT_NOTE": 0.01803615503013134,
+          "DELIVERY_NOTE": 0.060886260122060776,
+          "INVOICE": 0.15084321796894073,
+          "PAYMENT_RECEIPT": 0.03787701576948166,
+          "PURCHASE_ORDER": 0.6090905070304871,
+          "QUOTATION": 0.042937107384204865,
+          "UNKNOWN": 0.048194147646427155
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-006\nPO Date\n2026-07-15\nSupplier\nFusion Stationers\nCustomer\nMetro Consultants\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNotebook A5\n100\nI95.00\n18%\nI9,500.00\nMarker Pack\n20\nI180.00\n18%\nI3,600.00\n",
+      "page_count": 1
+    },
+    "TXN-006_invoice.pdf": {
+      "id": "doc_TXN-006_invoice.pdf",
+      "filename": "TXN-006_invoice.pdf",
+      "manifest_txn_id": "TXN-006",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.44131234288215637,
+      "parsed_data": {
+        "document_number": "INV-006",
+        "po_reference": "PO-006",
+        "document_date": "2026-07-17",
+        "due_date": null,
+        "supplier_name": "Fusion Stationers",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Metro Consultants",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "13100.00",
+        "tax_total": "0.00",
+        "grand_total": "15458.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-17"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04438553750514984,
+          "DEBIT_NOTE": 0.02649662457406521,
+          "DELIVERY_NOTE": 0.0654497742652893,
+          "INVOICE": 0.44131234288215637,
+          "PAYMENT_RECEIPT": 0.05510161072015762,
+          "PURCHASE_ORDER": 0.24614322185516357,
+          "QUOTATION": 0.06489408016204834,
+          "UNKNOWN": 0.05621683970093727
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-006\nInvoice Date\n2026-07-17\nSupplier\nFusion Stationers\nCustomer\nMetro Consultants\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI13,100.00\nGST\nI2,358.00\nGrand Total\nI15,458.00\nPO Reference\nPO-006\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNotebook A5\n100\nI95.00\n18%\nI9,500.00\nMarker Pack\n20\nI180.00\n18%\nI3,600.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-006_delivery_note.pdf": {
+      "id": "doc_TXN-006_delivery_note.pdf",
+      "filename": "TXN-006_delivery_note.pdf",
+      "manifest_txn_id": "TXN-006",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.3255491852760315,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-17",
+        "due_date": null,
+        "supplier_name": "Fusion Stationers",
+        "supplier_gstin": null,
+        "customer_name": "Metro Consultants",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-17"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.051545195281505585,
+          "DEBIT_NOTE": 0.03588252142071724,
+          "DELIVERY_NOTE": 0.16304242610931396,
+          "INVOICE": 0.21397291123867035,
+          "PAYMENT_RECEIPT": 0.0517764687538147,
+          "PURCHASE_ORDER": 0.3255491852760315,
+          "QUOTATION": 0.08135518431663513,
+          "UNKNOWN": 0.07687609642744064
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-006\nDelivery Date\n2026-07-17\nSupplier\nFusion Stationers\nCustomer\nMetro Consultants\nPO Reference\nPO-006\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNotebook A5\n100\nI95.00\n18%\nI9,500.00\nMarker Pack\n20\nI180.00\n18%\nI3,600.00\n",
+      "page_count": 1
+    },
+    "TXN-006_payment_receipt.pdf": {
+      "id": "doc_TXN-006_payment_receipt.pdf",
+      "filename": "TXN-006_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-006",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5803124904632568,
+      "parsed_data": {
+        "document_number": "PAY-006",
+        "invoice_reference": "INV-006",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "14958.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "14958.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04358961805701256,
+          "DEBIT_NOTE": 0.023373594507575035,
+          "DELIVERY_NOTE": 0.06470430642366409,
+          "INVOICE": 0.07865983992815018,
+          "PAYMENT_RECEIPT": 0.5803124904632568,
+          "PURCHASE_ORDER": 0.09269708395004272,
+          "QUOTATION": 0.040384288877248764,
+          "UNKNOWN": 0.07627879828214645
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-006\nPayment Date\n2026-08-15\nPayer\nMetro Consultants\nPayee\nFusion Stationers\nInvoice Reference\nINV-006\nAmount Paid\nI14,958.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-007_purchase_order.pdf": {
+      "id": "doc_TXN-007_purchase_order.pdf",
+      "filename": "TXN-007_purchase_order.pdf",
+      "manifest_txn_id": "TXN-007",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5808578133583069,
+      "parsed_data": {
+        "document_number": "PO-007",
+        "document_date": "2026-07-18",
+        "due_date": null,
+        "supplier_name": "Galaxy Electricals",
+        "supplier_gstin": null,
+        "customer_name": "Sunrise Projects",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-18"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03413214534521103,
+          "DEBIT_NOTE": 0.019885046407580376,
+          "DELIVERY_NOTE": 0.07359178364276886,
+          "INVOICE": 0.15561141073703766,
+          "PAYMENT_RECEIPT": 0.04189743846654892,
+          "PURCHASE_ORDER": 0.5808578133583069,
+          "QUOTATION": 0.05008014291524887,
+          "UNKNOWN": 0.043944209814071655
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-007\nPO Date\n2026-07-18\nSupplier\nGalaxy Electricals\nCustomer\nSunrise Projects\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nLED Panel 24W\n30\nI680.00\n18%\nI20,400.00\nCopper Wire Roll\n8\nI3,150.00\n18%\nI25,200.00\n",
+      "page_count": 1
+    },
+    "TXN-007_invoice.pdf": {
+      "id": "doc_TXN-007_invoice.pdf",
+      "filename": "TXN-007_invoice.pdf",
+      "manifest_txn_id": "TXN-007",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.433388888835907,
+      "parsed_data": {
+        "document_number": "INV-007",
+        "po_reference": "PO-007",
+        "document_date": "2026-07-31",
+        "due_date": null,
+        "supplier_name": "Galaxy Electricals",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Sunrise Projects",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "45600.00",
+        "tax_total": "0.00",
+        "grand_total": "53808.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-31"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04700117185711861,
+          "DEBIT_NOTE": 0.028299596160650253,
+          "DELIVERY_NOTE": 0.07474711537361145,
+          "INVOICE": 0.433388888835907,
+          "PAYMENT_RECEIPT": 0.05969657748937607,
+          "PURCHASE_ORDER": 0.23344647884368896,
+          "QUOTATION": 0.06805671006441116,
+          "UNKNOWN": 0.05536340922117233
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-007\nInvoice Date\n2026-07-31\nSupplier\nGalaxy Electricals\nCustomer\nSunrise Projects\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI45,600.00\nGST\nI8,208.00\nGrand Total\nI53,808.00\nPO Reference\nPO-007\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nLED Panel 24W\n30\nI680.00\n18%\nI20,400.00\nCopper Wire Roll\n8\nI3,150.00\n18%\nI25,200.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-007_delivery_note.pdf": {
+      "id": "doc_TXN-007_delivery_note.pdf",
+      "filename": "TXN-007_delivery_note.pdf",
+      "manifest_txn_id": "TXN-007",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.30954137444496155,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-20",
+        "due_date": null,
+        "supplier_name": "Galaxy Electricals",
+        "supplier_gstin": null,
+        "customer_name": "Sunrise Projects",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-20"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.051486045122146606,
+          "DEBIT_NOTE": 0.03636513650417328,
+          "DELIVERY_NOTE": 0.1856260597705841,
+          "INVOICE": 0.21032974123954773,
+          "PAYMENT_RECEIPT": 0.05291052162647247,
+          "PURCHASE_ORDER": 0.30954137444496155,
+          "QUOTATION": 0.08556490391492844,
+          "UNKNOWN": 0.06817622482776642
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-007\nDelivery Date\n2026-07-20\nSupplier\nGalaxy Electricals\nCustomer\nSunrise Projects\nPO Reference\nPO-007\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nLED Panel 24W\n30\nI680.00\n18%\nI20,400.00\nCopper Wire Roll\n8\nI3,150.00\n18%\nI25,200.00\n",
+      "page_count": 1
+    },
+    "TXN-007_payment_receipt.pdf": {
+      "id": "doc_TXN-007_payment_receipt.pdf",
+      "filename": "TXN-007_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-007",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5879878997802734,
+      "parsed_data": {
+        "document_number": "PAY-007",
+        "invoice_reference": "INV-007",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "53808.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "53808.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04326764866709709,
+          "DEBIT_NOTE": 0.023495614528656006,
+          "DELIVERY_NOTE": 0.06548076122999191,
+          "INVOICE": 0.07838168740272522,
+          "PAYMENT_RECEIPT": 0.5879878997802734,
+          "PURCHASE_ORDER": 0.09344592690467834,
+          "QUOTATION": 0.0420389324426651,
+          "UNKNOWN": 0.0659015104174614
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-007\nPayment Date\n2026-08-15\nPayer\nSunrise Projects\nPayee\nGalaxy Electricals\nInvoice Reference\nINV-007\nAmount Paid\nI53,808.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-008_purchase_order.pdf": {
+      "id": "doc_TXN-008_purchase_order.pdf",
+      "filename": "TXN-008_purchase_order.pdf",
+      "manifest_txn_id": "TXN-008",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5421203970909119,
+      "parsed_data": {
+        "document_number": "PO-008",
+        "document_date": "2026-07-21",
+        "due_date": null,
+        "supplier_name": "Horizon Safety Products",
+        "supplier_gstin": null,
+        "customer_name": "Prime Buildtech",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-21"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.039473190903663635,
+          "DEBIT_NOTE": 0.022135445848107338,
+          "DELIVERY_NOTE": 0.07142439484596252,
+          "INVOICE": 0.1601182520389557,
+          "PAYMENT_RECEIPT": 0.04738420993089676,
+          "PURCHASE_ORDER": 0.5421203970909119,
+          "QUOTATION": 0.04928365349769592,
+          "UNKNOWN": 0.06806044280529022
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-008\nPO Date\n2026-07-21\nSupplier\nHorizon Safety Products\nCustomer\nPrime Buildtech\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSafety Helmet\n25\nI540.00\n18%\nI13,500.00\nReflective Vest\n25\nI390.00\n18%\nI9,750.00\n",
+      "page_count": 1
+    },
+    "TXN-008_invoice.pdf": {
+      "id": "doc_TXN-008_invoice.pdf",
+      "filename": "TXN-008_invoice.pdf",
+      "manifest_txn_id": "TXN-008",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.41602185368537903,
+      "parsed_data": {
+        "document_number": "INV-008",
+        "po_reference": "PO-008",
+        "document_date": "2026-07-23",
+        "due_date": null,
+        "supplier_name": "Horizon Office Traders Pvt Ltd",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Prime Buildtech",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "23250.00",
+        "tax_total": "0.00",
+        "grand_total": "27435.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-23"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05535219609737396,
+          "DEBIT_NOTE": 0.029789723455905914,
+          "DELIVERY_NOTE": 0.07286354899406433,
+          "INVOICE": 0.41602185368537903,
+          "PAYMENT_RECEIPT": 0.06521166861057281,
+          "PURCHASE_ORDER": 0.22629405558109283,
+          "QUOTATION": 0.06635525822639465,
+          "UNKNOWN": 0.06811172515153885
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-008\nInvoice Date\n2026-07-23\nSupplier\nHorizon Office Traders Pvt Ltd\nCustomer\nPrime Buildtech\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI23,250.00\nGST\nI4,185.00\nGrand Total\nI27,435.00\nPO Reference\nPO-008\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSafety Helmet\n25\nI540.00\n18%\nI13,500.00\nReflective Vest\n25\nI390.00\n18%\nI9,750.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-008_delivery_note.pdf": {
+      "id": "doc_TXN-008_delivery_note.pdf",
+      "filename": "TXN-008_delivery_note.pdf",
+      "manifest_txn_id": "TXN-008",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.29549533128738403,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-23",
+        "due_date": null,
+        "supplier_name": "Horizon Safety Products",
+        "supplier_gstin": null,
+        "customer_name": "Prime Buildtech",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-23"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05696350708603859,
+          "DEBIT_NOTE": 0.03834709897637367,
+          "DELIVERY_NOTE": 0.1620267778635025,
+          "INVOICE": 0.20739996433258057,
+          "PAYMENT_RECEIPT": 0.05748716741800308,
+          "PURCHASE_ORDER": 0.29549533128738403,
+          "QUOTATION": 0.08127392083406448,
+          "UNKNOWN": 0.10100622475147247
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-008\nDelivery Date\n2026-07-23\nSupplier\nHorizon Safety Products\nCustomer\nPrime Buildtech\nPO Reference\nPO-008\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nSafety Helmet\n25\nI540.00\n18%\nI13,500.00\nReflective Vest\n25\nI390.00\n18%\nI9,750.00\n",
+      "page_count": 1
+    },
+    "TXN-008_payment_receipt.pdf": {
+      "id": "doc_TXN-008_payment_receipt.pdf",
+      "filename": "TXN-008_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-008",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5786299705505371,
+      "parsed_data": {
+        "document_number": "PAY-008",
+        "invoice_reference": "INV-008",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "27435.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "27435.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04335329681634903,
+          "DEBIT_NOTE": 0.02330515719950199,
+          "DELIVERY_NOTE": 0.0640290305018425,
+          "INVOICE": 0.07799037545919418,
+          "PAYMENT_RECEIPT": 0.5786299705505371,
+          "PURCHASE_ORDER": 0.09153754264116287,
+          "QUOTATION": 0.0401897095143795,
+          "UNKNOWN": 0.08096498996019363
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-008\nPayment Date\n2026-08-15\nPayer\nPrime Buildtech\nPayee\nHorizon Safety Products\nInvoice Reference\nINV-008\nAmount Paid\nI27,435.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-009_purchase_order.pdf": {
+      "id": "doc_TXN-009_purchase_order.pdf",
+      "filename": "TXN-009_purchase_order.pdf",
+      "manifest_txn_id": "TXN-009",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5948180556297302,
+      "parsed_data": {
+        "document_number": "PO-009",
+        "document_date": "2026-07-24",
+        "due_date": null,
+        "supplier_name": "Indus Furniture Works",
+        "supplier_gstin": null,
+        "customer_name": "Urban Workspace",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-24"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.035640135407447815,
+          "DEBIT_NOTE": 0.0187173243612051,
+          "DELIVERY_NOTE": 0.06581243872642517,
+          "INVOICE": 0.15083958208560944,
+          "PAYMENT_RECEIPT": 0.04007815942168236,
+          "PURCHASE_ORDER": 0.5948180556297302,
+          "QUOTATION": 0.04880710318684578,
+          "UNKNOWN": 0.045287203043699265
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-009\nPO Date\n2026-07-24\nSupplier\nIndus Furniture Works\nCustomer\nUrban Workspace\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nOffice Chair\n12\nI6,800.00\n18%\nI81,600.00\nWork Desk\n6\nI9,200.00\n18%\nI55,200.00\n",
+      "page_count": 1
+    },
+    "TXN-009_invoice.pdf": {
+      "id": "doc_TXN-009_invoice.pdf",
+      "filename": "TXN-009_invoice.pdf",
+      "manifest_txn_id": "TXN-009",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4372502863407135,
+      "parsed_data": {
+        "document_number": "INV-009",
+        "po_reference": "PO-009",
+        "document_date": "2026-07-26",
+        "due_date": null,
+        "supplier_name": "Indus Furniture Works",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Urban Workspace",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "136800.00",
+        "tax_total": "0.00",
+        "grand_total": "161424.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-26"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04810503125190735,
+          "DEBIT_NOTE": 0.027093686163425446,
+          "DELIVERY_NOTE": 0.06765276938676834,
+          "INVOICE": 0.4372502863407135,
+          "PAYMENT_RECEIPT": 0.05645556375384331,
+          "PURCHASE_ORDER": 0.24021300673484802,
+          "QUOTATION": 0.06840715557336807,
+          "UNKNOWN": 0.05482245609164238
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-009\nInvoice Date\n2026-07-26\nSupplier\nIndus Furniture Works\nCustomer\nUrban Workspace\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI136,800.00\nGST\nI24,624.00\nGrand Total\nI161,424.00\nPO Reference\nPO-009\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nWireless Mouse\n12\nI6,800.00\n18%\nI81,600.00\nWork Desk\n6\nI9,200.00\n18%\nI55,200.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-009_delivery_note.pdf": {
+      "id": "doc_TXN-009_delivery_note.pdf",
+      "filename": "TXN-009_delivery_note.pdf",
+      "manifest_txn_id": "TXN-009",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.31862571835517883,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-26",
+        "due_date": null,
+        "supplier_name": "Indus Furniture Works",
+        "supplier_gstin": null,
+        "customer_name": "Urban Workspace",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-26"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05606629699468613,
+          "DEBIT_NOTE": 0.03632236272096634,
+          "DELIVERY_NOTE": 0.1703294962644577,
+          "INVOICE": 0.20417463779449463,
+          "PAYMENT_RECEIPT": 0.05214959383010864,
+          "PURCHASE_ORDER": 0.31862571835517883,
+          "QUOTATION": 0.0888170450925827,
+          "UNKNOWN": 0.07351484149694443
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-009\nDelivery Date\n2026-07-26\nSupplier\nIndus Furniture Works\nCustomer\nUrban Workspace\nPO Reference\nPO-009\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nOffice Chair\n12\nI6,800.00\n18%\nI81,600.00\nWork Desk\n6\nI9,200.00\n18%\nI55,200.00\n",
+      "page_count": 1
+    },
+    "TXN-009_payment_receipt.pdf": {
+      "id": "doc_TXN-009_payment_receipt.pdf",
+      "filename": "TXN-009_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-009",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5945711135864258,
+      "parsed_data": {
+        "document_number": "PAY-009",
+        "invoice_reference": "INV-009",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": "Urban Workspace",
+        "payment_amount": "161424.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "161424.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04464978352189064,
+          "DEBIT_NOTE": 0.0226316936314106,
+          "DELIVERY_NOTE": 0.06368336081504822,
+          "INVOICE": 0.07511809468269348,
+          "PAYMENT_RECEIPT": 0.5945711135864258,
+          "PURCHASE_ORDER": 0.09190172702074051,
+          "QUOTATION": 0.04258815199136734,
+          "UNKNOWN": 0.06485602259635925
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-009\nPayment Date\n2026-08-15\nPayer\nUrban Workspace\nPayee\nIndus Furniture Works\nInvoice Reference\nINV-009\nAmount Paid\nI161,424.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-010_purchase_order.pdf": {
+      "id": "doc_TXN-010_purchase_order.pdf",
+      "filename": "TXN-010_purchase_order.pdf",
+      "manifest_txn_id": "TXN-010",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5099667310714722,
+      "parsed_data": {
+        "document_number": "PO-010",
+        "document_date": "2026-07-27",
+        "due_date": null,
+        "supplier_name": "Jade Networks Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "CoreLink Systems",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-27"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04489659518003464,
+          "DEBIT_NOTE": 0.022533681243658066,
+          "DELIVERY_NOTE": 0.08031069487333298,
+          "INVOICE": 0.18254885077476501,
+          "PAYMENT_RECEIPT": 0.05010156333446503,
+          "PURCHASE_ORDER": 0.5099667310714722,
+          "QUOTATION": 0.05154554918408394,
+          "UNKNOWN": 0.058096326887607574
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-010\nPO Date\n2026-07-27\nSupplier\nJade Networks Pvt Ltd\nCustomer\nCoreLink Systems\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNetwork Switch 24-Port\n4\nI8,600.00\n18%\nI34,400.00\nCat6 Cable Box\n3\nI5,200.00\n18%\nI15,600.00\n",
+      "page_count": 1
+    },
+    "TXN-010_invoice.pdf": {
+      "id": "doc_TXN-010_invoice.pdf",
+      "filename": "TXN-010_invoice.pdf",
+      "manifest_txn_id": "TXN-010",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4093985855579376,
+      "parsed_data": {
+        "document_number": "INV-009",
+        "po_reference": "PO-010",
+        "document_date": "2026-07-29",
+        "due_date": null,
+        "supplier_name": "Jade Networks Pvt Ltd",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "CoreLink Systems",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "50000.00",
+        "tax_total": "0.00",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-29"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05551901087164879,
+          "DEBIT_NOTE": 0.030076783150434494,
+          "DELIVERY_NOTE": 0.07756002247333527,
+          "INVOICE": 0.4093985855579376,
+          "PAYMENT_RECEIPT": 0.06428807973861694,
+          "PURCHASE_ORDER": 0.23102056980133057,
+          "QUOTATION": 0.06728030741214752,
+          "UNKNOWN": 0.0648566335439682
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-009\nInvoice Date\n2026-07-29\nSupplier\nJade Networks Pvt Ltd\nCustomer\nCoreLink Systems\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI50,000.00\nGST\nI9,000.00\nGrand Total\nI59,000.00\nPO Reference\nPO-010\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNetwork Switch 24-Port\n4\nI8,600.00\n18%\nI34,400.00\nCat6 Cable Box\n3\nI5,200.00\n18%\nI15,600.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-010_delivery_note.pdf": {
+      "id": "doc_TXN-010_delivery_note.pdf",
+      "filename": "TXN-010_delivery_note.pdf",
+      "manifest_txn_id": "TXN-010",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.286781907081604,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-07-29",
+        "due_date": null,
+        "supplier_name": "Jade Networks Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "CoreLink Systems",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-29"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.06337344646453857,
+          "DEBIT_NOTE": 0.03837798163294792,
+          "DELIVERY_NOTE": 0.1745951920747757,
+          "INVOICE": 0.2073124796152115,
+          "PAYMENT_RECEIPT": 0.06092829629778862,
+          "PURCHASE_ORDER": 0.286781907081604,
+          "QUOTATION": 0.08317296952009201,
+          "UNKNOWN": 0.08545766770839691
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-010\nDelivery Date\n2026-07-29\nSupplier\nJade Networks Pvt Ltd\nCustomer\nCoreLink Systems\nPO Reference\nPO-010\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nNetwork Switch 24-Port\n4\nI8,600.00\n18%\nI34,400.00\nCat6 Cable Box\n3\nI5,200.00\n18%\nI15,600.00\n",
+      "page_count": 1
+    },
+    "TXN-010_payment_receipt.pdf": {
+      "id": "doc_TXN-010_payment_receipt.pdf",
+      "filename": "TXN-010_payment_receipt.pdf",
+      "manifest_txn_id": "TXN-010",
+      "manifest_doc_type": "PAY",
+      "predicted_doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.5805385112762451,
+      "parsed_data": {
+        "document_number": "PAY-010",
+        "invoice_reference": "INV-009",
+        "po_reference": null,
+        "document_date": "2026-08-15",
+        "supplier_name": null,
+        "payment_amount": "59000.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": null,
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04531829431653023,
+          "DEBIT_NOTE": 0.023723343387246132,
+          "DELIVERY_NOTE": 0.06726403534412384,
+          "INVOICE": 0.08371100574731827,
+          "PAYMENT_RECEIPT": 0.5805385112762451,
+          "PURCHASE_ORDER": 0.09310074895620346,
+          "QUOTATION": 0.041525911539793015,
+          "UNKNOWN": 0.06481816619634628
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nDocument Type\nPayment Receipt\nReceipt Number\nPAY-010\nPayment Date\n2026-08-15\nPayer\nCoreLink Systems\nPayee\nJade Networks Pvt Ltd\nInvoice Reference\nINV-009\nAmount Paid\nI59,000.00\nPayment Method\nNEFT\n",
+      "page_count": 1
+    },
+    "TXN-011_purchase_order.pdf": {
+      "id": "doc_TXN-011_purchase_order.pdf",
+      "filename": "TXN-011_purchase_order.pdf",
+      "manifest_txn_id": "TXN-011",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5744078755378723,
+      "parsed_data": {
+        "document_number": "PO-011",
+        "document_date": "2026-07-30",
+        "due_date": null,
+        "supplier_name": "Krypton Tools",
+        "supplier_gstin": null,
+        "customer_name": "Mehta Fabrication",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-07-30"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.033741772174835205,
+          "DEBIT_NOTE": 0.020908990874886513,
+          "DELIVERY_NOTE": 0.07664051651954651,
+          "INVOICE": 0.15813112258911133,
+          "PAYMENT_RECEIPT": 0.04100964218378067,
+          "PURCHASE_ORDER": 0.5744078755378723,
+          "QUOTATION": 0.050358954817056656,
+          "UNKNOWN": 0.04480110853910446
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-011\nPO Date\n2026-07-30\nSupplier\nKrypton Tools\nCustomer\nMehta Fabrication\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nCutting Tool\n8\nI1,450.00\n18%\nI11,600.00\nDrill Bit Set\n10\nI780.00\n18%\nI7,800.00\n",
+      "page_count": 1
+    },
+    "TXN-011_invoice.pdf": {
+      "id": "doc_TXN-011_invoice.pdf",
+      "filename": "TXN-011_invoice.pdf",
+      "manifest_txn_id": "TXN-011",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4520513713359833,
+      "parsed_data": {
+        "document_number": "INV-011",
+        "po_reference": "PO-011",
+        "document_date": "2026-08-01",
+        "due_date": null,
+        "supplier_name": "Krypton Tools",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Mehta Fabrication",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "19400.00",
+        "tax_total": "0.00",
+        "grand_total": "22892.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-01"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04748636856675148,
+          "DEBIT_NOTE": 0.029237007722258568,
+          "DELIVERY_NOTE": 0.07456254959106445,
+          "INVOICE": 0.4520513713359833,
+          "PAYMENT_RECEIPT": 0.058244358748197556,
+          "PURCHASE_ORDER": 0.21855826675891876,
+          "QUOTATION": 0.06488125026226044,
+          "UNKNOWN": 0.05497882515192032
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-011\nInvoice Date\n2026-08-01\nSupplier\nKrypton Tools\nCustomer\nMehta Fabrication\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI19,400.00\nGST\nI3,492.00\nGrand Total\nI22,892.00\nPO Reference\nPO-011\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nCutting Tool\n8\nI1,450.00\n18%\nI11,600.00\nDrill Bit Set\n10\nI780.00\n18%\nI7,800.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-012_purchase_order.pdf": {
+      "id": "doc_TXN-012_purchase_order.pdf",
+      "filename": "TXN-012_purchase_order.pdf",
+      "manifest_txn_id": "TXN-012",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5981931090354919,
+      "parsed_data": {
+        "document_number": "PO-012",
+        "document_date": "2026-08-02",
+        "due_date": null,
+        "supplier_name": "Lotus Print House",
+        "supplier_gstin": null,
+        "customer_name": "Aria Events",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-02"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03557808697223663,
+          "DEBIT_NOTE": 0.018923677504062653,
+          "DELIVERY_NOTE": 0.06678396463394165,
+          "INVOICE": 0.14897780120372772,
+          "PAYMENT_RECEIPT": 0.041669704020023346,
+          "PURCHASE_ORDER": 0.5981931090354919,
+          "QUOTATION": 0.04337681084871292,
+          "UNKNOWN": 0.04649690166115761
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-012\nPO Date\n2026-08-02\nSupplier\nLotus Print House\nCustomer\nAria Events\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nEvent Brochure\n500\nI12.00\n18%\nI6,000.00\nBanner 6x3 ft\n4\nI950.00\n18%\nI3,800.00\n",
+      "page_count": 1
+    },
+    "TXN-012_invoice.pdf": {
+      "id": "doc_TXN-012_invoice.pdf",
+      "filename": "TXN-012_invoice.pdf",
+      "manifest_txn_id": "TXN-012",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.44692784547805786,
+      "parsed_data": {
+        "document_number": "INV-012",
+        "po_reference": "PO-012",
+        "document_date": "2026-08-04",
+        "due_date": null,
+        "supplier_name": "Lotus Print House",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Aria Events",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "9800.00",
+        "tax_total": "0.00",
+        "grand_total": "11564.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-04"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04664057493209839,
+          "DEBIT_NOTE": 0.026710035279393196,
+          "DELIVERY_NOTE": 0.06501498818397522,
+          "INVOICE": 0.44692784547805786,
+          "PAYMENT_RECEIPT": 0.05709712207317352,
+          "PURCHASE_ORDER": 0.2436215877532959,
+          "QUOTATION": 0.06037972494959831,
+          "UNKNOWN": 0.05360810086131096
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-012\nInvoice Date\n2026-08-04\nSupplier\nLotus Print House\nCustomer\nAria Events\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI9,800.00\nGST\nI1,764.00\nGrand Total\nI11,564.00\nPO Reference\nPO-012\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nEvent Brochure\n500\nI12.00\n18%\nI6,000.00\nBanner 6x3 ft\n4\nI950.00\n18%\nI3,800.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-012_delivery_note.pdf": {
+      "id": "doc_TXN-012_delivery_note.pdf",
+      "filename": "TXN-012_delivery_note.pdf",
+      "manifest_txn_id": "TXN-012",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.3306486904621124,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-08-04",
+        "due_date": null,
+        "supplier_name": "Lotus Print House",
+        "supplier_gstin": null,
+        "customer_name": "Aria Events",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-04"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.054587844759225845,
+          "DEBIT_NOTE": 0.036272305995225906,
+          "DELIVERY_NOTE": 0.16799892485141754,
+          "INVOICE": 0.20758230984210968,
+          "PAYMENT_RECEIPT": 0.053011201322078705,
+          "PURCHASE_ORDER": 0.3306486904621124,
+          "QUOTATION": 0.0775289461016655,
+          "UNKNOWN": 0.07236979901790619
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-012\nDelivery Date\n2026-08-04\nSupplier\nLotus Print House\nCustomer\nAria Events\nPO Reference\nPO-012\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nEvent Brochure\n500\nI12.00\n18%\nI6,000.00\nBanner 6x3 ft\n4\nI950.00\n18%\nI3,800.00\n",
+      "page_count": 1
+    },
+    "TXN-013_purchase_order.pdf": {
+      "id": "doc_TXN-013_purchase_order.pdf",
+      "filename": "TXN-013_purchase_order.pdf",
+      "manifest_txn_id": "TXN-013",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.6137259006500244,
+      "parsed_data": {
+        "document_number": "PO-013",
+        "document_date": "2026-08-05",
+        "due_date": null,
+        "supplier_name": "Matrix CleanTech",
+        "supplier_gstin": null,
+        "customer_name": "Greenfield Offices",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-05"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.033584341406822205,
+          "DEBIT_NOTE": 0.017727645114064217,
+          "DELIVERY_NOTE": 0.06173974648118019,
+          "INVOICE": 0.14944152534008026,
+          "PAYMENT_RECEIPT": 0.03757845237851143,
+          "PURCHASE_ORDER": 0.6137259006500244,
+          "QUOTATION": 0.04654127359390259,
+          "UNKNOWN": 0.03966117650270462
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-013\nPO Date\n2026-08-05\nSupplier\nMatrix CleanTech\nCustomer\nGreenfield Offices\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nFloor Cleaner 5L\n30\nI620.00\n18%\nI18,600.00\nMicrofiber Cloth\n100\nI55.00\n18%\nI5,500.00\n",
+      "page_count": 1
+    },
+    "TXN-013_delivery_note.pdf": {
+      "id": "doc_TXN-013_delivery_note.pdf",
+      "filename": "TXN-013_delivery_note.pdf",
+      "manifest_txn_id": "TXN-013",
+      "manifest_doc_type": "DN",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.32613468170166016,
+      "parsed_data": {
+        "document_number": "erence",
+        "document_date": "2026-08-07",
+        "due_date": null,
+        "supplier_name": "Matrix CleanTech",
+        "supplier_gstin": null,
+        "customer_name": "Greenfield Offices",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-07"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.05447324365377426,
+          "DEBIT_NOTE": 0.036159709095954895,
+          "DELIVERY_NOTE": 0.16697919368743896,
+          "INVOICE": 0.2060745805501938,
+          "PAYMENT_RECEIPT": 0.05199768394231796,
+          "PURCHASE_ORDER": 0.32613468170166016,
+          "QUOTATION": 0.08846679329872131,
+          "UNKNOWN": 0.06971406191587448
+        }
+      },
+      "raw_text": "DELIVERY NOTE\nDocument Type\nDelivery Note\nDelivery Note\nDN-013\nDelivery Date\n2026-08-07\nSupplier\nMatrix CleanTech\nCustomer\nGreenfield Offices\nPO Reference\nPO-013\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nFloor Cleaner 5L\n30\nI620.00\n18%\nI18,600.00\nMicrofiber Cloth\n100\nI55.00\n18%\nI5,500.00\n",
+      "page_count": 1
+    },
+    "TXN-014_invoice.pdf": {
+      "id": "doc_TXN-014_invoice.pdf",
+      "filename": "TXN-014_invoice.pdf",
+      "manifest_txn_id": "TXN-014",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.4704906940460205,
+      "parsed_data": {
+        "document_number": "INV-014",
+        "po_reference": "PO-014",
+        "document_date": "2026-08-10",
+        "due_date": null,
+        "supplier_name": "NorthStar Cables",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Rapid Automation",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "17150.00",
+        "tax_total": "0.00",
+        "grand_total": "20237.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-10"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.045010559260845184,
+          "DEBIT_NOTE": 0.025760695338249207,
+          "DELIVERY_NOTE": 0.06372913718223572,
+          "INVOICE": 0.4704906940460205,
+          "PAYMENT_RECEIPT": 0.053911447525024414,
+          "PURCHASE_ORDER": 0.22865860164165497,
+          "QUOTATION": 0.06285647302865982,
+          "UNKNOWN": 0.04958249628543854
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-014\nInvoice Date\n2026-08-10\nSupplier\nNorthStar Cables\nCustomer\nRapid Automation\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI17,150.00\nGST\nI3,087.00\nGrand Total\nI20,237.00\nPO Reference\nPO-014\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nControl Cable 10m\n20\nI620.00\n18%\nI12,400.00\nTerminal Block\n50\nI95.00\n18%\nI4,750.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    },
+    "TXN-015_purchase_order.pdf": {
+      "id": "doc_TXN-015_purchase_order.pdf",
+      "filename": "TXN-015_purchase_order.pdf",
+      "manifest_txn_id": "TXN-015",
+      "manifest_doc_type": "PO",
+      "predicted_doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5687127709388733,
+      "parsed_data": {
+        "document_number": "PO-015",
+        "document_date": "2026-08-11",
+        "due_date": null,
+        "supplier_name": "Omni Hardware Traders",
+        "supplier_gstin": null,
+        "customer_name": "Silverline Interiors",
+        "delivery_address": null,
+        "items": [],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "0.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-11"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03829572722315788,
+          "DEBIT_NOTE": 0.020167453214526176,
+          "DELIVERY_NOTE": 0.07097390294075012,
+          "INVOICE": 0.16158662736415863,
+          "PAYMENT_RECEIPT": 0.0433073453605175,
+          "PURCHASE_ORDER": 0.5687127709388733,
+          "QUOTATION": 0.05025981366634369,
+          "UNKNOWN": 0.046696387231349945
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nDocument Type\nPurchase Order\nPO Number\nPO-015\nPO Date\n2026-08-11\nSupplier\nOmni Hardware Traders\nCustomer\nSilverline Interiors\nCurrency\nINR\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nDoor Handle Set\n25\nI780.00\n18%\nI19,500.00\nCabinet Lock\n20\nI450.00\n18%\nI9,000.00\n",
+      "page_count": 1
+    },
+    "TXN-015_invoice.pdf": {
+      "id": "doc_TXN-015_invoice.pdf",
+      "filename": "TXN-015_invoice.pdf",
+      "manifest_txn_id": "TXN-015",
+      "manifest_doc_type": "INV",
+      "predicted_doc_type": "INVOICE",
+      "classification_confidence": 0.44726085662841797,
+      "parsed_data": {
+        "document_number": "INV-015",
+        "po_reference": "PO-015",
+        "document_date": "2026-08-13",
+        "due_date": null,
+        "supplier_name": "Omni Hardware Traders",
+        "supplier_gstin": "27ABCDE1234F1Z5",
+        "customer_name": "Silverline Interiors",
+        "customer_gstin": null,
+        "items": [],
+        "subtotal": "28500.00",
+        "tax_total": "0.00",
+        "grand_total": "33630.00",
+        "extra_metadata": {
+          "raw_date": "2026-08-13"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04732948914170265,
+          "DEBIT_NOTE": 0.026799632236361504,
+          "DELIVERY_NOTE": 0.06851659715175629,
+          "INVOICE": 0.44726085662841797,
+          "PAYMENT_RECEIPT": 0.05613270029425621,
+          "PURCHASE_ORDER": 0.2392791211605072,
+          "QUOTATION": 0.062321778386831284,
+          "UNKNOWN": 0.05235978960990906
+        }
+      },
+      "raw_text": "TAX INVOICE\nDocument Type\nInvoice\nInvoice Number\nINV-015\nInvoice Date\n2026-08-13\nSupplier\nOmni Hardware Traders\nCustomer\nSilverline Interiors\nGSTIN\n27ABCDE1234F1Z5\nSubtotal\nI28,500.00\nGST\nI5,130.00\nGrand Total\nI33,630.00\nPO Reference\nPO-015\nLine Items\nDescription\nQty\nUnit Price\nTax %\nLine Total\nDoor Handle Set\n25\nI780.00\n18%\nI19,500.00\nCabinet Lock\n20\nI450.00\n18%\nI9,000.00\nNotes\nPayment due within 30 days.\n",
+      "page_count": 1
+    }
+  },
+  "transaction_predictions": {
+    "TXN-001": {
+      "transaction_id": "TXN-001",
+      "total_documents": 4,
+      "documents": [
+        "TXN-001_purchase_order.pdf",
+        "TXN-001_invoice.pdf",
+        "TXN-001_delivery_note.pdf",
+        "TXN-001_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-001_invoice.pdf",
+              "document_name": "TXN-001_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-001",
+              "snippet": "Invoice No: INV-001",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-001 completed across 4 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-002": {
+      "transaction_id": "TXN-002",
+      "total_documents": 4,
+      "documents": [
+        "TXN-002_purchase_order.pdf",
+        "TXN-002_invoice.pdf",
+        "TXN-002_delivery_note.pdf",
+        "TXN-002_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 9912.0,
+      "discrepancies": [
+        {
+          "rule_code": "PAYMENT_MISMATCH",
+          "discrepancy_type": "PAYMENT_SHORTFALL",
+          "title": "Payment Shortfall: INR 9912.00 remaining unpaid",
+          "description": "Payment shortfall detected. Expected payment is INR 70682.00 (Invoice: INR 70682.00), but payment record indicates INR 60770.00 paid (Shortfall: INR 9912.00).",
+          "severity": "HIGH",
+          "confidence": 0.84,
+          "difference_amount": 9912.0,
+          "expected_value": "\u20b970682.00",
+          "actual_value": "\u20b960770.00",
+          "difference_value": "-\u20b99912.00 unpaid balance",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-002_invoice.pdf",
+              "document_name": "TXN-002_invoice.pdf",
+              "page_number": 1,
+              "field_name": "grand_total",
+              "exact_value": "INR 70682.00",
+              "snippet": "Invoice Grand Total: INR 70682.00",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-002_payment_receipt.pdf",
+              "document_name": "TXN-002_payment_receipt.pdf",
+              "page_number": 1,
+              "field_name": "payment_amount",
+              "exact_value": "INR 60770.00",
+              "snippet": "Paid Amount / Remitted: INR 60770.00",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {
+            "expected_payment": "70682.00",
+            "paid_amount": "60770.00",
+            "shortfall": "9912.00"
+          },
+          "llm_explanation": "[Audit Finding - HIGH]: Settlement reconciliation discrepancy verified against TXN-002_invoice.pdf (grand_total: 'INR 70682.00'); TXN-002_payment_receipt.pdf (payment_amount: 'INR 60770.00'). Payment shortfall detected. Expected payment is INR 70682.00 (Invoice: INR 70682.00), but payment record indicates INR 60770.00 paid (Shortfall: INR 9912.00). Variance amount: INR 9,912.00."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-002_invoice.pdf",
+              "document_name": "TXN-002_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-002",
+              "snippet": "Invoice No: INV-002",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-002 completed across 4 documents. Detected 2 discrepancies (0 CRITICAL, 2 HIGH) with a cumulative net financial variance of INR 9,912.00. Primary discrepancies involve Payment Shortfall: INR 9912.00 remaining unpaid. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-003": {
+      "transaction_id": "TXN-003",
+      "total_documents": 4,
+      "documents": [
+        "TXN-003_purchase_order.pdf",
+        "TXN-003_invoice.pdf",
+        "TXN-003_delivery_note.pdf",
+        "TXN-003_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 29500.0,
+      "discrepancies": [
+        {
+          "rule_code": "PAYMENT_MISMATCH",
+          "discrepancy_type": "PAYMENT_SHORTFALL",
+          "title": "Payment Shortfall: INR 29500.00 remaining unpaid",
+          "description": "Payment shortfall detected. Expected payment is INR 45430.00 (Invoice: INR 45430.00), but payment record indicates INR 15930.00 paid (Shortfall: INR 29500.00).",
+          "severity": "HIGH",
+          "confidence": 0.84,
+          "difference_amount": 29500.0,
+          "expected_value": "\u20b945430.00",
+          "actual_value": "\u20b915930.00",
+          "difference_value": "-\u20b929500.00 unpaid balance",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-003_invoice.pdf",
+              "document_name": "TXN-003_invoice.pdf",
+              "page_number": 1,
+              "field_name": "grand_total",
+              "exact_value": "INR 45430.00",
+              "snippet": "Invoice Grand Total: INR 45430.00",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-003_payment_receipt.pdf",
+              "document_name": "TXN-003_payment_receipt.pdf",
+              "page_number": 1,
+              "field_name": "payment_amount",
+              "exact_value": "INR 15930.00",
+              "snippet": "Paid Amount / Remitted: INR 15930.00",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {
+            "expected_payment": "45430.00",
+            "paid_amount": "15930.00",
+            "shortfall": "29500.00"
+          },
+          "llm_explanation": "[Audit Finding - HIGH]: Settlement reconciliation discrepancy verified against TXN-003_invoice.pdf (grand_total: 'INR 45430.00'); TXN-003_payment_receipt.pdf (payment_amount: 'INR 15930.00'). Payment shortfall detected. Expected payment is INR 45430.00 (Invoice: INR 45430.00), but payment record indicates INR 15930.00 paid (Shortfall: INR 29500.00). Variance amount: INR 29,500.00."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-003_invoice.pdf",
+              "document_name": "TXN-003_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-003",
+              "snippet": "Invoice No: INV-003",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-003 completed across 4 documents. Detected 2 discrepancies (0 CRITICAL, 2 HIGH) with a cumulative net financial variance of INR 29,500.00. Primary discrepancies involve Payment Shortfall: INR 29500.00 remaining unpaid. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-004": {
+      "transaction_id": "TXN-004",
+      "total_documents": 4,
+      "documents": [
+        "TXN-004_purchase_order.pdf",
+        "TXN-004_invoice.pdf",
+        "TXN-004_delivery_note.pdf",
+        "TXN-004_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 1281.6,
+      "discrepancies": [
+        {
+          "rule_code": "PAYMENT_MISMATCH",
+          "discrepancy_type": "OVERPAYMENT",
+          "title": "Overpayment: INR 1281.60 excess remitted",
+          "description": "Overpayment detected. Total invoice liability is INR 23923.20, but INR 25204.80 was remitted (Excess paid: INR 1281.60).",
+          "severity": "HIGH",
+          "confidence": 0.84,
+          "difference_amount": 1281.6,
+          "expected_value": "\u20b923923.20",
+          "actual_value": "\u20b925204.80",
+          "difference_value": "+\u20b91281.60 excess remitted",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-004_invoice.pdf",
+              "document_name": "TXN-004_invoice.pdf",
+              "page_number": 1,
+              "field_name": "grand_total",
+              "exact_value": "INR 23923.20",
+              "snippet": "Invoice Grand Total: INR 23923.20",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-004_payment_receipt.pdf",
+              "document_name": "TXN-004_payment_receipt.pdf",
+              "page_number": 1,
+              "field_name": "payment_amount",
+              "exact_value": "INR 25204.80",
+              "snippet": "Paid Amount / Remitted: INR 25204.80",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {
+            "expected_payment": "23923.20",
+            "paid_amount": "25204.80",
+            "excess": "1281.60"
+          },
+          "llm_explanation": "[Audit Finding - HIGH]: Settlement reconciliation discrepancy verified against TXN-004_invoice.pdf (grand_total: 'INR 23923.20'); TXN-004_payment_receipt.pdf (payment_amount: 'INR 25204.80'). Overpayment detected. Total invoice liability is INR 23923.20, but INR 25204.80 was remitted (Excess paid: INR 1281.60). Variance amount: INR 1,281.60."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-004_invoice.pdf",
+              "document_name": "TXN-004_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-004",
+              "snippet": "Invoice No: INV-004",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-004 completed across 4 documents. Detected 2 discrepancies (0 CRITICAL, 2 HIGH) with a cumulative net financial variance of INR 1,281.60. Primary discrepancies involve Overpayment: INR 1281.60 excess remitted. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-005": {
+      "transaction_id": "TXN-005",
+      "total_documents": 4,
+      "documents": [
+        "TXN-005_purchase_order.pdf",
+        "TXN-005_invoice.pdf",
+        "TXN-005_delivery_note.pdf",
+        "TXN-005_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 1000.0,
+      "discrepancies": [
+        {
+          "rule_code": "PAYMENT_MISMATCH",
+          "discrepancy_type": "PAYMENT_SHORTFALL",
+          "title": "Payment Shortfall: INR 1000.00 remaining unpaid",
+          "description": "Payment shortfall detected. Expected payment is INR 47905.00 (Invoice: INR 47905.00), but payment record indicates INR 46905.00 paid (Shortfall: INR 1000.00).",
+          "severity": "MEDIUM",
+          "confidence": 0.84,
+          "difference_amount": 1000.0,
+          "expected_value": "\u20b947905.00",
+          "actual_value": "\u20b946905.00",
+          "difference_value": "-\u20b91000.00 unpaid balance",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-005_invoice.pdf",
+              "document_name": "TXN-005_invoice.pdf",
+              "page_number": 1,
+              "field_name": "grand_total",
+              "exact_value": "INR 47905.00",
+              "snippet": "Invoice Grand Total: INR 47905.00",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-005_payment_receipt.pdf",
+              "document_name": "TXN-005_payment_receipt.pdf",
+              "page_number": 1,
+              "field_name": "payment_amount",
+              "exact_value": "INR 46905.00",
+              "snippet": "Paid Amount / Remitted: INR 46905.00",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {
+            "expected_payment": "47905.00",
+            "paid_amount": "46905.00",
+            "shortfall": "1000.00"
+          },
+          "llm_explanation": "[Audit Finding - MEDIUM]: Settlement reconciliation discrepancy verified against TXN-005_invoice.pdf (grand_total: 'INR 47905.00'); TXN-005_payment_receipt.pdf (payment_amount: 'INR 46905.00'). Payment shortfall detected. Expected payment is INR 47905.00 (Invoice: INR 47905.00), but payment record indicates INR 46905.00 paid (Shortfall: INR 1000.00). Variance amount: INR 1,000.00."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-005_invoice.pdf",
+              "document_name": "TXN-005_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-005",
+              "snippet": "Invoice No: INV-005",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-005 completed across 4 documents. Detected 2 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 1,000.00. Primary discrepancies involve Payment Shortfall: INR 1000.00 remaining unpaid. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-006": {
+      "transaction_id": "TXN-006",
+      "total_documents": 4,
+      "documents": [
+        "TXN-006_purchase_order.pdf",
+        "TXN-006_invoice.pdf",
+        "TXN-006_delivery_note.pdf",
+        "TXN-006_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 500.0,
+      "discrepancies": [
+        {
+          "rule_code": "PAYMENT_MISMATCH",
+          "discrepancy_type": "PAYMENT_SHORTFALL",
+          "title": "Payment Shortfall: INR 500.00 remaining unpaid",
+          "description": "Payment shortfall detected. Expected payment is INR 15458.00 (Invoice: INR 15458.00), but payment record indicates INR 14958.00 paid (Shortfall: INR 500.00).",
+          "severity": "MEDIUM",
+          "confidence": 0.84,
+          "difference_amount": 500.0,
+          "expected_value": "\u20b915458.00",
+          "actual_value": "\u20b914958.00",
+          "difference_value": "-\u20b9500.00 unpaid balance",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-006_invoice.pdf",
+              "document_name": "TXN-006_invoice.pdf",
+              "page_number": 1,
+              "field_name": "grand_total",
+              "exact_value": "INR 15458.00",
+              "snippet": "Invoice Grand Total: INR 15458.00",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-006_payment_receipt.pdf",
+              "document_name": "TXN-006_payment_receipt.pdf",
+              "page_number": 1,
+              "field_name": "payment_amount",
+              "exact_value": "INR 14958.00",
+              "snippet": "Paid Amount / Remitted: INR 14958.00",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {
+            "expected_payment": "15458.00",
+            "paid_amount": "14958.00",
+            "shortfall": "500.00"
+          },
+          "llm_explanation": "[Audit Finding - MEDIUM]: Settlement reconciliation discrepancy verified against TXN-006_invoice.pdf (grand_total: 'INR 15458.00'); TXN-006_payment_receipt.pdf (payment_amount: 'INR 14958.00'). Payment shortfall detected. Expected payment is INR 15458.00 (Invoice: INR 15458.00), but payment record indicates INR 14958.00 paid (Shortfall: INR 500.00). Variance amount: INR 500.00."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-006_invoice.pdf",
+              "document_name": "TXN-006_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-006",
+              "snippet": "Invoice No: INV-006",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-006 completed across 4 documents. Detected 2 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 500.00. Primary discrepancies involve Payment Shortfall: INR 500.00 remaining unpaid. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-007": {
+      "transaction_id": "TXN-007",
+      "total_documents": 4,
+      "documents": [
+        "TXN-007_purchase_order.pdf",
+        "TXN-007_invoice.pdf",
+        "TXN-007_delivery_note.pdf",
+        "TXN-007_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-007_invoice.pdf",
+              "document_name": "TXN-007_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-007",
+              "snippet": "Invoice No: INV-007",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-007 completed across 4 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-008": {
+      "transaction_id": "TXN-008",
+      "total_documents": 4,
+      "documents": [
+        "TXN-008_purchase_order.pdf",
+        "TXN-008_invoice.pdf",
+        "TXN-008_delivery_note.pdf",
+        "TXN-008_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-008_invoice.pdf",
+              "document_name": "TXN-008_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-008",
+              "snippet": "Invoice No: INV-008",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        },
+        {
+          "rule_code": "SUPPLIER_MISMATCH",
+          "discrepancy_type": "UNMATCHED_SUPPLIER",
+          "title": "Supplier Name Mismatch: 'Horizon Safety Products' vs 'Horizon Office Traders Pvt Ltd'",
+          "description": "Supplier identified in Purchase Order ('Horizon Safety Products') does not match the issuing seller on the Tax Invoice ('Horizon Office Traders Pvt Ltd') (Semantic similarity: 0.47).",
+          "severity": "CRITICAL",
+          "confidence": 0.84,
+          "difference_amount": 0.0,
+          "expected_value": "Horizon Safety Products",
+          "actual_value": "Horizon Office Traders Pvt Ltd",
+          "difference_value": "Entity Identity Mismatch (Sim: 0.47)",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-008_delivery_note.pdf",
+              "document_name": "TXN-008_delivery_note.pdf",
+              "page_number": 1,
+              "field_name": "supplier_name",
+              "exact_value": "Horizon Safety Products",
+              "snippet": "PO Vendor: Horizon Safety Products",
+              "relevance_score": 1.0
+            },
+            {
+              "document_id": "doc_TXN-008_invoice.pdf",
+              "document_name": "TXN-008_invoice.pdf",
+              "page_number": 1,
+              "field_name": "supplier_name",
+              "exact_value": "Horizon Office Traders Pvt Ltd",
+              "snippet": "Invoice Seller: Horizon Office Traders Pvt Ltd",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Audit Note - CRITICAL]: Supplier identified in Purchase Order ('Horizon Safety Products') does not match the issuing seller on the Tax Invoice ('Horizon Office Traders Pvt Ltd') (Semantic similarity: 0.47). (Grounding: TXN-008_delivery_note.pdf (supplier_name: 'Horizon Safety Products'); TXN-008_invoice.pdf (supplier_name: 'Horizon Office Traders Pvt Ltd'))."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-008 completed across 4 documents. Detected 2 discrepancies (1 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-009": {
+      "transaction_id": "TXN-009",
+      "total_documents": 4,
+      "documents": [
+        "TXN-009_purchase_order.pdf",
+        "TXN-009_invoice.pdf",
+        "TXN-009_delivery_note.pdf",
+        "TXN-009_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-009_invoice.pdf",
+              "document_name": "TXN-009_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-009",
+              "snippet": "Invoice No: INV-009",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-009 completed across 4 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-010": {
+      "transaction_id": "TXN-010",
+      "total_documents": 4,
+      "documents": [
+        "TXN-010_purchase_order.pdf",
+        "TXN-010_invoice.pdf",
+        "TXN-010_delivery_note.pdf",
+        "TXN-010_payment_receipt.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-010_invoice.pdf",
+              "document_name": "TXN-010_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-009",
+              "snippet": "Invoice No: INV-009",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-010 completed across 4 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-011": {
+      "transaction_id": "TXN-011",
+      "total_documents": 2,
+      "documents": [
+        "TXN-011_purchase_order.pdf",
+        "TXN-011_invoice.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.87,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-011_invoice.pdf",
+              "document_name": "TXN-011_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-011",
+              "snippet": "Invoice No: INV-011",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-011 completed across 2 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-012": {
+      "transaction_id": "TXN-012",
+      "total_documents": 3,
+      "documents": [
+        "TXN-012_purchase_order.pdf",
+        "TXN-012_invoice.pdf",
+        "TXN-012_delivery_note.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-012_invoice.pdf",
+              "document_name": "TXN-012_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-012",
+              "snippet": "Invoice No: INV-012",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-012 completed across 3 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-013": {
+      "transaction_id": "TXN-013",
+      "total_documents": 2,
+      "documents": [
+        "TXN-013_purchase_order.pdf",
+        "TXN-013_delivery_note.pdf"
+      ],
+      "reconciliation_status": "INCOMPLETE",
+      "financial_variance_amount": 0,
+      "discrepancies": [],
+      "ai_grounded_explanation": "Transaction TXN-013 is FULLY RECONCILED. All 2 documents (Purchase Order, Delivery Challan, Tax Invoice, Payment) match with 100% mathematical and semantic consistency. Net financial variance: INR 0.00."
+    },
+    "TXN-014": {
+      "transaction_id": "TXN-014",
+      "total_documents": 1,
+      "documents": [
+        "TXN-014_invoice.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-014_invoice.pdf",
+              "document_name": "TXN-014_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-014",
+              "snippet": "Invoice No: INV-014",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        },
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_PURCHASE_ORDER",
+          "title": "Missing Purchase Order: Invoice issued without authorized PO",
+          "description": "An Invoice was submitted but no matching Purchase Order contract exists to verify agreed rates and authorization.",
+          "severity": "MEDIUM",
+          "confidence": 0.74,
+          "difference_amount": 0.0,
+          "expected_value": "Authorized Purchase Order Contract Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unauthorized Invoice Submission",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-014_invoice.pdf",
+              "document_name": "TXN-014_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-014",
+              "snippet": "Invoice No: INV-014",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - MEDIUM]: Transaction lacks mandatory supporting documentation. An Invoice was submitted but no matching Purchase Order contract exists to verify agreed rates and authorization. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-014 completed across 1 documents. Detected 2 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    },
+    "TXN-015": {
+      "transaction_id": "TXN-015",
+      "total_documents": 2,
+      "documents": [
+        "TXN-015_purchase_order.pdf",
+        "TXN-015_invoice.pdf"
+      ],
+      "reconciliation_status": "DISCREPANCY_FOUND",
+      "financial_variance_amount": 0.0,
+      "discrepancies": [
+        {
+          "rule_code": "MISSING_DOCUMENT",
+          "discrepancy_type": "MISSING_DELIVERY_NOTE",
+          "title": "Missing Delivery Note: Invoiced without proof of delivery",
+          "description": "Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods.",
+          "severity": "HIGH",
+          "confidence": 0.87,
+          "difference_amount": 0.0,
+          "expected_value": "Delivery Note / Goods Receipt Proof Present",
+          "actual_value": "Missing / Not Uploaded",
+          "difference_value": "Unverified Goods Receipt",
+          "evidences": [
+            {
+              "document_id": "doc_TXN-015_invoice.pdf",
+              "document_name": "TXN-015_invoice.pdf",
+              "page_number": 1,
+              "field_name": "document_number",
+              "exact_value": "INV-015",
+              "snippet": "Invoice No: INV-015",
+              "relevance_score": 1.0
+            }
+          ],
+          "metadata": {},
+          "llm_explanation": "[Compliance Risk - HIGH]: Transaction lacks mandatory supporting documentation. Tax Invoice is present but no Delivery Note / Challan was uploaded to verify physical receipt of goods. Recommended action: Request missing challan / invoice before approving payment."
+        }
+      ],
+      "ai_grounded_explanation": "Reconciliation audit for Transaction TXN-015 completed across 2 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Missing Delivery Note: Invoiced without proof of delivery. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor."
+    }
+  },
+  "detected_links": [
+    {
+      "source": "TXN-001_purchase_order.pdf",
+      "target": "TXN-001_invoice.pdf",
+      "ref": "PO-001"
+    },
+    {
+      "source": "TXN-001_purchase_order.pdf",
+      "target": "TXN-001_payment_receipt.pdf",
+      "ref": "PO-001"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-009_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-002_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-010_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-003_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-012_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-004_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-013_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-005_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-006_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-007_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-001_delivery_note.pdf",
+      "target": "TXN-008_delivery_note.pdf",
+      "ref": "ERENCE"
+    },
+    {
+      "source": "TXN-002_purchase_order.pdf",
+      "target": "TXN-002_invoice.pdf",
+      "ref": "PO-002"
+    },
+    {
+      "source": "TXN-002_purchase_order.pdf",
+      "target": "TXN-002_payment_receipt.pdf",
+      "ref": "PO-002"
+    },
+    {
+      "source": "TXN-003_purchase_order.pdf",
+      "target": "TXN-003_invoice.pdf",
+      "ref": "PO-003"
+    },
+    {
+      "source": "TXN-003_purchase_order.pdf",
+      "target": "TXN-003_payment_receipt.pdf",
+      "ref": "PO-003"
+    },
+    {
+      "source": "TXN-004_purchase_order.pdf",
+      "target": "TXN-004_invoice.pdf",
+      "ref": "PO-004"
+    },
+    {
+      "source": "TXN-004_purchase_order.pdf",
+      "target": "TXN-004_payment_receipt.pdf",
+      "ref": "PO-004"
+    },
+    {
+      "source": "TXN-005_purchase_order.pdf",
+      "target": "TXN-005_invoice.pdf",
+      "ref": "PO-005"
+    },
+    {
+      "source": "TXN-005_purchase_order.pdf",
+      "target": "TXN-005_payment_receipt.pdf",
+      "ref": "PO-005"
+    },
+    {
+      "source": "TXN-006_purchase_order.pdf",
+      "target": "TXN-006_invoice.pdf",
+      "ref": "PO-006"
+    },
+    {
+      "source": "TXN-006_purchase_order.pdf",
+      "target": "TXN-006_payment_receipt.pdf",
+      "ref": "PO-006"
+    },
+    {
+      "source": "TXN-007_purchase_order.pdf",
+      "target": "TXN-007_invoice.pdf",
+      "ref": "PO-007"
+    },
+    {
+      "source": "TXN-007_purchase_order.pdf",
+      "target": "TXN-007_payment_receipt.pdf",
+      "ref": "PO-007"
+    },
+    {
+      "source": "TXN-008_purchase_order.pdf",
+      "target": "TXN-008_invoice.pdf",
+      "ref": "PO-008"
+    },
+    {
+      "source": "TXN-008_purchase_order.pdf",
+      "target": "TXN-008_payment_receipt.pdf",
+      "ref": "PO-008"
+    },
+    {
+      "source": "TXN-009_purchase_order.pdf",
+      "target": "TXN-009_invoice.pdf",
+      "ref": "PO-009"
+    },
+    {
+      "source": "TXN-009_purchase_order.pdf",
+      "target": "TXN-009_payment_receipt.pdf",
+      "ref": "PO-009"
+    },
+    {
+      "source": "TXN-009_purchase_order.pdf",
+      "target": "TXN-010_invoice.pdf",
+      "ref": "PO-009"
+    },
+    {
+      "source": "TXN-009_purchase_order.pdf",
+      "target": "TXN-010_payment_receipt.pdf",
+      "ref": "PO-009"
+    },
+    {
+      "source": "TXN-009_purchase_order.pdf",
+      "target": "TXN-010_purchase_order.pdf",
+      "ref": "PO-009"
+    },
+    {
+      "source": "TXN-011_purchase_order.pdf",
+      "target": "TXN-011_invoice.pdf",
+      "ref": "PO-011"
+    },
+    {
+      "source": "TXN-012_purchase_order.pdf",
+      "target": "TXN-012_invoice.pdf",
+      "ref": "PO-012"
+    },
+    {
+      "source": "TXN-015_purchase_order.pdf",
+      "target": "TXN-015_invoice.pdf",
+      "ref": "PO-015"
+    }
+  ]
+}

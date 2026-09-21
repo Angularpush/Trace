@@ -1,0 +1,216 @@
+{
+  "transaction_id": "TXN_010_supplier_mismatch",
+  "documents": [
+    {
+      "id": "TXN_010_supplier_mismatch_PO-2024-110.pdf",
+      "filename": "PO-2024-110.pdf",
+      "doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5098970532417297,
+      "parsed_data": {
+        "document_number": "PO-2024-110",
+        "document_date": "2024-08-01",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": "27AABCU9812A1Z5",
+        "customer_name": null,
+        "delivery_address": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "50000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-01"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03946280479431152,
+          "DEBIT_NOTE": 0.026874471455812454,
+          "DELIVERY_NOTE": 0.08248043805360794,
+          "INVOICE": 0.19150011241436005,
+          "PAYMENT_RECEIPT": 0.05250707268714905,
+          "PURCHASE_ORDER": 0.5098970532417297,
+          "QUOTATION": 0.05170278251171112,
+          "UNKNOWN": 0.04557523503899574
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nPO Number: PO-2024-110\nDate: 2024-08-01\nSupplier: Apex Industrial Tools Pvt Ltd\nGSTIN: 27AABCU9812A1Z5\nSI\nItem Description\nQty\nUnit Price\nTotal Amount\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTotal Order Value: INR 50000.00\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_010_supplier_mismatch_DC-2024-110.pdf",
+      "filename": "DC-2024-110.pdf",
+      "doc_type": "DELIVERY_NOTE",
+      "classification_confidence": 0.4120819866657257,
+      "parsed_data": {
+        "document_number": "DC-2024-110",
+        "po_reference": "PO-2024-110",
+        "document_date": "2024-08-08",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "customer_name": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | Qty Delivered: 100.00 PCS",
+            "page_number": 1
+          }
+        ],
+        "extra_metadata": {
+          "raw_date": "2024-08-08"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.050024788826704025,
+          "DEBIT_NOTE": 0.03340011090040207,
+          "DELIVERY_NOTE": 0.4120819866657257,
+          "INVOICE": 0.1597236543893814,
+          "PAYMENT_RECEIPT": 0.06450660526752472,
+          "PURCHASE_ORDER": 0.14835816621780396,
+          "QUOTATION": 0.06925921142101288,
+          "UNKNOWN": 0.0626455694437027
+        }
+      },
+      "raw_text": "DELIVERY CHALLAN\nDelivery Challan No: DC-2024-110\nDate: 2024-08-08\nAgainst PO Ref: PO-2024-110\nConsignor: Apex Industrial Tools Pvt Ltd\nSI\nItem Description\nQuantity Delivered\nUnit\n1\nStainless Steel Bolt M10\n100\nPCS\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_010_supplier_mismatch_INV-2024-110.pdf",
+      "filename": "INV-2024-110.pdf",
+      "doc_type": "INVOICE",
+      "classification_confidence": 0.6234370470046997,
+      "parsed_data": {
+        "document_number": "INV-2024-110",
+        "po_reference": "PO-2024-110",
+        "document_date": "2024-08-10",
+        "due_date": null,
+        "supplier_name": "Zenith Global Supplies Ltd",
+        "supplier_gstin": "29AAACZ9999K1Z2",
+        "customer_name": null,
+        "customer_gstin": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "50000.00",
+        "tax_total": "9000.00",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-10"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04206022992730141,
+          "DEBIT_NOTE": 0.02094099670648575,
+          "DELIVERY_NOTE": 0.05593419820070267,
+          "INVOICE": 0.6234370470046997,
+          "PAYMENT_RECEIPT": 0.05990784242749214,
+          "PURCHASE_ORDER": 0.12820914387702942,
+          "QUOTATION": 0.036571137607097626,
+          "UNKNOWN": 0.03293943405151367
+        }
+      },
+      "raw_text": "TAX INVOICE\nTax Invoice No: INV-2024-110\nDate: 2024-08-10\nPO Reference: PO-2024-110\nSupplier: Zenith Global Supplies Ltd\nGSTIN: 29AAACZ9999K1Z2\nSI\nDescription\nQty\nUnit Rate\nTaxable Value\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTaxable Subtotal: INR 50000.00\nTotal Tax (18% GST): INR 9000.00\nTotal Invoice Amount: INR 59000.00\n",
+      "page_number": 1
+    }
+  ],
+  "reconciliation": {
+    "transaction_ref": "TXN_010_supplier_mismatch",
+    "reconciliation_status": "DISCREPANCY_FOUND",
+    "mode_used": "HYBRID",
+    "supplier_name": "Apex Industrial Tools Pvt Ltd",
+    "customer_name": "",
+    "total_documents": 3,
+    "documents_summary": [
+      {
+        "filename": "PO-2024-110.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "status": "Processed"
+      },
+      {
+        "filename": "DC-2024-110.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "status": "Processed"
+      },
+      {
+        "filename": "INV-2024-110.pdf",
+        "doc_type": "INVOICE",
+        "status": "Processed"
+      }
+    ],
+    "total_discrepancies": 1,
+    "discrepancies_by_severity": {
+      "CRITICAL": 1,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "financial_variance_amount": 0.0,
+    "discrepancies": [
+      {
+        "rule_code": "SUPPLIER_MISMATCH",
+        "discrepancy_type": "UNMATCHED_SUPPLIER",
+        "title": "Supplier Name Mismatch: 'Apex Industrial Tools Pvt Ltd' vs 'Zenith Global Supplies Ltd'",
+        "description": "Supplier identified in Purchase Order ('Apex Industrial Tools Pvt Ltd') does not match the issuing seller on the Tax Invoice ('Zenith Global Supplies Ltd') (Semantic similarity: 0.02).",
+        "severity": "CRITICAL",
+        "confidence": 0.97,
+        "difference_amount": 0.0,
+        "expected_value": "Apex Industrial Tools Pvt Ltd",
+        "actual_value": "Zenith Global Supplies Ltd",
+        "difference_value": "Entity Identity Mismatch (Sim: 0.02)",
+        "evidences": [
+          {
+            "document_id": "TXN_010_supplier_mismatch_PO-2024-110.pdf",
+            "document_name": "PO-2024-110.pdf",
+            "page_number": 1,
+            "field_name": "supplier_name",
+            "exact_value": "Apex Industrial Tools Pvt Ltd",
+            "snippet": "PO Vendor: Apex Industrial Tools Pvt Ltd",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_010_supplier_mismatch_INV-2024-110.pdf",
+            "document_name": "INV-2024-110.pdf",
+            "page_number": 1,
+            "field_name": "supplier_name",
+            "exact_value": "Zenith Global Supplies Ltd",
+            "snippet": "Invoice Seller: Zenith Global Supplies Ltd",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {},
+        "llm_explanation": "[Audit Note - CRITICAL]: Supplier identified in Purchase Order ('Apex Industrial Tools Pvt Ltd') does not match the issuing seller on the Tax Invoice ('Zenith Global Supplies Ltd') (Semantic similarity: 0.02). (Grounding: PO-2024-110.pdf (supplier_name: 'Apex Industrial Tools Pvt Ltd'); INV-2024-110.pdf (supplier_name: 'Zenith Global Supplies Ltd'))."
+      }
+    ],
+    "ai_grounded_explanation": "Reconciliation audit for Transaction TXN_010_supplier_mismatch completed across 3 documents. Detected 1 discrepancies (1 CRITICAL, 0 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Supplier Name Mismatch: 'Apex Industrial Tools Pvt Ltd' vs 'Zenith Global Supplies Ltd'. Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor.",
+    "reconciled_at": "2026-09-21T06:26:37.921633"
+  }
+}

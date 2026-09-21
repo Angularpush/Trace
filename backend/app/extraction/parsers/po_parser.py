@@ -40,17 +40,14 @@ class PurchaseOrderParser:
             data["document_number"] = po_match.group(1).strip()
             
         # 2. Date
-        date_match = re.search(r"(?:(?:Order\s*)?Date[:\s]+)(\d{1,2}[-\/.]\d{1,2}[-\/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
-        date_match = re.search(r"(?:(?:Order\s*)?Date[:\s]+)(\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
+        date_match = re.search(r"(?:(?:Order\s*)?Date[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
         if date_match:
-            data["document_date"] = normalize_date(date_match.group(1))
             raw_d = date_match.group(1).strip()
             data["document_date"] = normalize_date(raw_d)
             data["extra_metadata"]["raw_date"] = raw_d
 
         # 3. Delivery / Due Date
-        due_match = re.search(r"(?:(?:Required\s*Delivery\s*Date|Due\s*Date|Delivery\s*By)[:\s]+)(\d{1,2}[-\/.]\d{1,2}[-\/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
-        due_match = re.search(r"(?:(?:Required\s*Delivery\s*Date|Due\s*Date|Delivery\s*By)[:\s]+)(\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
+        due_match = re.search(r"(?:(?:Required\s*Delivery\s*Date|Due\s*Date|Delivery\s*By)[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
         if due_match:
             data["due_date"] = normalize_date(due_match.group(1))
 
@@ -193,24 +190,20 @@ class PurchaseOrderParser:
                             })
 
         # 8. Totals
-        subtotal_match = re.search(r"(?:Subtotal|Taxable\s*Value|Total\s*Taxable)[:\s]*(?:INR|Rs\.|Rs|₹)?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
-        grand_match = re.search(r"(?:Grand\s*Total|Gross\s*Total|Total\s*Invoice\s*Amount|Total\s*Order\s*Value)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
-        if grand_match:
-            data["grand_total"] = str(normalize_decimal(grand_match.group(1)))
-
-        subtotal_match = re.search(r"(?:Subtotal|Taxable\s*Value|Total\s*Taxable)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        subtotal_match = re.search(r"(?:Subtotal|Taxable\s*Subtotal|Total\s*Taxable|Taxable\s*Amount)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹)?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
         if subtotal_match:
             data["subtotal"] = str(normalize_decimal(subtotal_match.group(1)))
 
-        grand_match = re.search(r"(?:Grand\s*Total|Total\s*Order\s*Value|Gross\s*Total|Total)[:\s]*(?:INR|Rs\.|Rs|₹)?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        grand_match = re.search(r"(?:Total\s*Order\s*Value|Grand\s*Total|Gross\s*Total|Total\s*Invoice\s*Amount|Total\s*PO\s*Amount)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
         if grand_match:
             data["grand_total"] = str(normalize_decimal(grand_match.group(1)))
-        tax_m = re.search(r"(?:GST\s*\(\d+%\)|Total\s*Tax|Tax)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+
+        tax_m = re.search(r"(?:GST\s*\(\d+%\)|Total\s*Tax|Tax)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
         if tax_m:
             data["tax_total"] = str(normalize_decimal(tax_m.group(1)))
 
         if not grand_match:
-            total_fallback = re.search(r"(?:Total)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+            total_fallback = re.search(r"(?:Order\s*Total|Total\s*Amount)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
             if total_fallback:
                 data["grand_total"] = str(normalize_decimal(total_fallback.group(1)))
 

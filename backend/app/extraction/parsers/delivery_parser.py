@@ -54,10 +54,8 @@ class DeliveryNoteParser:
                 data["po_reference"] = full_po_m.group(1)
 
         # 3. Date of Dispatch
-        date_match = re.search(r"(?:(?:Date\s*of\s*Dispatch|Dispatch\s*Date|Date)[:\s]+)(\d{1,2}[-\/.]\d{1,2}[-\/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
-        date_match = re.search(r"(?:(?:Date\s*of\s*Dispatch|Dispatch\s*Date|Date)[:\s]+)(\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
+        date_match = re.search(r"(?:(?:Date\s*of\s*Dispatch|Dispatch\s*Date|Date)[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
         if date_match:
-            data["document_date"] = normalize_date(date_match.group(1))
             raw_d = date_match.group(1).strip()
             data["document_date"] = normalize_date(raw_d)
             data["extra_metadata"]["raw_date"] = raw_d

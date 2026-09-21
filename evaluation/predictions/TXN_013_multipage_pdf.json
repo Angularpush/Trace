@@ -1,0 +1,411 @@
+{
+  "transaction_id": "TXN_013_multipage_pdf",
+  "documents": [
+    {
+      "id": "TXN_013_multipage_pdf_p1",
+      "filename": "Transaction_Package_4Pages.pdf (Page 1)",
+      "doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.49952587485313416,
+      "parsed_data": {
+        "document_number": "PO-2026-1048",
+        "document_date": "2026-09-15",
+        "due_date": null,
+        "supplier_name": "ACME OFFICE SOLUTIONS PVT. LTD.",
+        "supplier_gstin": null,
+        "customer_name": null,
+        "delivery_address": null,
+        "items": [
+          {
+            "description": "Laptop Core i7 16GB 512GB SSD",
+            "normalized_description": "Laptop Core i7 16GB 512GB SSD",
+            "quantity": "25.00",
+            "unit": "PCS",
+            "unit_price": "52000.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "234000.00",
+            "total_amount": "1300000.00",
+            "evidence_snippet": "Laptop Core i7 16GB 512GB SSD | 25.00 PCS @ 52000.00",
+            "page_number": 1
+          },
+          {
+            "description": "Wireless Keyboard & Mouse Combo",
+            "normalized_description": "Wireless Keyboard & Mouse Combo",
+            "quantity": "25.00",
+            "unit": "PCS",
+            "unit_price": "1500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "6750.00",
+            "total_amount": "37500.00",
+            "evidence_snippet": "Wireless Keyboard & Mouse Combo | 25.00 PCS @ 1500.00",
+            "page_number": 1
+          },
+          {
+            "description": "USB-C Multiport Docking Station",
+            "normalized_description": "USB-C Multiport Docking Station",
+            "quantity": "10.00",
+            "unit": "PCS",
+            "unit_price": "6500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "11700.00",
+            "total_amount": "65000.00",
+            "evidence_snippet": "USB-C Multiport Docking Station | 10.00 PCS @ 6500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "1402500.00",
+        "tax_total": "252450.00",
+        "grand_total": "1654950.00",
+        "extra_metadata": {
+          "raw_date": "15-Sep-2026"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03395630419254303,
+          "DEBIT_NOTE": 0.02365203946828842,
+          "DELIVERY_NOTE": 0.06391240656375885,
+          "INVOICE": 0.22486542165279388,
+          "PAYMENT_RECEIPT": 0.054426029324531555,
+          "PURCHASE_ORDER": 0.49952587485313416,
+          "QUOTATION": 0.0474088154733181,
+          "UNKNOWN": 0.05225310102105141
+        }
+      },
+      "raw_text": "TRANSACTION PACKAGE\nPURCHASE ORDER\nPO Number: PO-2026-1048\nDate: 15-Sep-2026\nSupplier: ACME OFFICE SOLUTIONS PVT. LTD.\nBuyer: ABC TECHNOLOGIES INDIA PVT. LTD.\nSI\nItem Description\nQty\nUnit Price\nTotal\n1\nLaptop Core i7 16GB 512GB SSD\n25 PCS\n52000.00\n1300000.00\n2\nWireless Keyboard & Mouse Combo\n25 PCS\n1500.00\n37500.00\n3\nUSB-C Multiport Docking Station\n10 PCS\n6500.00\n65000.00\nSubtotal: 1402500.00\nGST (18%): 252450.00\nTotal Order Value: INR 1654950.00\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_013_multipage_pdf_p2",
+      "filename": "Transaction_Package_4Pages.pdf (Page 2)",
+      "doc_type": "INVOICE",
+      "classification_confidence": 0.6096236109733582,
+      "parsed_data": {
+        "document_number": "INV-2026-2231",
+        "po_reference": "PO-2026-1048",
+        "document_date": "2026-09-19",
+        "due_date": null,
+        "supplier_name": "ACME OFFICE SOLUTIONS PVT. LTD.",
+        "supplier_gstin": "09ABCDE1234F1Z5",
+        "customer_name": "ABC TECHNOLOGIES INDIA PVT. LTD.",
+        "customer_gstin": null,
+        "items": [
+          {
+            "description": "Laptop Core i7 16GB 512GB SSD",
+            "normalized_description": "Laptop Core i7 16GB 512GB SSD",
+            "quantity": "5.00",
+            "unit": "PCS",
+            "unit_price": "52000.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "46800.00",
+            "total_amount": "260000.00",
+            "evidence_snippet": "Laptop Core i7 16GB 512GB SSD | 5.00 PCS @ 52000.00",
+            "page_number": 2
+          },
+          {
+            "description": "Wireless Keyboard & Mouse Combo",
+            "normalized_description": "Wireless Keyboard & Mouse Combo",
+            "quantity": "5.00",
+            "unit": "PCS",
+            "unit_price": "1500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "1350.00",
+            "total_amount": "7500.00",
+            "evidence_snippet": "Wireless Keyboard & Mouse Combo | 5.00 PCS @ 1500.00",
+            "page_number": 2
+          },
+          {
+            "description": "USB-C Multiport Docking Station",
+            "normalized_description": "USB-C Multiport Docking Station",
+            "quantity": "2.00",
+            "unit": "PCS",
+            "unit_price": "6500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "2340.00",
+            "total_amount": "13000.00",
+            "evidence_snippet": "USB-C Multiport Docking Station | 2.00 PCS @ 6500.00",
+            "page_number": 2
+          }
+        ],
+        "subtotal": "280500.00",
+        "tax_total": "50490.00",
+        "grand_total": "330990.00",
+        "extra_metadata": {
+          "raw_date": "19-Sep-2026"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03934891149401665,
+          "DEBIT_NOTE": 0.02461102232336998,
+          "DELIVERY_NOTE": 0.061268262565135956,
+          "INVOICE": 0.6096236109733582,
+          "PAYMENT_RECEIPT": 0.06620673090219498,
+          "PURCHASE_ORDER": 0.11487016826868057,
+          "QUOTATION": 0.03763667494058609,
+          "UNKNOWN": 0.04643462970852852
+        }
+      },
+      "raw_text": "TAX INVOICE\nInvoice No: INV-2026-2231\nDate: 19-Sep-2026\nPO Reference: PO-2026-1048\nSupplier: ACME OFFICE SOLUTIONS PVT. LTD.\nGSTIN: 09ABCDE1234F1Z5\nBuyer: ABC TECHNOLOGIES INDIA PVT. LTD.\nSI\nDescription\nQty\nUnit Price\nTaxable Value\n1\nLaptop Core i7 16GB 512GB SSD\n5 PCS\n52000.00\n260000.00\n2\nWireless Keyboard & Mouse Combo\n5 PCS\n1500.00\n7500.00\n3\nUSB-C Multiport Docking Station\n2 PCS\n6500.00\n13000.00\nTaxable Subtotal: 280500.00\nTotal Tax (18% GST): 50490.00\nTotal Invoice Amount: INR 330990.00\n",
+      "page_number": 2
+    },
+    {
+      "id": "TXN_013_multipage_pdf_p3",
+      "filename": "Transaction_Package_4Pages.pdf (Page 3)",
+      "doc_type": "DELIVERY_NOTE",
+      "classification_confidence": 0.4572296738624573,
+      "parsed_data": {
+        "document_number": "DC-2026-0892",
+        "po_reference": "PO-2026-1048",
+        "document_date": "2026-09-18",
+        "supplier_name": "ACME OFFICE SOLUTIONS PVT. LTD.",
+        "customer_name": "ABC TECHNOLOGIES INDIA PVT. LTD.",
+        "items": [
+          {
+            "description": "Laptop Core i7 16GB 512GB SSD",
+            "normalized_description": "Laptop Core i7 16GB 512GB SSD",
+            "quantity": "5.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Laptop Core i7 16GB 512GB SSD | Qty Delivered: 5.00 PCS",
+            "page_number": 3
+          },
+          {
+            "description": "Wireless Keyboard & Mouse Combo",
+            "normalized_description": "Wireless Keyboard & Mouse Combo",
+            "quantity": "5.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Wireless Keyboard & Mouse Combo | Qty Delivered: 5.00 PCS",
+            "page_number": 3
+          },
+          {
+            "description": "USB-C Multiport Docking Station",
+            "normalized_description": "USB-C Multiport Docking Station",
+            "quantity": "2.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "USB-C Multiport Docking Station | Qty Delivered: 2.00 PCS",
+            "page_number": 3
+          }
+        ],
+        "extra_metadata": {
+          "raw_date": "18-Sep-2026"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04261792078614235,
+          "DEBIT_NOTE": 0.031043855473399162,
+          "DELIVERY_NOTE": 0.4572296738624573,
+          "INVOICE": 0.17803148925304413,
+          "PAYMENT_RECEIPT": 0.053855713456869125,
+          "PURCHASE_ORDER": 0.10207846760749817,
+          "QUOTATION": 0.0582929402589798,
+          "UNKNOWN": 0.07684985548257828
+        }
+      },
+      "raw_text": "DELIVERY CHALLAN\nChallan No: DC-2026-0892\nDate: 18-Sep-2026\nAgainst PO: PO-2026-1048\nSupplier: ACME OFFICE SOLUTIONS PVT. LTD.\nConsignee: ABC TECHNOLOGIES INDIA PVT. LTD.\nSI\nItem Description\nQty Dispatched\nUnit\n1\nLaptop Core i7 16GB 512GB SSD\n5\nPCS\n2\nWireless Keyboard & Mouse Combo\n5\nPCS\n3\nUSB-C Multiport Docking Station\n2\nPCS\nDelivered in sound condition.\n",
+      "page_number": 3
+    },
+    {
+      "id": "TXN_013_multipage_pdf_p4",
+      "filename": "Transaction_Package_4Pages.pdf (Page 4)",
+      "doc_type": "PAYMENT_RECEIPT",
+      "classification_confidence": 0.4323903024196625,
+      "parsed_data": {
+        "document_number": "REC-2026-0412",
+        "invoice_reference": "INV-2026-2231",
+        "po_reference": null,
+        "document_date": "2026-09-20",
+        "supplier_name": "ABC TECHNOLOGIES INDIA PVT. LTD.",
+        "payment_amount": "330990.00",
+        "payment_method": "BANK_TRANSFER",
+        "transaction_reference": "UTR-20260920-88192",
+        "grand_total": "330990.00",
+        "extra_metadata": {
+          "raw_date": "20-Sep-2026"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.056072138249874115,
+          "DEBIT_NOTE": 0.032665908336639404,
+          "DELIVERY_NOTE": 0.11708026379346848,
+          "INVOICE": 0.14177586138248444,
+          "PAYMENT_RECEIPT": 0.4323903024196625,
+          "PURCHASE_ORDER": 0.08994267880916595,
+          "QUOTATION": 0.05824991315603256,
+          "UNKNOWN": 0.07182294875383377
+        }
+      },
+      "raw_text": "PAYMENT RECEIPT\nReceipt No: REC-2026-0412\nDate: 20-Sep-2026\nAgainst Invoice: INV-2026-2231\nReceived From: ABC TECHNOLOGIES INDIA PVT. LTD.\nBeneficiary: ACME OFFICE SOLUTIONS PVT. LTD.\nTransaction Reference: UTR-20260920-88192\nAmount Received: INR 330990.00\n",
+      "page_number": 4
+    }
+  ],
+  "reconciliation": {
+    "transaction_ref": "TXN_013_multipage_pdf",
+    "reconciliation_status": "MINOR_VARIANCE",
+    "mode_used": "HYBRID",
+    "supplier_name": "ACME OFFICE SOLUTIONS PVT. LTD.",
+    "customer_name": "ABC TECHNOLOGIES INDIA PVT. LTD.",
+    "total_documents": 4,
+    "documents_summary": [
+      {
+        "filename": "Transaction_Package_4Pages.pdf (Page 1)",
+        "doc_type": "PURCHASE_ORDER",
+        "status": "Processed"
+      },
+      {
+        "filename": "Transaction_Package_4Pages.pdf (Page 2)",
+        "doc_type": "INVOICE",
+        "status": "Processed"
+      },
+      {
+        "filename": "Transaction_Package_4Pages.pdf (Page 3)",
+        "doc_type": "DELIVERY_NOTE",
+        "status": "Processed"
+      },
+      {
+        "filename": "Transaction_Package_4Pages.pdf (Page 4)",
+        "doc_type": "PAYMENT_RECEIPT",
+        "status": "Processed"
+      }
+    ],
+    "total_discrepancies": 3,
+    "discrepancies_by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 3,
+      "LOW": 0
+    },
+    "financial_variance_amount": 1122000.0,
+    "discrepancies": [
+      {
+        "rule_code": "QUANTITY_MISMATCH",
+        "discrepancy_type": "PO_QUANTITY_SHORTFALL",
+        "title": "Quantity Discrepancy: Laptop Core i7 16GB 512GB SSD (PO: 25.00, Invoiced: 5.00)",
+        "description": "Quantity discrepancy between Purchase Order and Invoice for 'Laptop Core i7 16GB 512GB SSD'. Purchase Order authorized 25.00 units, but Invoice billed only 5.00 units (Unbilled balance: 20.00 units, remaining value: INR 1040000.00).",
+        "severity": "MEDIUM",
+        "confidence": 0.97,
+        "difference_amount": 1040000.0,
+        "expected_value": "25.00 PCS",
+        "actual_value": "5.00 PCS",
+        "difference_value": "-20.00 PCS (\u20b91040000.00)",
+        "evidences": [
+          {
+            "document_id": "TXN_013_multipage_pdf_p1",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 1)",
+            "page_number": 1,
+            "field_name": "quantity",
+            "exact_value": "25.00 PCS",
+            "snippet": "Laptop Core i7 16GB 512GB SSD | 25.00 PCS @ 52000.00",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_013_multipage_pdf_p2",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 2)",
+            "page_number": 2,
+            "field_name": "quantity",
+            "exact_value": "5.00 PCS",
+            "snippet": "Laptop Core i7 16GB 512GB SSD | 5.00 PCS @ 52000.00",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {
+          "po_qty": "25.00",
+          "invoiced_qty": "5.00",
+          "difference_qty": "20.00"
+        },
+        "llm_explanation": "[Audit Finding - MEDIUM]: Physical delivery records diverge from billed quantities according to Transaction_Package_4Pages.pdf (Page 1) (quantity: '25.00 PCS'); Transaction_Package_4Pages.pdf (Page 2) (quantity: '5.00 PCS'). Quantity discrepancy between Purchase Order and Invoice for 'Laptop Core i7 16GB 512GB SSD'. Purchase Order authorized 25.00 units, but Invoice billed only 5.00 units (Unbilled balance: 20.00 units, remaining value: INR 1040000.00). Potential unearned billing / pending shortfall amount is INR 1,040,000.00."
+      },
+      {
+        "rule_code": "QUANTITY_MISMATCH",
+        "discrepancy_type": "PO_QUANTITY_SHORTFALL",
+        "title": "Quantity Discrepancy: Wireless Keyboard & Mouse Combo (PO: 25.00, Invoiced: 5.00)",
+        "description": "Quantity discrepancy between Purchase Order and Invoice for 'Wireless Keyboard & Mouse Combo'. Purchase Order authorized 25.00 units, but Invoice billed only 5.00 units (Unbilled balance: 20.00 units, remaining value: INR 30000.00).",
+        "severity": "MEDIUM",
+        "confidence": 0.97,
+        "difference_amount": 30000.0,
+        "expected_value": "25.00 PCS",
+        "actual_value": "5.00 PCS",
+        "difference_value": "-20.00 PCS (\u20b930000.00)",
+        "evidences": [
+          {
+            "document_id": "TXN_013_multipage_pdf_p1",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 1)",
+            "page_number": 1,
+            "field_name": "quantity",
+            "exact_value": "25.00 PCS",
+            "snippet": "Wireless Keyboard & Mouse Combo | 25.00 PCS @ 1500.00",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_013_multipage_pdf_p2",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 2)",
+            "page_number": 2,
+            "field_name": "quantity",
+            "exact_value": "5.00 PCS",
+            "snippet": "Wireless Keyboard & Mouse Combo | 5.00 PCS @ 1500.00",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {
+          "po_qty": "25.00",
+          "invoiced_qty": "5.00",
+          "difference_qty": "20.00"
+        },
+        "llm_explanation": "[Audit Finding - MEDIUM]: Physical delivery records diverge from billed quantities according to Transaction_Package_4Pages.pdf (Page 1) (quantity: '25.00 PCS'); Transaction_Package_4Pages.pdf (Page 2) (quantity: '5.00 PCS'). Quantity discrepancy between Purchase Order and Invoice for 'Wireless Keyboard & Mouse Combo'. Purchase Order authorized 25.00 units, but Invoice billed only 5.00 units (Unbilled balance: 20.00 units, remaining value: INR 30000.00). Potential unearned billing / pending shortfall amount is INR 30,000.00."
+      },
+      {
+        "rule_code": "QUANTITY_MISMATCH",
+        "discrepancy_type": "PO_QUANTITY_SHORTFALL",
+        "title": "Quantity Discrepancy: USB-C Multiport Docking Station (PO: 10.00, Invoiced: 2.00)",
+        "description": "Quantity discrepancy between Purchase Order and Invoice for 'USB-C Multiport Docking Station'. Purchase Order authorized 10.00 units, but Invoice billed only 2.00 units (Unbilled balance: 8.00 units, remaining value: INR 52000.00).",
+        "severity": "MEDIUM",
+        "confidence": 0.97,
+        "difference_amount": 52000.0,
+        "expected_value": "10.00 PCS",
+        "actual_value": "2.00 PCS",
+        "difference_value": "-8.00 PCS (\u20b952000.00)",
+        "evidences": [
+          {
+            "document_id": "TXN_013_multipage_pdf_p1",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 1)",
+            "page_number": 1,
+            "field_name": "quantity",
+            "exact_value": "10.00 PCS",
+            "snippet": "USB-C Multiport Docking Station | 10.00 PCS @ 6500.00",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_013_multipage_pdf_p2",
+            "document_name": "Transaction_Package_4Pages.pdf (Page 2)",
+            "page_number": 2,
+            "field_name": "quantity",
+            "exact_value": "2.00 PCS",
+            "snippet": "USB-C Multiport Docking Station | 2.00 PCS @ 6500.00",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {
+          "po_qty": "10.00",
+          "invoiced_qty": "2.00",
+          "difference_qty": "8.00"
+        },
+        "llm_explanation": "[Audit Finding - MEDIUM]: Physical delivery records diverge from billed quantities according to Transaction_Package_4Pages.pdf (Page 1) (quantity: '10.00 PCS'); Transaction_Package_4Pages.pdf (Page 2) (quantity: '2.00 PCS'). Quantity discrepancy between Purchase Order and Invoice for 'USB-C Multiport Docking Station'. Purchase Order authorized 10.00 units, but Invoice billed only 2.00 units (Unbilled balance: 8.00 units, remaining value: INR 52000.00). Potential unearned billing / pending shortfall amount is INR 52,000.00."
+      }
+    ],
+    "ai_grounded_explanation": "Reconciliation audit for Transaction TXN_013_multipage_pdf completed across 4 documents. Detected 3 discrepancies (0 CRITICAL, 0 HIGH) with a cumulative net financial variance of INR 1,122,000.00. Primary discrepancies involve Quantity Discrepancy: Laptop Core i7 16GB 512GB SSD (PO: 25.00, Invoiced: 5.00). Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor.",
+    "reconciled_at": "2026-09-21T06:26:37.948613"
+  }
+}

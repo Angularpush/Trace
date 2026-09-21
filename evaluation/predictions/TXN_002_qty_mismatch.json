@@ -1,0 +1,220 @@
+{
+  "transaction_id": "TXN_002_qty_mismatch",
+  "documents": [
+    {
+      "id": "TXN_002_qty_mismatch_PO-2024-102.pdf",
+      "filename": "PO-2024-102.pdf",
+      "doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.5121339559555054,
+      "parsed_data": {
+        "document_number": "PO-2024-102",
+        "document_date": "2024-08-05",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": null,
+        "delivery_address": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "50000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-05"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03744667023420334,
+          "DEBIT_NOTE": 0.024912014603614807,
+          "DELIVERY_NOTE": 0.09344856441020966,
+          "INVOICE": 0.1896115243434906,
+          "PAYMENT_RECEIPT": 0.049023211002349854,
+          "PURCHASE_ORDER": 0.5121339559555054,
+          "QUOTATION": 0.05130211263895035,
+          "UNKNOWN": 0.04212198778986931
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nPO Number: PO-2024-102\nDate: 2024-08-05\nSupplier: Apex Industrial Tools Pvt Ltd\nBuyer: Precision MSME Engineering Works\nSI\nItem Description\nQty\nUnit Price\nTotal Amount\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTotal Order Value: INR 50000.00\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_002_qty_mismatch_DC-2024-102.pdf",
+      "filename": "DC-2024-102.pdf",
+      "doc_type": "DELIVERY_NOTE",
+      "classification_confidence": 0.4463365375995636,
+      "parsed_data": {
+        "document_number": "DC-2024-102",
+        "po_reference": "PO-2024-102",
+        "document_date": "2024-08-12",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "customer_name": "Precision MSME Engineering Works",
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "80.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | Qty Delivered: 80.00 PCS",
+            "page_number": 1
+          }
+        ],
+        "extra_metadata": {
+          "raw_date": "2024-08-12"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.044025689363479614,
+          "DEBIT_NOTE": 0.031520333141088486,
+          "DELIVERY_NOTE": 0.4463365375995636,
+          "INVOICE": 0.15410174429416656,
+          "PAYMENT_RECEIPT": 0.057136327028274536,
+          "PURCHASE_ORDER": 0.14191848039627075,
+          "QUOTATION": 0.0643705278635025,
+          "UNKNOWN": 0.060590390115976334
+        }
+      },
+      "raw_text": "DELIVERY CHALLAN\nDelivery Challan No: DC-2024-102\nDate: 2024-08-12\nAgainst PO Ref: PO-2024-102\nConsignor: Apex Industrial Tools Pvt Ltd\nConsignee: Precision MSME Engineering Works\nSI\nItem Description\nQuantity Delivered\nUnit\n1\nStainless Steel Bolt M10\n80\nPCS\nRemarks: Partial delivery (80 units dispatched due to factory stock limitation).\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_002_qty_mismatch_INV-2024-102.pdf",
+      "filename": "INV-2024-102.pdf",
+      "doc_type": "INVOICE",
+      "classification_confidence": 0.5259508490562439,
+      "parsed_data": {
+        "document_number": "INV-2024-102",
+        "po_reference": "PO-2024-102",
+        "document_date": "2024-08-14",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": "Precision MSME Engineering Works",
+        "customer_gstin": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "50000.00",
+        "tax_total": "9000.00",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-14"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04564409330487251,
+          "DEBIT_NOTE": 0.025862812995910645,
+          "DELIVERY_NOTE": 0.08873829990625381,
+          "INVOICE": 0.5259508490562439,
+          "PAYMENT_RECEIPT": 0.06907382607460022,
+          "PURCHASE_ORDER": 0.16117751598358154,
+          "QUOTATION": 0.045865390449762344,
+          "UNKNOWN": 0.03768721595406532
+        }
+      },
+      "raw_text": "TAX INVOICE\nTax Invoice No: INV-2024-102\nDate: 2024-08-14\nPO Reference: PO-2024-102\nSupplier: Apex Industrial Tools Pvt Ltd\nBuyer: Precision MSME Engineering Works\nSI\nDescription\nQty\nUnit Rate\nTaxable Value\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTaxable Subtotal: INR 50000.00\nTotal Tax (18% GST): INR 9000.00\nTotal Invoice Amount: INR 59000.00\n",
+      "page_number": 1
+    }
+  ],
+  "reconciliation": {
+    "transaction_ref": "TXN_002_qty_mismatch",
+    "reconciliation_status": "DISCREPANCY_FOUND",
+    "mode_used": "HYBRID",
+    "supplier_name": "Apex Industrial Tools Pvt Ltd",
+    "customer_name": "Precision MSME Engineering Works",
+    "total_documents": 3,
+    "documents_summary": [
+      {
+        "filename": "PO-2024-102.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "status": "Processed"
+      },
+      {
+        "filename": "DC-2024-102.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "status": "Processed"
+      },
+      {
+        "filename": "INV-2024-102.pdf",
+        "doc_type": "INVOICE",
+        "status": "Processed"
+      }
+    ],
+    "total_discrepancies": 1,
+    "discrepancies_by_severity": {
+      "CRITICAL": 1,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "financial_variance_amount": 10000.0,
+    "discrepancies": [
+      {
+        "rule_code": "QUANTITY_MISMATCH",
+        "discrepancy_type": "INVOICE_EXCEEDS_DELIVERY",
+        "title": "Quantity Overbilled: Stainless Steel Bolt M10 (20.00 units unreceived)",
+        "description": "Overbilling quantity mismatch for 'Stainless Steel Bolt M10'. Invoice billed 100.00 units, but Delivery Note records only 80.00 units delivered (Excess billed: 20.00 units, unearned amount: INR 10000.00).",
+        "severity": "CRITICAL",
+        "confidence": 0.97,
+        "difference_amount": 10000.0,
+        "expected_value": "80.00 PCS",
+        "actual_value": "100.00 PCS",
+        "difference_value": "+20.00 PCS excess (\u20b910000.00)",
+        "evidences": [
+          {
+            "document_id": "TXN_002_qty_mismatch_INV-2024-102.pdf",
+            "document_name": "INV-2024-102.pdf",
+            "page_number": 1,
+            "field_name": "quantity",
+            "exact_value": "100.00 PCS",
+            "snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_002_qty_mismatch_DC-2024-102.pdf",
+            "document_name": "DC-2024-102.pdf",
+            "page_number": 1,
+            "field_name": "quantity",
+            "exact_value": "80.00 PCS",
+            "snippet": "Stainless Steel Bolt M10 | Qty Delivered: 80.00 PCS",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {
+          "invoiced_qty": "100.00",
+          "delivered_qty": "80.00",
+          "difference_qty": "20.00"
+        },
+        "llm_explanation": "[Audit Finding - CRITICAL]: Physical delivery records diverge from billed quantities according to INV-2024-102.pdf (quantity: '100.00 PCS'); DC-2024-102.pdf (quantity: '80.00 PCS'). Overbilling quantity mismatch for 'Stainless Steel Bolt M10'. Invoice billed 100.00 units, but Delivery Note records only 80.00 units delivered (Excess billed: 20.00 units, unearned amount: INR 10000.00). Potential unearned billing / pending shortfall amount is INR 10,000.00."
+      }
+    ],
+    "ai_grounded_explanation": "Reconciliation audit for Transaction TXN_002_qty_mismatch completed across 3 documents. Detected 1 discrepancies (1 CRITICAL, 0 HIGH) with a cumulative net financial variance of INR 10,000.00. Primary discrepancies involve Quantity Overbilled: Stainless Steel Bolt M10 (20.00 units unreceived). Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor.",
+    "reconciled_at": "2026-09-21T06:26:37.860056"
+  }
+}

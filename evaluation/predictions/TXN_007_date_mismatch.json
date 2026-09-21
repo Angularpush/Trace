@@ -1,0 +1,216 @@
+{
+  "transaction_id": "TXN_007_date_mismatch",
+  "documents": [
+    {
+      "id": "TXN_007_date_mismatch_PO-2024-107.pdf",
+      "filename": "PO-2024-107.pdf",
+      "doc_type": "PURCHASE_ORDER",
+      "classification_confidence": 0.545868992805481,
+      "parsed_data": {
+        "document_number": "PO-2024-107",
+        "document_date": "2024-08-15",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": null,
+        "delivery_address": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "0.00",
+        "tax_total": "0.00",
+        "grand_total": "50000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-15"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.03668999671936035,
+          "DEBIT_NOTE": 0.02399447001516819,
+          "DELIVERY_NOTE": 0.07894310355186462,
+          "INVOICE": 0.17056450247764587,
+          "PAYMENT_RECEIPT": 0.05031723901629448,
+          "PURCHASE_ORDER": 0.545868992805481,
+          "QUOTATION": 0.0494869202375412,
+          "UNKNOWN": 0.04413479566574097
+        }
+      },
+      "raw_text": "PURCHASE ORDER\nPO Number: PO-2024-107\nDate: 2024-08-15\nSupplier: Apex Industrial Tools Pvt Ltd\nSI\nItem Description\nQty\nUnit Price\nTotal Amount\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTotal Order Value: INR 50000.00\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_007_date_mismatch_DC-2024-107.pdf",
+      "filename": "DC-2024-107.pdf",
+      "doc_type": "DELIVERY_NOTE",
+      "classification_confidence": 0.419271320104599,
+      "parsed_data": {
+        "document_number": "DC-2024-107",
+        "po_reference": "PO-2024-107",
+        "document_date": "2024-08-20",
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "customer_name": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "0.00",
+            "discount": "0.00",
+            "tax_rate": "0.00",
+            "tax_amount": "0.00",
+            "total_amount": "0.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | Qty Delivered: 100.00 PCS",
+            "page_number": 1
+          }
+        ],
+        "extra_metadata": {
+          "raw_date": "2024-08-20"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04684005305171013,
+          "DEBIT_NOTE": 0.03263372182846069,
+          "DELIVERY_NOTE": 0.419271320104599,
+          "INVOICE": 0.16281606256961823,
+          "PAYMENT_RECEIPT": 0.06243860349059105,
+          "PURCHASE_ORDER": 0.14948363602161407,
+          "QUOTATION": 0.06665518879890442,
+          "UNKNOWN": 0.05986136198043823
+        }
+      },
+      "raw_text": "DELIVERY CHALLAN\nDelivery Challan No: DC-2024-107\nDate: 2024-08-20\nAgainst PO Ref: PO-2024-107\nConsignor: Apex Industrial Tools Pvt Ltd\nSI\nItem Description\nQuantity Delivered\nUnit\n1\nStainless Steel Bolt M10\n100\nPCS\n",
+      "page_number": 1
+    },
+    {
+      "id": "TXN_007_date_mismatch_INV-2024-107.pdf",
+      "filename": "INV-2024-107.pdf",
+      "doc_type": "INVOICE",
+      "classification_confidence": 0.5454208850860596,
+      "parsed_data": {
+        "document_number": "INV-2024-107",
+        "po_reference": "PO-2024-107",
+        "document_date": "2024-08-01",
+        "due_date": null,
+        "supplier_name": "Apex Industrial Tools Pvt Ltd",
+        "supplier_gstin": null,
+        "customer_name": null,
+        "customer_gstin": null,
+        "items": [
+          {
+            "description": "Stainless Steel Bolt M10",
+            "normalized_description": "Stainless Steel Bolt M10",
+            "quantity": "100.00",
+            "unit": "PCS",
+            "unit_price": "500.00",
+            "discount": "0.00",
+            "tax_rate": "18.00",
+            "tax_amount": "9000.00",
+            "total_amount": "50000.00",
+            "evidence_snippet": "Stainless Steel Bolt M10 | 100.00 PCS @ 500.00",
+            "page_number": 1
+          }
+        ],
+        "subtotal": "50000.00",
+        "tax_total": "9000.00",
+        "grand_total": "59000.00",
+        "extra_metadata": {
+          "raw_date": "2024-08-01"
+        },
+        "prob_dist": {
+          "CREDIT_NOTE": 0.04702934995293617,
+          "DEBIT_NOTE": 0.02563224546611309,
+          "DELIVERY_NOTE": 0.07474353164434433,
+          "INVOICE": 0.5454208850860596,
+          "PAYMENT_RECEIPT": 0.07498203963041306,
+          "PURCHASE_ORDER": 0.14749565720558167,
+          "QUOTATION": 0.04579969868063927,
+          "UNKNOWN": 0.038896623998880386
+        }
+      },
+      "raw_text": "TAX INVOICE\nTax Invoice No: INV-2024-107\nDate: 2024-08-01\nPO Reference: PO-2024-107\nSupplier: Apex Industrial Tools Pvt Ltd\nSI\nDescription\nQty\nUnit Rate\nTaxable Value\n1\nStainless Steel Bolt M10\n100 PCS\n500.00\n50000.00\nTaxable Subtotal: INR 50000.00\nTotal Tax (18% GST): INR 9000.00\nTotal Invoice Amount: INR 59000.00\n",
+      "page_number": 1
+    }
+  ],
+  "reconciliation": {
+    "transaction_ref": "TXN_007_date_mismatch",
+    "reconciliation_status": "DISCREPANCY_FOUND",
+    "mode_used": "HYBRID",
+    "supplier_name": "Apex Industrial Tools Pvt Ltd",
+    "customer_name": "",
+    "total_documents": 3,
+    "documents_summary": [
+      {
+        "filename": "PO-2024-107.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "status": "Processed"
+      },
+      {
+        "filename": "DC-2024-107.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "status": "Processed"
+      },
+      {
+        "filename": "INV-2024-107.pdf",
+        "doc_type": "INVOICE",
+        "status": "Processed"
+      }
+    ],
+    "total_discrepancies": 1,
+    "discrepancies_by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 1,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "financial_variance_amount": 0.0,
+    "discrepancies": [
+      {
+        "rule_code": "DATE_MISMATCH",
+        "discrepancy_type": "INVOICE_PREDATES_PO",
+        "title": "Chronology Error: Invoice dated (2024-08-01) before PO (2024-08-15)",
+        "description": "Invoice date (2024-08-01) is prior to the Purchase Order issue date (2024-08-15).",
+        "severity": "HIGH",
+        "confidence": 0.97,
+        "difference_amount": 0.0,
+        "expected_value": "On/after PO Date (2024-08-15)",
+        "actual_value": "Invoice Date (2024-08-01)",
+        "difference_value": "Anachronistic / Backward chronology",
+        "evidences": [
+          {
+            "document_id": "TXN_007_date_mismatch_PO-2024-107.pdf",
+            "document_name": "PO-2024-107.pdf",
+            "page_number": 1,
+            "field_name": "document_date",
+            "exact_value": "2024-08-15",
+            "snippet": "PO Date: 2024-08-15",
+            "relevance_score": 1.0
+          },
+          {
+            "document_id": "TXN_007_date_mismatch_INV-2024-107.pdf",
+            "document_name": "INV-2024-107.pdf",
+            "page_number": 1,
+            "field_name": "document_date",
+            "exact_value": "2024-08-01",
+            "snippet": "Invoice Date: 2024-08-01",
+            "relevance_score": 1.0
+          }
+        ],
+        "metadata": {},
+        "llm_explanation": "[Timeline Audit - HIGH]: Chronological sequence violation identified between PO-2024-107.pdf (document_date: '2024-08-15'); INV-2024-107.pdf (document_date: '2024-08-01'). Invoice date (2024-08-01) is prior to the Purchase Order issue date (2024-08-15)."
+      }
+    ],
+    "ai_grounded_explanation": "Reconciliation audit for Transaction TXN_007_date_mismatch completed across 3 documents. Detected 1 discrepancies (0 CRITICAL, 1 HIGH) with a cumulative net financial variance of INR 0.00. Primary discrepancies involve Chronology Error: Invoice dated (2024-08-01) before PO (2024-08-15). Decision Support Recommendation: Halt payment disbursement pending credit note or quantity clarification from vendor.",
+    "reconciled_at": "2026-09-21T06:26:37.897897"
+  }
+}
