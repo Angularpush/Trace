@@ -50,9 +50,24 @@ class DocumentResponse(BaseModel):
     doc_type: str
     classification_confidence: float
     page_count: int
+    original_pdf_id: Optional[str] = None
+    page_number: int = 1
+    page_count: int = 1
     raw_text: str
     parsed_data: Dict[str, Any]
     status: str
     created_at: datetime
+
+    @property
+    def document_type(self) -> str:
+        return self.doc_type
+
+    @property
+    def confidence(self) -> float:
+        return self.classification_confidence
+
+    @property
+    def extracted_text(self) -> str:
+        return self.raw_text
 
     model_config = ConfigDict(from_attributes=True)

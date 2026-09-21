@@ -161,8 +161,15 @@ export const DocumentsPage: React.FC = () => {
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <DocTypeBadge type={doc.doc_type} confidence={doc.classification_confidence} />
-                      <span className="text-[10px] text-slate-500">{doc.page_count} page(s)</span>
+                      <DocTypeBadge type={doc.doc_type || doc.document_type || 'UNKNOWN'} confidence={doc.classification_confidence ?? doc.confidence} />
+                      <div className="flex items-center gap-1.5 text-[10px] text-slate-500">
+                        {doc.page_number && (
+                          <span className="px-1.5 py-0.5 rounded bg-slate-800 text-indigo-300 font-mono font-semibold">
+                            Page {doc.page_number}
+                          </span>
+                        )}
+                        <span>{doc.page_count || 1} page(s)</span>
+                      </div>
                     </div>
 
                     {/* Metadata chips */}
@@ -197,10 +204,17 @@ export const DocumentsPage: React.FC = () => {
             <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-5 sticky top-24">
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div className="truncate">
-                  <h3 className="font-bold text-sm text-slate-100 truncate">{selectedDoc.filename}</h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-bold text-sm text-slate-100 truncate">{selectedDoc.filename}</h3>
+                    {selectedDoc.page_number && (
+                      <span className="px-1.5 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800/50 text-[10px] font-mono font-bold">
+                        Page {selectedDoc.page_number}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[10px] text-slate-400">ID: {selectedDoc.id}</p>
                 </div>
-                <DocTypeBadge type={selectedDoc.doc_type} confidence={selectedDoc.classification_confidence} />
+                <DocTypeBadge type={selectedDoc.doc_type || selectedDoc.document_type || 'UNKNOWN'} confidence={selectedDoc.classification_confidence ?? selectedDoc.confidence} />
               </div>
 
               {/* Classifier Probability Distribution */}
@@ -246,7 +260,7 @@ export const DocumentsPage: React.FC = () => {
               <div className="space-y-1.5">
                 <p className="text-xs font-semibold text-slate-300">Extracted Raw Text</p>
                 <pre className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[10px] text-slate-300 font-mono max-h-44 overflow-y-auto whitespace-pre-wrap">
-                  {selectedDoc.raw_text}
+                  {selectedDoc.raw_text || selectedDoc.extracted_text}
                 </pre>
               </div>
 

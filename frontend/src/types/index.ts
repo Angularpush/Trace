@@ -85,12 +85,17 @@ export interface ParsedDocumentData {
 
 export interface DocumentItem {
   id: string;
+  original_pdf_id?: string;
+  page_number?: number;
   filename: string;
   file_type: string;
   doc_type: DocumentType;
+  document_type?: DocumentType;
   classification_confidence: number;
+  confidence?: number;
   page_count: number;
   raw_text: string;
+  extracted_text?: string;
   parsed_data: ParsedDocumentData;
   status: string;
   created_at: string;

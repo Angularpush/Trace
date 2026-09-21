@@ -23,6 +23,8 @@ class Document(Base):
     file_type = Column(String, default="pdf")
     doc_type = Column(String, nullable=False, default="UNKNOWN")  # PURCHASE_ORDER, INVOICE, etc.
     classification_confidence = Column(Float, default=0.0)
+    original_pdf_id = Column(String, nullable=True, index=True)
+    page_number = Column(Integer, default=1)
     page_count = Column(Integer, default=1)
     raw_text = Column(Text, default="")
     parsed_data = Column(JSON, default=dict)  # Structured extracted metadata & items

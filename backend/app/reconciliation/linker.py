@@ -62,6 +62,13 @@ class TransactionLinker:
             if txn_fn_match:
                 keys.add(f"TXN:{txn_fn_match.group(1).upper().replace('_', '-')}")
 
+            # Original Multi-page PDF ID key
+            orig_pdf_id = doc.get("original_pdf_id")
+            if not orig_pdf_id and "orm_doc" in doc:
+                orig_pdf_id = getattr(doc["orm_doc"], "original_pdf_id", None)
+            if orig_pdf_id:
+                keys.add(f"ORIG_PDF:{orig_pdf_id}")
+
             # PO References
             po_num = p_data.get("document_number") if d_type == "PURCHASE_ORDER" else None
             po_ref = p_data.get("po_reference")
@@ -177,6 +184,8 @@ class TransactionLinker:
                 "id": d.id,
                 "filename": d.filename,
                 "doc_type": d.doc_type,
+                "original_pdf_id": getattr(d, "original_pdf_id", None),
+                "page_number": getattr(d, "page_number", 1),
                 "parsed_data": d.parsed_data or {},
                 "raw_text": d.raw_text,
                 "orm_doc": d

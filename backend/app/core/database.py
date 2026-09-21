@@ -26,6 +26,15 @@ def init_db():
     if settings.DATABASE_URL.startswith("sqlite"):
         with engine.connect() as conn:
             try:
+                # Check documents table columns
+                dres = conn.exec_driver_sql("PRAGMA table_info(documents)").fetchall()
+                dcol_names = [row[1] for row in dres]
+                if dcol_names:
+                    if "original_pdf_id" not in dcol_names:
+                        conn.exec_driver_sql("ALTER TABLE documents ADD COLUMN original_pdf_id VARCHAR DEFAULT NULL")
+                    if "page_number" not in dcol_names:
+                        conn.exec_driver_sql("ALTER TABLE documents ADD COLUMN page_number INTEGER DEFAULT 1")
+
                 # Check discrepancies table columns
                 res = conn.exec_driver_sql("PRAGMA table_info(discrepancies)").fetchall()
                 col_names = [row[1] for row in res]
@@ -37,6 +46,7 @@ def init_db():
                     if "difference_value" not in col_names:
                         conn.exec_driver_sql("ALTER TABLE discrepancies ADD COLUMN difference_value VARCHAR DEFAULT ''")
                     conn.commit()
+                conn.commit()
             except Exception:
                 pass
 

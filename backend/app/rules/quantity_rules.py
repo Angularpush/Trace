@@ -98,8 +98,79 @@ class QuantityMismatchRule(BaseReconciliationRule):
                         metadata={"invoiced_qty": str(inv_qty), "delivered_qty": str(dn_qty)}
                     ))
 
-            # Case 2: Delivered Qty vs PO Qty (Shortfall check)
-            if po_qty is not None and dn_qty is not None and dn_qty < po_qty and (inv_qty is None or inv_qty == dn_qty):
+            # Case 2: Invoiced Qty vs PO Ordered Qty (PO vs Invoice comparison)
+            if po_qty is not None and inv_qty is not None and po_qty != inv_qty:
+                diff_po_inv = po_qty - inv_qty
+                evidences = []
+                if po_doc and po_item:
+                    evidences.append(RuleEvidenceItem(
+                        document_id=po_doc.get("id", "PO"),
+                        document_name=po_doc.get("filename", "Purchase_Order.pdf"),
+                        page_number=po_item.get("page_number", 1),
+                        field_name="quantity",
+                        exact_value=f"{po_qty} {po_item.get('unit', 'PCS')}",
+                        snippet=po_item.get("evidence_snippet") or f"PO Quantity: {po_qty}",
+                        relevance_score=1.0
+                    ))
+                if inv_doc and inv_item:
+                    evidences.append(RuleEvidenceItem(
+                        document_id=inv_doc.get("id", "INV"),
+                        document_name=inv_doc.get("filename", "Invoice.pdf"),
+                        page_number=inv_item.get("page_number", 1),
+                        field_name="quantity",
+                        exact_value=f"{inv_qty} {inv_item.get('unit', 'PCS')}",
+                        snippet=inv_item.get("evidence_snippet") or f"Invoice Quantity: {inv_qty}",
+                        relevance_score=1.0
+                    ))
+
+                if diff_po_inv > 0:
+                    # Partial invoice / unbilled quantity remaining on PO
+                    unbilled_val = diff_po_inv * unit_price
+                    desc = (
+                        f"Quantity discrepancy between Purchase Order and Invoice for '{item_name}'. "
+                        f"Purchase Order authorized {po_qty} units, but Invoice billed only {inv_qty} units "
+                        f"(Unbilled balance: {diff_po_inv} units, remaining value: INR {unbilled_val:.2f})."
+                    )
+                    discrepancies.append(DiscrepancyResult(
+                        rule_code=self.rule_code,
+                        discrepancy_type="PO_QUANTITY_SHORTFALL",
+                        title=f"Quantity Discrepancy: {item_name} (PO: {po_qty}, Invoiced: {inv_qty})",
+                        description=desc,
+                        severity="MEDIUM",
+                        confidence=0.98,
+                        difference_amount=unbilled_val,
+                        expected_value=f"{po_qty} {po_item.get('unit', 'PCS') if po_item else 'units'}",
+                        actual_value=f"{inv_qty} {inv_item.get('unit', 'PCS') if inv_item else 'units'}",
+                        difference_value=f"-{diff_po_inv} {po_item.get('unit', 'PCS') if po_item else 'units'} (₹{unbilled_val:.2f})",
+                        evidences=evidences,
+                        metadata={"po_qty": str(po_qty), "invoiced_qty": str(inv_qty), "difference_qty": str(diff_po_inv)}
+                    ))
+                else:
+                    # Invoiced more than authorized on PO (Unauthorized excess)
+                    excess_qty = abs(diff_po_inv)
+                    excess_val = excess_qty * unit_price
+                    desc = (
+                        f"Overbilling against Purchase Order for '{item_name}'. "
+                        f"Purchase Order authorized {po_qty} units, but Invoice billed {inv_qty} units "
+                        f"(Unauthorized excess: {excess_qty} units, excess amount: INR {excess_val:.2f})."
+                    )
+                    discrepancies.append(DiscrepancyResult(
+                        rule_code=self.rule_code,
+                        discrepancy_type="INVOICE_EXCEEDS_PO",
+                        title=f"Quantity Overbilled vs PO: {item_name} ({excess_qty} units unauthorized)",
+                        description=desc,
+                        severity="CRITICAL" if excess_val > Decimal("1000.00") else "HIGH",
+                        confidence=0.98,
+                        difference_amount=excess_val,
+                        expected_value=f"{po_qty} {po_item.get('unit', 'PCS') if po_item else 'units'}",
+                        actual_value=f"{inv_qty} {inv_item.get('unit', 'PCS') if inv_item else 'units'}",
+                        difference_value=f"+{excess_qty} {inv_item.get('unit', 'PCS') if inv_item else 'units'} excess (₹{excess_val:.2f})",
+                        evidences=evidences,
+                        metadata={"po_qty": str(po_qty), "invoiced_qty": str(inv_qty), "excess_qty": str(excess_qty)}
+                    ))
+
+            # Case 3: Delivered Qty vs PO Qty (Physical delivery shortfall check without invoice)
+            if po_qty is not None and dn_qty is not None and dn_qty < po_qty and inv_qty is None:
                 shortfall = po_qty - dn_qty
                 evidences = []
                 if po_doc and po_item:
