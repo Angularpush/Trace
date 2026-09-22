@@ -196,6 +196,15 @@ class TransactionLinker:
         clusters = TransactionLinker.group_documents_into_transactions(doc_dicts)
 
         for ref_key, cluster_docs in clusters.items():
+            # Skip creating dummy clusters for isolated UNKNOWN docs with no data
+            if len(cluster_docs) == 1:
+                cd0 = cluster_docs[0]
+                if cd0.get("doc_type") == "UNKNOWN":
+                    p0 = cd0.get("parsed_data", {})
+                    gt0 = float(p0.get("grand_total") or p0.get("payment_amount") or 0.0)
+                    if gt0 == 0.0 and not p0.get("document_number") and not p0.get("po_reference") and not p0.get("invoice_reference"):
+                        continue
+
             existing_txn = db.query(Transaction).filter(Transaction.transaction_ref == ref_key).first()
             supplier = ""
             customer = ""

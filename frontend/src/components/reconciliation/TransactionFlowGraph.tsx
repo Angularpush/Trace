@@ -27,6 +27,8 @@ export const TransactionFlowGraph: React.FC<TransactionFlowGraphProps> = ({ docu
     return documents.find(d => d.doc_type === type);
   };
 
+  const unmappedDocs = documents.filter(d => !steps.some(s => s.type === d.doc_type));
+
   return (
     <div className="p-6 rounded-3xl bg-slate-900/70 border border-slate-800 space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
@@ -123,6 +125,27 @@ export const TransactionFlowGraph: React.FC<TransactionFlowGraphProps> = ({ docu
           );
         })}
       </div>
+
+      {/* Unmapped / Other Document Types List */}
+      {unmappedDocs.length > 0 && (
+        <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 space-y-2">
+          <div className="flex items-center gap-2 font-semibold">
+            <AlertCircle className="w-4 h-4 text-amber-400" />
+            <span>Additional Ingested Documents ({unmappedDocs.length})</span>
+          </div>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {unmappedDocs.map((ud) => (
+              <div key={ud.id} className="bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-2 text-slate-200">
+                <span className="font-mono text-indigo-400 text-[11px]">{ud.doc_type}</span>
+                <span className="text-slate-400 truncate max-w-[200px]">{ud.filename}</span>
+                {ud.doc_type === 'UNKNOWN' && (
+                  <span className="text-[10px] text-amber-400 bg-amber-500/15 px-1.5 py-0.5 rounded">No text extracted</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -105,6 +105,17 @@ export const api = {
     return res.data;
   },
 
+  deleteTransaction: async (id: string): Promise<void> => {
+    await axios.delete(`${API_BASE}/transactions/${id}`);
+  },
+
+  cleanupEmptyTransactions: async (): Promise<{ status: string; deleted_transactions: number }> => {
+    const res = await axios.delete<{ status: string; deleted_transactions: number }>(
+      `${API_BASE}/transactions/cleanup-empty`
+    );
+    return res.data;
+  },
+
   // 3. Evidence API
   getEvidence: async (id: string): Promise<EvidenceItem> => {
     const res = await axios.get<EvidenceItem>(`${API_BASE}/evidence/${id}`);

@@ -17,6 +17,8 @@ import {
   Clock,
   ArrowUpRight,
   Database
+  Database,
+  Trash2
 } from 'lucide-react';
 import { api } from '../api';
 import type { TransactionItem, SeverityLevel } from '../types';
@@ -33,6 +35,7 @@ export const TransactionsPage: React.FC = () => {
   const [isLinking, setIsLinking] = useState(false);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isSeeding, setIsSeeding] = useState(false);
+  const [isCleaning, setIsCleaning] = useState(false);
 
   // Filters & Search
   const [searchQuery, setSearchQuery] = useState('');
@@ -56,6 +59,30 @@ export const TransactionsPage: React.FC = () => {
       console.error('Failed to load transactions:', err);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleCleanupEmpty = async () => {
+    if (!window.confirm("Remove all 0.00 / empty transaction records?")) return;
+    setIsCleaning(true);
+    try {
+      await api.cleanupEmptyTransactions();
+      await fetchTransactions();
+    } catch (err) {
+      console.error('Cleanup failed:', err);
+    } finally {
+      setIsCleaning(false);
+    }
+  };
+
+  const handleDeleteTransaction = async (e: React.MouseEvent, txnId: string) => {
+    e.stopPropagation();
+    if (!window.confirm("Delete this transaction?")) return;
+    try {
+      await api.deleteTransaction(txnId);
+      await fetchTransactions();
+    } catch (err) {
+      console.error('Delete transaction failed:', err);
     }
   };
 
@@ -292,6 +319,16 @@ export const TransactionsPage: React.FC = () => {
           >
             <RefreshCw className={`w-4 h-4 ${isLinking ? 'animate-spin text-indigo-400' : ''}`} />
             <span>Auto-Link TXNs</span>
+          </button>
+
+          <button
+            onClick={handleCleanupEmpty}
+            disabled={isCleaning}
+            title="Remove all zero-amount or empty documents/transactions"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-rose-950/40 hover:bg-rose-900/50 text-rose-300 text-xs font-semibold border border-rose-500/30 transition cursor-pointer disabled:opacity-50"
+          >
+            {isCleaning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
+            <span>Clear 0-Records</span>
           </button>
         </div>
       </div>
@@ -586,6 +623,18 @@ export const TransactionsPage: React.FC = () => {
                         <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-600/10 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition">
                           <ArrowUpRight className="w-3.5 h-3.5" />
                         </span>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            onClick={(e) => handleDeleteTransaction(e, txn.id)}
+                            title="Delete transaction"
+                            className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white transition cursor-pointer"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-600/10 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition">
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
                       </td>
 
                     </tr>

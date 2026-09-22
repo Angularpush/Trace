@@ -74,3 +74,41 @@ def get_transaction_discrepancies(txn_id: str, db: Session = Depends(get_db)):
     if not txn:
         raise HTTPException(status_code=404, detail=f"Transaction '{txn_id}' not found")
     return txn.discrepancies
+
+@router.delete("/cleanup-empty")
+def cleanup_empty_transactions(db: Session = Depends(get_db)):
+    """
+    Removes all transactions with 0.00 total amount or no valid documents,
+    along with orphaned UNKNOWN documents.
+    """
+    from app.models.document import Document
+    zero_txns = db.query(Transaction).filter(
+        (Transaction.total_amount == 0.0) | (Transaction.transaction_ref.like("TXN-DOC%"))
+    ).all()
+    deleted_count = len(zero_txns)
+    for txn in zero_txns:
+        db.delete(txn)
+
+    # Clean orphaned UNKNOWN docs
+    orphaned_docs = db.query(Document).filter(
+        Document.doc_type == "UNKNOWN"
+    ).all()
+    for doc in orphaned_docs:
+        if not doc.transactions:
+            db.delete(doc)
+
+    db.commit()
+    return {"status": "success", "deleted_transactions": deleted_count}
+
+@router.delete("/{txn_id}")
+def delete_transaction(txn_id: str, db: Session = Depends(get_db)):
+    """
+    Deletes a specific transaction record and its discrepancies.
+    """
+    txn = db.query(Transaction).filter(Transaction.id == txn_id).first()
+    if not txn:
+        raise HTTPException(status_code=404, detail=f"Transaction '{txn_id}' not found")
+    db.delete(txn)
+    db.commit()
+    return {"status": "success", "message": f"Transaction '{txn_id}' deleted successfully"}
+
