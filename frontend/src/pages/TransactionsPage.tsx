@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { 
   RefreshCw, 
   Search, 
@@ -16,9 +16,9 @@ import {
   AlertCircle,
   Clock,
   ArrowUpRight,
-  Database
   Database,
-  Trash2
+  Trash2,
+  X
 } from 'lucide-react';
 import { api } from '../api';
 import type { TransactionItem, SeverityLevel } from '../types';
@@ -30,6 +30,7 @@ type SortOrder = 'asc' | 'desc';
 
 export const TransactionsPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [transactions, setTransactions] = useState<TransactionItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLinking, setIsLinking] = useState(false);
@@ -38,9 +39,22 @@ export const TransactionsPage: React.FC = () => {
   const [isCleaning, setIsCleaning] = useState(false);
 
   // Filters & Search
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('ALL');
-  const [severityFilter, setSeverityFilter] = useState<string>('ALL');
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+  const [statusFilter, setStatusFilter] = useState<string>(searchParams.get('status') || 'ALL');
+  const [severityFilter, setSeverityFilter] = useState<string>(searchParams.get('severity') || 'ALL');
+  const [quickFilter, setQuickFilter] = useState<string>(searchParams.get('filter') || 'ALL');
+
+  useEffect(() => {
+    const urlStatus = searchParams.get('status');
+    const urlSeverity = searchParams.get('severity');
+    const urlFilter = searchParams.get('filter');
+    const urlSearch = searchParams.get('search');
+
+    if (urlStatus !== null) setStatusFilter(urlStatus);
+    if (urlSeverity !== null) setSeverityFilter(urlSeverity);
+    if (urlFilter !== null) setQuickFilter(urlFilter);
+    if (urlSearch !== null) setSearchQuery(urlSearch);
+  }, [searchParams]);
 
   // Sorting
   const [sortField, setSortField] = useState<SortField>('updated_at');
@@ -197,6 +211,17 @@ export const TransactionsPage: React.FC = () => {
       }
 
       return matchesSearch && matchesStatus && matchesSeverity;
+      // Quick filter (from dashboard card clicks)
+      let matchesQuick = true;
+      if (quickFilter === 'outstanding') {
+        matchesQuick = metrics.outstanding > 0;
+      } else if (quickFilter === 'discrepancies') {
+        matchesQuick = t.reconciliation_status === 'DISCREPANCY_FOUND' || metrics.discrepancyCount > 0;
+      } else if (quickFilter === 'needs_review') {
+        matchesQuick = t.reconciliation_status === 'INCOMPLETE' || t.reconciliation_status === 'PENDING';
+      }
+
+      return matchesSearch && matchesStatus && matchesSeverity && matchesQuick;
     });
 
     // Sorting
@@ -396,16 +421,43 @@ export const TransactionsPage: React.FC = () => {
             </select>
           </div>
 
+          {/* Quick Filter Pill if set */}
+          {quickFilter !== 'ALL' && (
+            <div className="flex items-center gap-1.5 bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-xs px-2.5 py-1 rounded-xl">
+              <span>
+                {quickFilter === 'outstanding' && '💸 Filter: Outstanding Payments'}
+                {quickFilter === 'discrepancies' && '⚠️ Filter: With Discrepancies'}
+                {quickFilter === 'needs_review' && '⏳ Filter: Needs Review'}
+              </span>
+              <button
+                onClick={() => {
+                  setQuickFilter('ALL');
+                  setSearchParams(prev => {
+                    const next = new URLSearchParams(prev);
+                    next.delete('filter');
+                    return next;
+                  });
+                }}
+                className="hover:text-white transition p-0.5"
+                title="Clear quick filter"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+          )}
+
           {/* Reset Filters */}
-          {(searchQuery || statusFilter !== 'ALL' || severityFilter !== 'ALL') && (
+          {(searchQuery || statusFilter !== 'ALL' || severityFilter !== 'ALL' || quickFilter !== 'ALL') && (
             <button
               onClick={() => {
                 setSearchQuery('');
                 setStatusFilter('ALL');
                 setSeverityFilter('ALL');
+                setQuickFilter('ALL');
+                setSearchParams({});
                 setCurrentPage(1);
               }}
-              className="text-[11px] text-indigo-400 hover:text-indigo-300 font-semibold px-2 py-1 transition"
+              className="text-[11px] text-indigo-400 hover:text-indigo-300 font-semibold px-2 py-1 transition cursor-pointer"
             >
               Reset Filters
             </button>

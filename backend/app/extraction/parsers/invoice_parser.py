@@ -46,14 +46,14 @@ class InvoiceParser:
             data["po_reference"] = po_ref_match.group(1).strip()
 
         # 3. Invoice Date
-        date_match = re.search(r"(?:(?:Invoice|Bill|Issue)?\s*Date[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
+        date_match = re.search(r"(?:(?:Invoice|Bill|Issue|Document)?\s*(?:Date|Dated|Issue)?[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4}|[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})", text, re.IGNORECASE)
         if date_match:
             raw_d = date_match.group(1).strip()
             data["document_date"] = normalize_date(raw_d)
             data["extra_metadata"]["raw_date"] = raw_d
 
         # 4. Due Date
-        due_match = re.search(r"(?:(?:Payment\s*Due\s*Date|Due\s*Date)[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})", text, re.IGNORECASE)
+        due_match = re.search(r"(?:(?:Payment\s*Due\s*Date|Due\s*Date|Due)[:\s]+)(\d{4}[-\s/.]\d{1,2}[-\s/.]\d{1,2}|\d{1,2}[-\s/.][A-Za-z0-9]+[-\s/.]\d{2,4}|\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4}|[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})", text, re.IGNORECASE)
         if due_match:
             data["due_date"] = normalize_date(due_match.group(1))
 
@@ -210,7 +210,9 @@ class InvoiceParser:
                 s_tax = normalize_decimal(sgst_m.group(1))
                 data["tax_total"] = str(c_tax + s_tax)
 
-        grand_match = re.search(r"(?:Invoice\s*Total|Total\s*Invoice\s*Amount|Grand\s*Total|Gross\s*Total|Total\s*Amount)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        grand_match = re.search(r"(?:Total\s*Invoice\s*Amount|Grand\s*Total|Gross\s*Total|Total\s*Amount|Total\s*Payable|Total\s*Due|Invoice\s*Total)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        if not grand_match:
+            grand_match = re.search(r"(?:^|\n)\s*Total[:\s]+(?:INR|Rs\.|Rs|₹|[I\|■\?])\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
         if grand_match:
             data["grand_total"] = str(normalize_decimal(grand_match.group(1)))
 

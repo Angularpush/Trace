@@ -62,29 +62,47 @@ async def upload_documents(
             )
 
             for p_info in processed_pages:
-                page_doc_id = f"doc_{uuid.uuid4().hex[:10]}"
                 p_num = p_info["page_number"]
                 total_p = len(processed_pages)
                 page_fn = upload.filename if total_p == 1 else f"{os.path.splitext(upload.filename)[0]} (Page {p_num}){ext}"
 
-                doc_record = Document(
-                    id=page_doc_id,
-                    original_pdf_id=orig_pdf_id,
-                    page_number=p_num,
-                    filename=page_fn,
-                    file_path=p_info.get("file_path") or target_path,
-                    file_type=ext.replace(".", ""),
-                    doc_type=p_info["doc_type"],
-                    classification_confidence=p_info["classification_confidence"],
-                    page_count=1,
-                    raw_text=p_info["raw_text"],
-                    parsed_data=p_info["parsed_data"],
-                    status="processed"
-                )
-                db.add(doc_record)
-                db.commit()
-                db.refresh(doc_record)
-                saved_docs.append(doc_record)
+                # Check if document already exists to prevent duplicate insertion
+                existing_doc = db.query(Document).filter(
+                    Document.filename == page_fn,
+                    Document.page_number == p_num
+                ).first()
+
+                if existing_doc:
+                    existing_doc.file_path = p_info.get("file_path") or target_path
+                    existing_doc.file_type = ext.replace(".", "")
+                    existing_doc.doc_type = p_info["doc_type"]
+                    existing_doc.classification_confidence = p_info["classification_confidence"]
+                    existing_doc.raw_text = p_info["raw_text"]
+                    existing_doc.parsed_data = p_info["parsed_data"]
+                    existing_doc.status = "processed"
+                    db.commit()
+                    db.refresh(existing_doc)
+                    saved_docs.append(existing_doc)
+                else:
+                    page_doc_id = f"doc_{uuid.uuid4().hex[:10]}"
+                    doc_record = Document(
+                        id=page_doc_id,
+                        original_pdf_id=orig_pdf_id,
+                        page_number=p_num,
+                        filename=page_fn,
+                        file_path=p_info.get("file_path") or target_path,
+                        file_type=ext.replace(".", ""),
+                        doc_type=p_info["doc_type"],
+                        classification_confidence=p_info["classification_confidence"],
+                        page_count=1,
+                        raw_text=p_info["raw_text"],
+                        parsed_data=p_info["parsed_data"],
+                        status="processed"
+                    )
+                    db.add(doc_record)
+                    db.commit()
+                    db.refresh(doc_record)
+                    saved_docs.append(doc_record)
 
         except Exception as e:
             db.rollback()
@@ -208,33 +226,48 @@ def seed_demo_documents(db: Session = Depends(get_db)):
     saved_docs = []
 
     if os.path.exists(sample_dir):
-        for fname in sorted(os.listdir(sample_dir)):
-            if not fname.endswith(".pdf"):
-                continue
-            src_path = os.path.join(sample_dir, fname)
-            doc_id = f"doc_{uuid.uuid4().hex[:10]}"
-            target_path = os.path.join(settings.STORAGE_DIR, f"{doc_id}_{fname}")
-            shutil.copyfile(src_path, target_path)
+        for root, _, files in os.walk(sample_dir):
+            for fname in sorted(files):
+                if not fname.endswith(".pdf") and not fname.endswith(".txt"):
+                    continue
+                src_path = os.path.join(root, fname)
+                doc_id = f"doc_{uuid.uuid4().hex[:10]}"
+                target_path = os.path.join(settings.STORAGE_DIR, f"{doc_id}_{fname}")
+                shutil.copyfile(src_path, target_path)
 
-            processed = DocumentProcessingService.process_document(target_path)
-            doc_record = Document(
-                id=doc_id,
-                original_pdf_id=doc_id,
-                page_number=1,
-                filename=fname,
-                file_path=target_path,
-                file_type="pdf",
-                doc_type=processed["doc_type"],
-                classification_confidence=processed["classification_confidence"],
-                page_count=processed["page_count"],
-                raw_text=processed["raw_text"],
-                parsed_data=processed["parsed_data"],
-                status="processed"
-            )
-            db.add(doc_record)
-            db.commit()
-            db.refresh(doc_record)
-            saved_docs.append(doc_record)
+                processed = DocumentProcessingService.process_document(target_path)
+                existing_doc = db.query(Document).filter(Document.filename == fname).first()
+                if existing_doc:
+                    existing_doc.file_path = target_path
+                    existing_doc.file_type = "pdf" if fname.endswith(".pdf") else "txt"
+                    existing_doc.doc_type = processed["doc_type"]
+                    existing_doc.classification_confidence = processed["classification_confidence"]
+                    existing_doc.page_count = processed["page_count"]
+                    existing_doc.raw_text = processed["raw_text"]
+                    existing_doc.parsed_data = processed["parsed_data"]
+                    existing_doc.status = "processed"
+                    db.commit()
+                    db.refresh(existing_doc)
+                    saved_docs.append(existing_doc)
+                else:
+                    doc_record = Document(
+                        id=doc_id,
+                        original_pdf_id=doc_id,
+                        page_number=1,
+                        filename=fname,
+                        file_path=target_path,
+                        file_type="pdf" if fname.endswith(".pdf") else "txt",
+                        doc_type=processed["doc_type"],
+                        classification_confidence=processed["classification_confidence"],
+                        page_count=processed["page_count"],
+                        raw_text=processed["raw_text"],
+                        parsed_data=processed["parsed_data"],
+                        status="processed"
+                    )
+                    db.add(doc_record)
+                    db.commit()
+                    db.refresh(doc_record)
+                    saved_docs.append(doc_record)
 
     # Automatically auto-link and reconcile
     from app.reconciliation.linker import TransactionLinker
@@ -274,6 +307,9 @@ def seed_demo_documents(db: Session = Depends(get_db)):
                 title=disc_data.get("title", ""),
                 description=disc_data.get("description", ""),
                 difference_amount=float(disc_data.get("difference_amount", 0.0)),
+                expected_value=disc_data.get("expected_value", ""),
+                actual_value=disc_data.get("actual_value", ""),
+                difference_value=disc_data.get("difference_value", ""),
                 llm_explanation=disc_data.get("llm_explanation", ""),
                 status="OPEN"
             )

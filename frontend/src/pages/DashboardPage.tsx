@@ -310,28 +310,48 @@ export const DashboardPage: React.FC = () => {
       )}
 
       {/* ------------------------------------------------------------- */}
-      {/* 5 KEY METRICS CARDS                                           */}
+      {/* 5 KEY METRICS CARDS (Interactive Quick Filters)              */}
       {/* ------------------------------------------------------------- */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         
         {/* Card 1: Total Transactions */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-slate-700 transition">
+        <div 
+          onClick={() => navigate('/transactions')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/transactions')}
+          className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-indigo-500/50 hover:bg-slate-900/90 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-indigo-500/10"
+          title="Click to view all transactions"
+        >
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Total Transactions</span>
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
-              <Layers className="w-4 h-4" />
+            <span className="text-[11px] font-bold uppercase tracking-wider group-hover:text-indigo-300 transition">Total Transactions</span>
+            <div className="flex items-center gap-1">
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition">
+                <Layers className="w-4 h-4" />
+              </div>
             </div>
           </div>
-          <p className="text-2xl font-black text-slate-100 font-mono">{totalTransactionsCount}</p>
-          <p className="text-[11px] text-slate-500">{documents.length} source documents linked</p>
+          <p className="text-2xl font-black text-slate-100 font-mono group-hover:text-indigo-200 transition">{totalTransactionsCount}</p>
+          <p className="text-[11px] text-slate-500 group-hover:text-slate-400 transition">{documents.length} source documents linked</p>
         </div>
 
         {/* Card 2: Reconciled */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-emerald-500/30 transition">
+        <div 
+          onClick={() => navigate('/transactions?status=RECONCILED')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/transactions?status=RECONCILED')}
+          className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-emerald-500/50 hover:bg-slate-900/90 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-emerald-500/10"
+          title="Click to view reconciled transactions"
+        >
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Reconciled</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-              <ShieldCheck className="w-4 h-4" />
+            <span className="text-[11px] font-bold uppercase tracking-wider group-hover:text-emerald-300 transition">Reconciled</span>
+            <div className="flex items-center gap-1">
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
             </div>
           </div>
           <div className="flex items-baseline gap-2">
@@ -342,15 +362,25 @@ export const DashboardPage: React.FC = () => {
               </span>
             )}
           </div>
-          <p className="text-[11px] text-slate-500">100% 4-way matching consistency</p>
+          <p className="text-[11px] text-slate-500 group-hover:text-slate-400 transition">100% 4-way matching consistency</p>
         </div>
 
         {/* Card 3: Discrepancies */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-rose-500/30 transition">
+        <div 
+          onClick={() => navigate('/transactions?filter=discrepancies')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/transactions?filter=discrepancies')}
+          className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-rose-500/50 hover:bg-slate-900/90 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-rose-500/10"
+          title="Click to view transactions with discrepancies"
+        >
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Discrepancies</span>
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400">
-              <AlertTriangle className="w-4 h-4" />
+            <span className="text-[11px] font-bold uppercase tracking-wider group-hover:text-rose-300 transition">Discrepancies</span>
+            <div className="flex items-center gap-1">
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 group-hover:bg-rose-500/20 transition">
+                <AlertTriangle className="w-4 h-4" />
+              </div>
             </div>
           </div>
           <div className="flex items-baseline gap-2">
@@ -361,33 +391,53 @@ export const DashboardPage: React.FC = () => {
               </span>
             )}
           </div>
-          <p className="text-[11px] text-slate-500">{highDiscrepanciesCount} high severity flags</p>
+          <p className="text-[11px] text-slate-500 group-hover:text-slate-400 transition">{highDiscrepanciesCount} high severity flags</p>
         </div>
 
         {/* Card 4: Needs Review */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-amber-500/30 transition">
+        <div 
+          onClick={() => navigate('/transactions?filter=needs_review')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/transactions?filter=needs_review')}
+          className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-amber-500/50 hover:bg-slate-900/90 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-amber-500/10"
+          title="Click to view transactions needing review"
+        >
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Needs Review</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-              <AlertCircle className="w-4 h-4" />
+            <span className="text-[11px] font-bold uppercase tracking-wider group-hover:text-amber-300 transition">Needs Review</span>
+            <div className="flex items-center gap-1">
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 group-hover:bg-amber-500/20 transition">
+                <AlertCircle className="w-4 h-4" />
+              </div>
             </div>
           </div>
           <p className="text-2xl font-black text-amber-400 font-mono">{needsReviewCount}</p>
-          <p className="text-[11px] text-slate-500">Requires auditor decision</p>
+          <p className="text-[11px] text-slate-500 group-hover:text-slate-400 transition">Requires auditor decision</p>
         </div>
 
         {/* Card 5: Outstanding Payments */}
-        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-rose-500/30 transition">
+        <div 
+          onClick={() => navigate('/transactions?filter=outstanding')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && navigate('/transactions?filter=outstanding')}
+          className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2 hover:border-rose-500/50 hover:bg-slate-900/90 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-rose-500/10"
+          title="Click to view transactions with outstanding shortfalls"
+        >
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Outstanding Payments</span>
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400">
-              <TrendingDown className="w-4 h-4" />
+            <span className="text-[11px] font-bold uppercase tracking-wider group-hover:text-rose-300 transition">Outstanding Payments</span>
+            <div className="flex items-center gap-1">
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 group-hover:bg-rose-500/20 transition">
+                <TrendingDown className="w-4 h-4" />
+              </div>
             </div>
           </div>
           <p className="text-xl font-black text-rose-400 font-mono truncate">
             ₹{outstandingPaymentsTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
           </p>
-          <p className="text-[11px] text-slate-500">{transactionsWithShortfall} shortfalls detected</p>
+          <p className="text-[11px] text-slate-500 group-hover:text-slate-400 transition">{transactionsWithShortfall} shortfalls detected</p>
         </div>
 
       </div>

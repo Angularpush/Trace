@@ -138,8 +138,8 @@ export const FinancialSummary: React.FC<FinancialSummaryProps> = ({
   return (
     <div className="space-y-6">
       
-      {/* 4 Key Financial Metrics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Financial Metrics Cards (4 cards if payment receipt exists, 3 cards if awaiting payment) */}
+      <div className={`grid grid-cols-1 ${payDoc ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3'} gap-4`}>
         
         {/* 1. Contracted PO Total */}
         <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
@@ -177,48 +177,102 @@ export const FinancialSummary: React.FC<FinancialSummaryProps> = ({
           </div>
         </div>
 
-        {/* 3. Settled Paid Total */}
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div className="flex items-center justify-between text-slate-400">
-            <span className="text-xs font-semibold uppercase tracking-wider">Settled / Paid</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <CreditCard className="w-4 h-4" />
+        {/* 3. Settled Paid Total - Only displayed when Payment Receipt is linked */}
+        {payDoc && (
+          <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+            <div className="flex items-center justify-between text-slate-400">
+              <span className="text-xs font-semibold uppercase tracking-wider">Settled / Paid</span>
+              <div className={`p-2 rounded-xl ${
+                paidTotal > 0 
+                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                  : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+              }`}>
+                <CreditCard className="w-4 h-4" />
+              </div>
+            </div>
+            <div className="space-y-0.5">
+              <p className={`text-xl font-mono font-extrabold ${paidTotal > 0 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                ₹{paidTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+              </p>
+              <p className="text-[11px] text-slate-400">
+                Ref #{payDoc.parsed_data?.transaction_reference || payDoc.parsed_data?.document_number || 'Recorded'}
+              </p>
             </div>
           </div>
-          <div className="space-y-0.5">
-            <p className="text-xl font-mono font-extrabold text-emerald-400">
-              {paidTotal > 0 ? `₹${paidTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '₹0.00'}
-            </p>
-            <p className="text-[11px] text-slate-400">
-              {payDoc ? `Ref #${payDoc.parsed_data?.transaction_reference || 'Recorded'}` : 'No Payment Receipt linked'}
-            </p>
-          </div>
-        </div>
+        )}
 
-        {/* 4. Outstanding / Shortfall */}
+        {/* 4 / 3. Outstanding Shortfall or Unpaid Balance */}
         <div className={`p-4 rounded-2xl border space-y-2 ${
-          outstandingAmount > 0 
+          invoiceTotal > 0 && !payDoc
+            ? 'bg-amber-950/20 border-amber-500/30'
+            : outstandingAmount > 0 
             ? 'bg-rose-950/20 border-rose-500/30' 
+            : payDoc && invoiceTotal > 0
+            ? 'bg-slate-900/80 border-slate-800'
             : 'bg-slate-900/80 border-slate-800'
         }`}>
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-semibold uppercase tracking-wider">
-              {outstandingAmount > 0 ? 'Outstanding Shortfall' : 'Settlement Balance'}
+              {invoiceTotal > 0 && !payDoc
+                ? 'Unpaid Invoiced Balance'
+                : outstandingAmount > 0 
+                ? 'Outstanding Shortfall' 
+                : poTotal > 0 && !invDoc
+                ? 'Contracted (Unbilled)'
+                : 'Settlement Balance'}
             </span>
             <div className={`p-2 rounded-xl ${
-              outstandingAmount > 0 
+              invoiceTotal > 0 && !payDoc
+                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                : outstandingAmount > 0 
                 ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' 
-                : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                : payDoc && invoiceTotal > 0
+                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                : 'bg-slate-800 text-slate-500 border border-slate-700'
             }`}>
-              {outstandingAmount > 0 ? <ShieldAlert className="w-4 h-4" /> : <CheckCircle2 className="w-4 h-4" />}
+              {invoiceTotal > 0 && !payDoc ? (
+                <AlertTriangle className="w-4 h-4" />
+              ) : outstandingAmount > 0 ? (
+                <ShieldAlert className="w-4 h-4" />
+              ) : payDoc && invoiceTotal > 0 ? (
+                <CheckCircle2 className="w-4 h-4" />
+              ) : (
+                <Receipt className="w-4 h-4" />
+              )}
             </div>
           </div>
           <div className="space-y-0.5">
-            <p className={`text-xl font-mono font-extrabold ${outstandingAmount > 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
-              ₹{outstandingAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+            <p className={`text-xl font-mono font-extrabold ${
+              invoiceTotal > 0 && !payDoc
+                ? 'text-amber-400'
+                : outstandingAmount > 0 
+                ? 'text-rose-400' 
+                : payDoc && invoiceTotal > 0
+                ? 'text-emerald-400'
+                : poTotal > 0
+                ? 'text-indigo-300'
+                : 'text-slate-400'
+            }`}>
+              {invoiceTotal > 0 && !payDoc
+                ? `₹${invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`
+                : outstandingAmount > 0 
+                ? `₹${outstandingAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`
+                : payDoc && invoiceTotal > 0
+                ? '₹0.00'
+                : poTotal > 0
+                ? `₹${poTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`
+                : '—'}
             </p>
             <p className="text-[11px] text-slate-400">
-              {outstandingAmount > 0 ? 'Pending payment settlement' : 'Fully settled / Zero balance'}
+              {invoiceTotal > 0 && !payDoc
+                ? 'Awaiting payment receipt'
+                : outstandingAmount > 0 
+                ? 'Pending payment settlement' 
+                : payDoc && invoiceTotal > 0
+                ? 'Fully settled / Zero balance'
+                : poTotal > 0
+                ? 'Awaiting invoice & payment'
+                : 'No financial records linked'}
             </p>
           </div>
         </div>
@@ -228,10 +282,10 @@ export const FinancialSummary: React.FC<FinancialSummaryProps> = ({
       {/* Reconciliation Financial Breakdown Strip */}
       <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-          <span>Three-Way Financial Reconciliation Balance</span>
+          <span>{payDoc ? 'Three-Way' : 'Two-Way'} Financial Reconciliation Balance</span>
         </h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className={`grid grid-cols-1 ${payDoc ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-3`}>
           
           {/* Check 1: PO vs Invoice */}
           <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
@@ -252,9 +306,9 @@ export const FinancialSummary: React.FC<FinancialSummaryProps> = ({
               )}
             </div>
             <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-slate-800/60">
-              <span>PO: ₹{poTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              <span>PO: {poTotal > 0 ? `₹${poTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '—'}</span>
               <ArrowRight className="w-3 h-3 text-slate-600" />
-              <span>Inv: ₹{invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              <span>Inv: {invoiceTotal > 0 ? `₹${invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '—'}</span>
             </div>
           </div>
 
@@ -277,34 +331,40 @@ export const FinancialSummary: React.FC<FinancialSummaryProps> = ({
               )}
             </div>
             <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-slate-800/60">
-              <span>Delivered: ₹{deliveredValue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              <span>Delivered: {deliveredValue > 0 ? `₹${deliveredValue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '—'}</span>
               <ArrowRight className="w-3 h-3 text-slate-600" />
-              <span>Billed: ₹{invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              <span>Billed: {invoiceTotal > 0 ? `₹${invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '—'}</span>
             </div>
           </div>
 
-          {/* Check 3: Invoice vs Paid */}
-          <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-300">Invoice vs Paid</span>
-              {paidTotal >= invoiceTotal && invoiceTotal > 0 ? (
-                <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Fully Settled
-                </span>
-              ) : paidTotal > 0 ? (
-                <span className="text-[11px] font-bold text-rose-400 flex items-center gap-1">
-                  <AlertTriangle className="w-3.5 h-3.5" /> Shortfall: ₹{(invoiceTotal - paidTotal).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
-                </span>
-              ) : (
-                <span className="text-[11px] font-bold text-slate-400">Payment Pending</span>
-              )}
+          {/* Check 3: Invoice vs Paid - Only displayed when Payment Receipt is linked */}
+          {payDoc && (
+            <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-slate-300">Invoice vs Paid</span>
+                {paidTotal >= invoiceTotal && invoiceTotal > 0 ? (
+                  <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Fully Settled
+                  </span>
+                ) : paidTotal > 0 ? (
+                  <span className="text-[11px] font-bold text-rose-400 flex items-center gap-1">
+                    <AlertTriangle className="w-3.5 h-3.5" /> Shortfall: ₹{(invoiceTotal - paidTotal).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+                  </span>
+                ) : invoiceTotal > 0 ? (
+                  <span className="text-[11px] font-bold text-amber-400 flex items-center gap-1">
+                    <AlertTriangle className="w-3.5 h-3.5" /> Awaiting Payment
+                  </span>
+                ) : (
+                  <span className="text-[11px] text-slate-500">Incomplete Pair</span>
+                )}
+              </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-slate-800/60">
+                <span>Billed: {invoiceTotal > 0 ? `₹${invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}` : '—'}</span>
+                <ArrowRight className="w-3 h-3 text-slate-600" />
+                <span>Paid: ₹{paidTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              </div>
             </div>
-            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-slate-800/60">
-              <span>Billed: ₹{invoiceTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-              <ArrowRight className="w-3 h-3 text-slate-600" />
-              <span>Paid: ₹{paidTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-            </div>
-          </div>
+          )}
 
         </div>
       </div>

@@ -207,14 +207,67 @@ export const DiscrepancyCard: React.FC<DiscrepancyCardProps> = ({
 
           {/* AI Grounded Explanation */}
           {discrepancy.llm_explanation && (
-            <div className="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-500/20 space-y-1.5">
-              <div className="flex items-center gap-1.5 text-indigo-300 font-semibold text-xs">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                <span>AI Decision Support Explanation</span>
+            <div className="p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/30 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-indigo-300 font-bold text-xs">
+                  <Sparkles className="w-4 h-4 text-indigo-400" />
+                  <span>AI Grounded Audit Decision Support</span>
+                </div>
+                <span className="text-[10px] font-mono text-indigo-400/80 bg-indigo-950 px-2 py-0.5 rounded border border-indigo-800/40">
+                  Grounded in Verified Evidence
+                </span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {discrepancy.llm_explanation}
-              </p>
+              
+              {(() => {
+                const text = discrepancy.llm_explanation;
+                const sections = text.split('\n\n').filter(Boolean);
+                if (sections.length > 1) {
+                  return (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                      {sections.map((sec, idx) => {
+                        const isRootCause = sec.startsWith('**Root Cause**:');
+                        const isFinancial = sec.startsWith('**Financial Impact**:') || sec.startsWith('**Financial Risk**:') || sec.startsWith('**Tax Risk**:') || sec.startsWith('**Audit Risk**:');
+                        const isAction = sec.startsWith('**Recommended Action**:') || sec.startsWith('**Decision Support**:');
+
+                        const cleanText = sec
+                          .replace(/^\*\*(?:Root Cause|Financial Impact|Financial Risk|Tax Risk|Audit Risk|Audit Finding|Recommended Action|Decision Support)\*\*:\s*/, '');
+
+                        return (
+                          <div 
+                            key={idx}
+                            className={`p-3 rounded-xl border text-xs leading-relaxed flex flex-col justify-between ${
+                              isRootCause 
+                                ? 'bg-slate-950/80 border-slate-800 text-slate-300'
+                                : isFinancial
+                                ? 'bg-amber-950/20 border-amber-500/30 text-amber-200'
+                                : isAction
+                                ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200'
+                                : 'bg-slate-950/60 border-slate-800 text-slate-300'
+                            }`}
+                          >
+                            <div>
+                              <span className="font-extrabold uppercase tracking-wider text-[10px] block mb-1.5 opacity-90">
+                                {isRootCause && '🔍 Root Cause Analysis'}
+                                {isFinancial && '💰 Financial Impact / Risk'}
+                                {isAction && '💡 Actionable Resolution'}
+                                {!isRootCause && !isFinancial && !isAction && '📋 Audit Note'}
+                              </span>
+                              <p className="font-sans text-[11px] leading-relaxed">
+                                {cleanText.replace(/\*\*(.*?)\*\*/g, '$1')}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+                return (
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                    {text}
+                  </p>
+                );
+              })()}
             </div>
           )}
 
