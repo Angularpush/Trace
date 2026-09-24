@@ -1,6 +1,6 @@
 # TRACE Research Benchmark Evaluation Report
-**Benchmark ID**: `bench_1790224299`  
-**Evaluation Timestamp**: `2026-09-24T04:31:39.980528`  
+**Benchmark ID**: `bench_1790226146`  
+**Evaluation Timestamp**: `2026-09-24T05:02:26.771343`  
 **Dataset Size**: 40 transactions across 12 categories  
 
 ---
@@ -14,7 +14,7 @@
 | **F1-Score** | 61.54% | 48.00% | **61.54%** |
 | **Linking Accuracy** | 100.00% | 100.00% | 100.00% |
 | **Evidence Accuracy** | 100.00% | 100.00% | 100.00% |
-| **Average Latency** | **0.22 ms** | 38.65 ms | 0.64 ms |
+| **Average Latency** | **0.35 ms** | 0.09 ms | 0.48 ms |
 | **Total Cost** | **$0.0000** | $0.00326 | $0.00326 |
 | **Cost / Transaction** | **$0.0000** | $0.000082 | $0.000082 |
 
@@ -22,8 +22,8 @@
 
 ## 2. Key Research Findings
 
-- Rule-Based achieves fastest execution (0.2ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.
-- AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (38.6ms/txn) and token cost ($0.0033).
+- Rule-Based achieves fastest execution (0.3ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.
+- AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (0.1ms/txn) and token cost ($0.0033).
 - Hybrid achieves balanced performance (F1: 61.54%) by combining deterministic Decimal precision for arithmetic with semantic/LLM reasoning for edge cases.
 - Document linking achieved 100.0% accuracy using multi-signal exact identifier + metadata matching.
 

@@ -1,6 +1,6 @@
 {
-  "benchmark_id": "bench_1790224299",
-  "run_timestamp": "2026-09-24T04:31:39.980528",
+  "benchmark_id": "bench_1790226146",
+  "run_timestamp": "2026-09-24T05:02:26.771343",
   "dataset_size": 40,
   "categories_tested": 12,
   "rule_based_metrics": {
@@ -12,7 +12,7 @@
     "linking_accuracy": 1.0,
     "evidence_accuracy": 1.0,
     "reconciliation_accuracy": 0.6154,
-    "avg_execution_time_ms": 0.22,
+    "avg_execution_time_ms": 0.35,
     "total_cost_usd": 0.0,
     "cost_per_transaction_usd": 0.0,
     "category_breakdown": [
@@ -117,7 +117,7 @@
     "linking_accuracy": 1.0,
     "evidence_accuracy": 1.0,
     "reconciliation_accuracy": 0.48,
-    "avg_execution_time_ms": 38.65,
+    "avg_execution_time_ms": 0.09,
     "total_cost_usd": 0.003263,
     "cost_per_transaction_usd": 8.2e-05,
     "category_breakdown": [
@@ -222,7 +222,7 @@
     "linking_accuracy": 1.0,
     "evidence_accuracy": 1.0,
     "reconciliation_accuracy": 0.6154,
-    "avg_execution_time_ms": 0.64,
+    "avg_execution_time_ms": 0.48,
     "total_cost_usd": 0.003263,
     "cost_per_transaction_usd": 8.2e-05,
     "category_breakdown": [
@@ -319,8 +319,8 @@
     ]
   },
   "key_findings": [
-    "Rule-Based achieves fastest execution (0.2ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.",
-    "AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (38.6ms/txn) and token cost ($0.0033).",
+    "Rule-Based achieves fastest execution (0.3ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.",
+    "AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (0.1ms/txn) and token cost ($0.0033).",
     "Hybrid achieves balanced performance (F1: 61.54%) by combining deterministic Decimal precision for arithmetic with semantic/LLM reasoning for edge cases.",
     "Document linking achieved 100.0% accuracy using multi-signal exact identifier + metadata matching."
   ],
@@ -334,7 +334,7 @@
       "linking_accuracy": 1.0,
       "evidence_accuracy": 1.0,
       "reconciliation_accuracy": 0.6154,
-      "avg_execution_time_ms": 0.22,
+      "avg_execution_time_ms": 0.35,
       "total_cost_usd": 0.0,
       "cost_per_transaction_usd": 0.0,
       "category_breakdown": [
@@ -439,7 +439,7 @@
       "linking_accuracy": 1.0,
       "evidence_accuracy": 1.0,
       "reconciliation_accuracy": 0.48,
-      "avg_execution_time_ms": 38.65,
+      "avg_execution_time_ms": 0.09,
       "total_cost_usd": 0.003263,
       "cost_per_transaction_usd": 8.2e-05,
       "category_breakdown": [
@@ -544,7 +544,7 @@
       "linking_accuracy": 1.0,
       "evidence_accuracy": 1.0,
       "reconciliation_accuracy": 0.6154,
-      "avg_execution_time_ms": 0.64,
+      "avg_execution_time_ms": 0.48,
       "total_cost_usd": 0.003263,
       "cost_per_transaction_usd": 8.2e-05,
       "category_breakdown": [
