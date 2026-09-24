@@ -1,34 +1,46 @@
 """
-TRACE - Transaction and Reconciliation Pydantic Schemas
+TRACE - Transaction Pydantic Schemas
 """
 
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
-from app.schemas.document import DocumentResponse
+from app.schemas.document import DocumentResponse, TransactionDocumentLinkResponse
 from app.schemas.discrepancy import DiscrepancyResponse
+from app.schemas.reconciliation import ReconciliationRunResponse
 
 class TransactionResponse(BaseModel):
     id: str
-    transaction_ref: str
-    title: str
-    supplier_name: str
-    customer_name: str
-    total_amount: float
-    reconciliation_status: str
-    reconciliation_summary: str
-    metadata_json: Dict[str, Any]
+    transaction_reference: Optional[str] = None
+    supplier: Optional[str] = ""
+    customer: Optional[str] = ""
+    transaction_date: Optional[datetime] = None
+    currency: str = "INR"
+    status: str = "PENDING"
+    total_amount: float = 0.0
     created_at: datetime
-    updated_at: datetime
+    updated_at: Optional[datetime] = None
+
+    # Backwards-compatible aliases
+    transaction_ref: Optional[str] = ""
+    title: Optional[str] = ""
+    supplier_name: Optional[str] = ""
+    customer_name: Optional[str] = ""
+    reconciliation_status: Optional[str] = "PENDING"
+    reconciliation_summary: Optional[str] = ""
+    metadata_json: Dict[str, Any] = {}
+
     documents: List[DocumentResponse] = []
+    document_links: List[TransactionDocumentLinkResponse] = []
     discrepancies: List[DiscrepancyResponse] = []
+    reconciliation_runs: List[ReconciliationRunResponse] = []
 
     model_config = ConfigDict(from_attributes=True)
 
 class ReconciliationRequest(BaseModel):
     transaction_id: str
-    mode: str = "HYBRID"  # RULE_BASED, AI_ONLY, HYBRID
-    llm_provider: Optional[str] = None  # offline, openai, anthropic
+    mode: str = "HYBRID"  # RULE_BASED, AI_LLM, HYBRID
+    llm_provider: Optional[str] = None
 
 class ReconciliationSummaryReport(BaseModel):
     transaction_id: str

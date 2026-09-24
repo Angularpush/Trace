@@ -36,3 +36,4 @@ class File(Base):
 
     upload_batch = relationship("UploadBatch", back_populates="files")
     documents = relationship("Document", back_populates="file", cascade="all, delete-orphan")
+

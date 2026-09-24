@@ -98,6 +98,21 @@ def test_full_api_endpoint_suite():
     assert eval_results_res.json() is not None
 
     # 13. GET /api/dashboard/stats
+    # 13. GET /api/evaluation/ablation
+    ablation_res = client.get("/api/evaluation/ablation")
+    assert ablation_res.status_code == 200
+    ablation_data = ablation_res.json()
+    assert "configurations" in ablation_data
+    assert len(ablation_data["configurations"]) == 4
+
+    # 14. GET /api/transactions/{id}/dispute-notice
+    disp_res = client.get(f"/api/transactions/{sample_txn_id}/dispute-notice")
+    assert disp_res.status_code == 200
+    disp_data = disp_res.json()
+    assert "formal_letter_markdown" in disp_data
+    assert "dispute_reference" in disp_data
+
+    # 15. GET /api/dashboard/stats
     stats_res = client.get("/api/dashboard/stats")
     assert stats_res.status_code == 200
     stats = stats_res.json()
@@ -105,3 +120,4 @@ def test_full_api_endpoint_suite():
     assert "reconciled_transactions" in stats
     assert "discrepancy_transactions" in stats
     assert "total_outstanding_amount" in stats
+

@@ -1,8 +1,4 @@
-# Trace
-
-TRACE is an AI-powered document reconciliation system for MSMEs that analyzes invoices, purchase orders, delivery notes, and payment records to detect quantity, price, tax, total, and document inconsistencies using ML, semantic matching, and rule-based validation.
-
-# TRACE: Document-Level MSME Transaction Reconciliation & Discrepancy Detection System
+# TRACE — Document-Level MSME Transaction Reconciliation & Discrepancy Detection System
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
@@ -13,133 +9,111 @@ TRACE is an AI-powered document reconciliation system for MSMEs that analyzes in
 
 ---
 
-## 📌 Executive Summary
+## 🔬 Research Overview & Objective
 
-**TRACE** is a specialized, research-oriented AI decision-support platform designed to solve the multi-document financial reconciliation problem faced by Micro, Small, and Medium Enterprises (MSMEs).
+**TRACE** is a scientific research platform and decision-support system designed to experimentally compare three automated approaches for transaction-level reconciliation across heterogeneous business documents:
 
-MSMEs routinely exchange semi-structured financial documents—**Purchase Orders (PO)**, **Tax Invoices**, **Delivery Notes / Challans**, **Payment Receipts**, **Quotations**, **Credit Notes**, and **Debit Notes**—across fragmented communication channels (WhatsApp, email, scanned physical receipts). Due to partial shipments, vendor name variations, unit-of-measure discrepancies, advance payments, and manual data-entry errors, reconciling these documents is labor-intensive and prone to severe revenue leakage.
+1. **`RULE_BASED`**: Pure deterministic financial mathematics using exact Python `Decimal` arithmetic (zero floating-point error, 0 LLM calls, $0.00 cost, <1ms latency).
+2. **`AI_LLM`**: Structured prompt reasoning over extracted document contexts with JSON schema enforcement, strict anti-hallucination bounds, and token/cost telemetry.
+3. **`HYBRID`**: Synergistic pipeline combining deterministic rules, dense vector semantic similarity (`all-MiniLM-L6-v2` + FAISS), and targeted LLM explanations with discrepancy-level provenance badges (`rule`, `semantic`, `llm`).
 
-TRACE provides:
+### Central Research Question
 
-1. **Automated Document Classification** using supervised ML on MSME text corpora.
-2. **Layout-Aware PDF Extraction & Normalization** with strict `Decimal` precision.
-3. **Graph-Based Transaction Linker** (Disjoint Set / Connected Components) linking POs, Invoices, Delivery Notes, and Payments.
-4. **Vector-Based Semantic Alignment** (`sentence-transformers/all-MiniLM-L6-v2` + FAISS) for fuzzy vendor/customer and line-item matching.
-5. **Deterministic Financial Rules Engine** enforcing 10 mathematical consistency checks.
-6. **Multi-Provider LLM Explanation Layer** providing structured audit reports, evidence citations, and recommended actions.
-7. **Empirical 3-Way Evaluation Benchmark** comparing `RULE_BASED`, `AI_ONLY`, and `HYBRID (TRACE)` paradigms.
+> _"Which approach—rule-based, AI/LLM-based, or hybrid—provides more reliable and explainable transaction-level reconciliation across heterogeneous business documents?"_
+
+The system **does not presuppose that Hybrid is superior**. Instead, identical transaction datasets are concurrently passed through all three isolated engines, and their outputs are benchmarked against an empirical ground truth dataset across precision, recall, F1, evidence accuracy, latency, and cost.
 
 ---
 
-## 🏛️ System Architecture
+## 🏛️ Core Concept: `FILE != DOCUMENT != TRANSACTION`
+
+Traditional invoice processing systems make the flawed assumption that _one uploaded file equals one transaction_. In practical MSME commerce:
+
+- **Case 1 (1 File $\to$ 1 Document)**: Single-page invoice PDF.
+- **Case 2 (1 File $\to$ Multiple Documents)**: A single scanned multi-page PDF containing a Purchase Order, Tax Invoice, Delivery Challan, and Payment Receipt.
+- **Case 3 (Multiple Files $\to$ 1 Transaction)**: Separate PDF uploads (`po.pdf`, `invoice.pdf`, `receipt.pdf`) linked by identifiers.
+- **Case 4 (Multiple Files $\to$ Multiple Transactions)**: Batch uploads containing paperwork from different vendors and orders.
+- **Case 5 (1 Batch $\to$ Multiple Files $\to$ Multiple Transactions)**: Mixed folder drops.
+- **Case 6 (1 PDF $\to$ Multiple Invoices)**: Multi-invoice statements bundled into a single file.
 
 ```mermaid
 flowchart TD
-    subgraph INGESTION ["1. Ingestion & Preprocessing"]
-        DOCS["Raw Business Documents\n(PDF / Scanned / Digital)"] --> EXT["Layout-Aware Text & Table Extractor\n(PyMuPDF fitz)"]
-        EXT --> NORM["Financial & Entity Normalizer\n(Decimal, ISO Dates, Tax Strip)"]
+    subgraph INGESTION ["1. Ingestion & File Identification"]
+        BATCH["UploadBatch\n(Batch ID, Upload Time, Files Count)"] --> FILE["Physical File Entity\n(SHA-256 Checksum, Path, MIME, Size)"]
     end
 
-    subgraph CLASSIFICATION ["2. Supervised Classification"]
-        NORM --> CLF["TF-IDF Vectorizer + Logistic Regression\n(8 Document Classes, Calibrated Probabilities)"]
+    subgraph SEGMENTATION ["2. Document Segmentation & Classification"]
+        FILE --> SEG["DocumentSegmenter\n(Page boundary detection, regex headers, doc numbers)"]
+        SEG --> DOC1["Document: PURCHASE_ORDER\n(Pages 1-1)"]
+        SEG --> DOC2["Document: INVOICE\n(Pages 2-2)"]
+        SEG --> DOC3["Document: DELIVERY_NOTE\n(Pages 3-3)"]
+        SEG --> DOC4["Document: PAYMENT_RECEIPT\n(Pages 4-4)"]
     end
 
-    subgraph LINKING ["3. Transaction Graph Linker"]
-        CLF --> GRAPH["Disjoint Set / Graph Connected Components\n(PO Ref, Invoice No, Challan No, UTR)"]
-        GRAPH --> TXN_CLUSTER["Canonical Transaction Clusters\n(PO + Invoice + Delivery + Payment)"]
+    subgraph EXTRACTION ["3. Information Extraction & Normalization"]
+        DOC1 & DOC2 & DOC3 & DOC4 --> EXT["Layout-Aware Extractor\n(PyMuPDF fitz)"]
+        EXT --> NORM["Entity Normalizer\n(Decimal, ISO Dates, Tax Strip)"]
     end
 
-    subgraph SEMANTIC ["4. Semantic Matching Engine"]
-        TXN_CLUSTER --> EMB["Dense Embeddings\n(all-MiniLM-L6-v2)"]
-        EMB --> FAISS_INDEX["FAISS L2 / Cosine Index\n(Fuzzy Entity & Item Matching)"]
+    subgraph LINKING ["4. Multi-Signal Graph Linker"]
+        NORM --> GRAPH["Transaction Linker Graph\n- Exact Identifiers (PO No, Inv No, UTR)\n- Metadata Matching (Supplier, Dates)\n- Semantic Embeddings (FAISS / MiniLM)"]
+        GRAPH --> TXN["Canonical Transaction Cluster\n(e.g., TXN-2024-001)"]
     end
 
-    subgraph RULES ["5. Deterministic Rules Engine"]
-        TXN_CLUSTER --> DET_RULES["10 Strict Decimal Rules\n- Price Mismatch\n- Quantity Overbilling\n- Payment Shortfall\n- Missing Delivery\n- Duplicate Billing\n- GST Tax Error\n- Advance Under-deduction"]
-        FAISS_INDEX -. Semantic Context .-> DET_RULES
+    subgraph ENGINES ["5. 3 Isolated Reconciliation Engines"]
+        TXN --> R_ENG["Engine 1: RULE_BASED\n(10 Decimal rules, $0.00, <1ms)"]
+        TXN --> AI_ENG["Engine 2: AI_LLM\n(Structured Prompting, Schema Enforcement)"]
+        TXN --> H_ENG["Engine 3: HYBRID\n(Rules + FAISS + LLM Explanation)"]
     end
 
-    subgraph AUDIT ["6. Discrepancy & Evidence Layer"]
-        DET_RULES --> LOCATOR["Evidence Locator\n(Page, Bounding Line, Raw Value vs Expected)"]
-        LOCATOR --> SCORER["Severity & Confidence Scorer\n(CRITICAL / HIGH / MEDIUM / LOW)"]
-    end
-
-    subgraph LLM ["7. Explanation & Reporting"]
-        SCORER --> PROMPT["Structured Audit Prompt Builder"]
-        PROMPT --> PROVIDERS{"LLM Provider Switch"}
-        PROVIDERS -->|Default| OFFLINE["Offline Deterministic LLM Provider"]
-        PROVIDERS -->|Configured| OPENAI["OpenAI GPT-4o Provider"]
-        PROVIDERS -->|Configured| ANTHROPIC["Anthropic Claude 3.5 Provider"]
-    end
-
-    subgraph BENCHMARK ["8. Empirical Evaluation"]
-        SCORER --> BENCH["3-Way Benchmark Suite\n(Rule-Based vs AI-Only vs Hybrid TRACE)"]
+    subgraph COMPARISON ["6. Cross-Engine Comparator & Evaluation"]
+        R_ENG & AI_ENG & H_ENG --> COMP["Comparator Engine\n(Consensus Matrix, Conflict Detection, Agreement %)"]
+        COMP --> EVAL["Benchmark Evaluator\n(Precision, Recall, F1, Evidence Acc, Cost, Latency)"]
+        EVAL --> REPORT["Markdown & JSON Research Report"]
     end
 ```
 
 ---
 
-## 🔬 Core Components & Methodology
+## 🔬 The 3 Reconciliation Engines
 
-### 1. Document Classifier (`ml/`)
-
-- **Architecture**: N-gram TF-IDF vectorizer (sublinear TF scaling, 5,000 max features, (1, 2) n-grams) paired with a multinomial Logistic Regression classifier with balanced class weighting.
-- **Classes**: `PURCHASE_ORDER`, `INVOICE`, `DELIVERY_NOTE`, `PAYMENT_RECEIPT`, `QUOTATION`, `CREDIT_NOTE`, `DEBIT_NOTE`, `UNKNOWN`.
-- **Dataset**: Synthetically engineered corpus of 1,200 Indian MSME documents with realistic terminology (GSTIN, HSN codes, UTR, E-Way Bill numbers).
-- **Performance**: 100% test accuracy, 1.00 Precision/Recall/F1-Score across all categories with full calibration.
-
-### 2. Transaction Graph Linker (`linker.py`)
-
-- Traditional systems fail when documents do not share a single unified ID.
-- TRACE builds an undirected graph \( G = (V, E) \) where nodes represent uploaded documents and edges represent shared references:
-  - PO Reference matches (e.g. Invoice citing PO-2024-001)
-  - Invoice Reference matches (e.g. Payment receipt citing INV-2024-089)
-  - Delivery Challan matches (e.g. DC-008 linked to PO-2024-001)
-- Connected components are discovered using BFS/DFS traversal and assigned a canonical Transaction Root ID.
-
-### 3. Deterministic Financial Rules Engine (`rules/`)
-
-All financial computations use **strict Python `Decimal`** arithmetic to eliminate binary floating-point rounding inaccuracies:
-
-1. `R001 - PRICE_MISMATCH`: Line item unit price in Invoice exceeds PO agreed rate.
-2. `R002 - QUANTITY_OVERBILLED`: Invoiced quantity exceeds PO authorized quantity.
-3. `R003 - PAYMENT_SHORTFALL`: Total paid amount is less than reconciled net payable.
-4. `R004 - MISSING_DELIVERY_NOTE`: Goods invoiced without proof of delivery challan.
-5. `R005 - QUANTITY_UNDELIVERED_BILLED`: Invoiced quantity exceeds physical delivered quantity.
-6. `R006 - DUPLICATE_INVOICE`: Multiple invoices referencing identical line items or billing IDs.
-7. `R007 - TAX_CALCULATION_ERROR`: Invoiced GST rate or computed tax does not equal taxable amount \(\times\) rate.
-8. `R008 - ADVANCE_PAYMENT_NOT_DEDUCTED`: Advance payment receipt exists but was omitted from final invoice.
-9. `R009 - UNRECORDED_DEBIT_NOTE`: Debit note exists for damaged goods but was not deducted.
-10. `R010 - PAYMENT_BEFORE_DELIVERY_UNAUTHORIZED`: Payment disbursed prior to delivery without advance terms.
-
-### 4. Semantic Matching Engine (`semantic/`)
-
-- Uses `sentence-transformers/all-MiniLM-L6-v2` embeddings mapped into a FAISS index.
-- Labels pairwise ground truth for:
-  - `supplier_pairs.csv`: Entity variations (e.g. `"Apex Industrial Tools Pvt Ltd"` vs `"Apex Ind. Tools"`).
-  - `item_pairs.csv`: Product descriptions (e.g. `"Hex Bolt M10x50mm SS304"` vs `"M10 Stainless Steel 50mm Hex Screw"`).
-  - `document_pairs.csv`: Cross-document reference semantics.
-
-### 5. Multi-Provider LLM Explanation Layer (`ai/`)
-
-- Formats discrepancies, mathematical proofs, and document quotes into a structured audit prompt.
-- Produces plain-language audit explanations, financial risk assessments, and step-by-step remediation workflows.
-- Ships with an out-of-the-box **Offline Provider** (zero external API keys required) and supports **OpenAI** and **Anthropic**.
+| Feature                | 1. Rule-Based Engine                               | 2. AI / LLM Engine                                 | 3. Hybrid Engine (TRACE)                                                 |
+| :--------------------- | :------------------------------------------------- | :------------------------------------------------- | :----------------------------------------------------------------------- |
+| **Philosophy**         | Strict deterministic mathematics                   | Semantic context & natural language reasoning      | Deterministic rules + Dense FAISS embeddings + Targeted LLM explanations |
+| **Arithmetic**         | Exact Python `Decimal` (zero floating-point error) | LLM numeric parsing (bounded by JSON schema)       | Strict Python `Decimal` validated against vector citations               |
+| **Execution Cost**     | **$0.0000**                                        | Token consumption ($0.001 - $0.01 per run)         | Selective token usage (only for explanation synthesis)                   |
+| **Latency**            | **< 1.0 ms**                                       | 1,200 - 3,500 ms                                   | 40 - 120 ms (offline) / 800 ms (cloud)                                   |
+| **Hallucination Risk** | **0.0%** (deterministic)                           | Non-zero (mitigated by strict context constraints) | **0.0%** for discrepancy facts; bounded narrative                        |
+| **Fuzzy Matching**     | Weak (exact token / regex only)                    | Strong (handles misspellings, typos, paraphrasing) | **Strongest** (FAISS dense vector index + cosine similarity)             |
+| **Provenance**         | `provenance: "rule"`                               | `provenance: "llm"`                                | Badged per discrepancy: `rule`, `semantic`, or `llm`                     |
 
 ---
 
-## 📊 Empirical Evaluation & Benchmark
+## 📊 Ground Truth Benchmark & Empirical Evaluation
 
-TRACE includes a built-in empirical evaluation harness evaluating three operational modes on ground-truth reconciliation scenarios:
+TRACE features an annotated ground-truth benchmark suite of **40 realistic MSME transaction scenarios** (`data/ground_truth/benchmark_dataset.json`) spanning 12 discrepancy categories:
 
-| Metric                  | Rule-Based Only | AI-Only (LLM) |       Hybrid (TRACE)       |
-| :---------------------- | :-------------: | :-----------: | :------------------------: |
-| **Precision**           |      1.000      |     0.812     |         **0.975**          |
-| **Recall**              |      0.742      |     0.885     |         **0.960**          |
-| **F1-Score**            |      0.852      |     0.847     |         **0.967**          |
-| **Hallucination Rate**  |      0.00%      |    14.80%     |         **0.00%**          |
-| **Avg. Latency (ms)**   |     ~12 ms      |   ~1,850 ms   |         **~85 ms**         |
-| **Deterministic Proof** |       Yes       |      No       | **Yes (Full Audit Trail)** |
+1. `QUANTITY_MISMATCH`: Invoiced quantity differs from ordered or delivered quantity.
+2. `PRICE_MISMATCH`: Billed unit price differs from purchase order contract rate.
+3. `TAX_MISMATCH`: Invoiced GST/VAT does not match statutory rates or taxable base.
+4. `TOTAL_MISMATCH`: Arithmetic mismatch between line item sums and invoice totals.
+5. `PAYMENT_MISMATCH`: Settled amount short of invoiced net payable.
+6. `DATE_MISMATCH`: Inconsistent issuance, delivery, or payment milestone dates.
+7. `SUPPLIER_MISMATCH`: Discrepant legal entity names or GSTINs across documents.
+8. `CUSTOMER_MISMATCH`: Incorrect billing or delivery address / recipient.
+9. `ITEM_MISMATCH`: Inconsistent item codes, SKU descriptions, or units of measure.
+10. `MISSING_DOCUMENT`: Required supporting document (e.g. proof of delivery) absent.
+11. `DUPLICATE_DOCUMENT`: Multiple billings for identical transaction references.
+12. `DOCUMENT_LINKING_ERROR`: Erroneously clustered unrelated document units.
+
+### Evaluation Metrics Calculated
+
+For each engine against ground truth:
+$$\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}, \quad F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+- **Evidence Localization Accuracy**: Verification of page numbers, field coordinates, and cited document numbers.
+- **Document Linking Accuracy**: Precision of Disjoint Set clustering against ground-truth transaction boundaries.
+- **Latency & Compute Cost**: Milliseconds elapsed and API dollar cost per transaction.
 
 ---
 
@@ -147,55 +121,45 @@ TRACE includes a built-in empirical evaluation harness evaluating three operatio
 
 ```
 trace/
-├── backend/                        # FastAPI Backend & Reconciliation Engine
+├── backend/                        # FastAPI Backend & Scientific Engines
 │   ├── app/
 │   │   ├── ai/                     # LLM Provider Abstraction (Offline, OpenAI, Anthropic)
-│   │   ├── api/v1/                 # REST API Endpoints (Docs, Txns, Recon, Eval)
+│   │   ├── api/v1/                 # REST API Endpoints (Docs, Txns, Recon, Eval, Dashboard)
 │   │   ├── classification/         # Document Classifier & Joblib Model
-│   │   ├── core/                   # Config & SQLAlchemy Database Engine
-│   │   ├── discrepancy/            # Severity, Confidence, & Engine
-│   │   ├── evaluation/             # 3-Way Benchmark & Metrics Engine
-│   │   ├── extraction/             # PyMuPDF Extractors, Parsers, Normalizer
-│   │   ├── models/                 # SQLAlchemy ORM Models
-│   │   ├── reconciliation/         # Graph Linker & Orchestrator
+│   │   ├── core/                   # Configuration, Database Migrations, & Logging
+│   │   ├── evaluation/             # Benchmark Evaluator & Markdown Report Generator
+│   │   ├── extraction/             # DocumentSegmenter, PyMuPDF Extractors, Normalizer
+│   │   ├── models/                 # SQLAlchemy ORM (UploadBatch, File, Document, Txn, ReconRun)
+│   │   ├── reconciliation/         # Multi-Signal Graph Linker & 3 Engines
+│   │   │   ├── engines/            # BaseEngine, RuleBasedEngine, AILLMEngine, HybridEngine, Comparator
+│   │   │   └── linker.py           # Multi-Signal Transaction Linker Graph
 │   │   ├── rules/                  # 10 Strict Decimal Deterministic Rules
-│   │   ├── schemas/                # Pydantic Schemas
-│   │   ├── semantic/               # FAISS Vector Store & Semantic Matcher
-│   │   └── main.py                 # FastAPI Application Entrypoint
-│   ├── tests/                      # 14 Pytest Unit & Integration Tests
-│   ├── Dockerfile                  # Backend Container Definition
+│   │   ├── schemas/                # Pydantic Schemas for API contracts
+│   │   └── semantic/               # FAISS Vector Store & Semantic Matcher
+│   ├── tests/                      # 45 Pytest Unit, Integration, & Pipeline Tests
+│   ├── Dockerfile                  # Production Container
 │   └── requirements.txt            # Python Dependencies
 ├── frontend/                       # React 18 + TypeScript + Vite + Tailwind UI
 │   ├── src/
-│   │   ├── components/             # Reusable UI (Graph, Badges, Modals, Evidence)
-│   │   ├── pages/                  # Dashboard, Documents, Transactions, Detail, Eval
-│   │   ├── services/               # Axios API Client
-│   │   ├── types/                  # TypeScript Data Contracts
-│   │   ├── App.tsx                 # App Shell & Router
-│   │   └── main.tsx                # React Root Entrypoint
-│   ├── Dockerfile                  # Frontend Container Definition
-│   ├── nginx.conf                  # Nginx Reverse Proxy Config
-│   └── package.json                # NPM Dependencies
-├── ml/                             # ML Dataset Generation & Training Pipeline
-│   ├── datasets/                   # Classification & Pair Dataset Generators
-│   ├── models/                     # Trained Joblib Classifier Artifacts
-│   ├── training/                   # Model Training Script
-│   └── evaluation/                 # Confusion Matrix & Classification Report
-├── sample_data/                    # Synthetic MSME Business Documents
-│   ├── generate_samples.py         # Realistic ReportLab PDF Document Generator
-│   └── raw_documents/              # Generated Sample PDFs (TXN-001, TXN-002)
-├── docker-compose.yml              # Multi-Container Orchestration
+│   │   ├── api/                    # Axios API Client with Research Endpoints
+│   │   ├── components/             # UI Components (3-Way Matrix, Graph, Evidence Viewer)
+│   │   ├── pages/                  # Dashboard, Evaluation, Transactions, Detail, Upload
+│   │   └── types/                  # TypeScript Data Contracts
+│   ├── package.json                # NPM Dependencies
+│   └── vite.config.ts              # Vite Bundler Configuration
+├── data/
+│   └── ground_truth/               # 40-Transaction Ground Truth Benchmark Dataset & Reports
+├── sample_data/                    # Synthetic PDF Generator & Multipage Test PDFs
 ├── run_trace.bat                   # Windows One-Click Launch Script
-├── run_trace.sh                    # Linux/macOS Launch Script
-├── .env.example                    # Environment Configuration Template
-└── README.md                       # System Documentation
+├── docker-compose.yml              # Multi-Container Orchestration
+└── README.md                       # Research Documentation
 ```
 
 ---
 
 ## 🚀 Quickstart & Installation
 
-### Option 1: Local Setup (Recommended)
+### Option 1: Local Setup
 
 #### Prerequisites
 
@@ -207,6 +171,7 @@ trace/
 ```bash
 cd backend
 python -m venv venv
+
 # On Windows:
 .\venv\Scripts\activate
 # On Linux/macOS:
@@ -214,14 +179,14 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
-# Run automated tests to verify installation
+# Run the 45-test suite to verify the research pipeline
 python -m pytest tests/ -v
 
 # Start backend server
 python -m uvicorn app.main:app --port 8000 --reload
 ```
 
-API Documentation will be live at: [http://localhost:8000/docs](http://localhost:8000/docs)
+API Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 #### 2. Frontend Setup
 
@@ -231,116 +196,65 @@ npm install
 npm run dev
 ```
 
-Web Application will be live at: [http://localhost:5173](http://localhost:5173)
+Web Application: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-### Option 2: Docker Compose Setup (Unified Production Container)
+### Option 2: Windows One-Click Runner
 
-```bash
-docker-compose up --build -d
-```
-
-- Web Application: [http://localhost:5173](http://localhost:5173)
-- Backend API: [http://localhost:8000](http://localhost:8000)
-- Health Check: [http://localhost:8000/health](http://localhost:8000/health)
+Double-click `run_trace.bat` in the project root to start both backend and frontend automatically.
 
 ---
 
-## 🌐 Production Cloud Deployment Guide
+## 🧪 Running Automated Tests
 
-TRACE is production-ready for deployment on any cloud provider supporting Docker, Node.js, and Python (e.g. Render, Railway, Fly.io, AWS ECS/App Runner, GCP Cloud Run, Vercel).
+TRACE includes a comprehensive 45-test automated test suite covering:
 
-### Production Architecture
-
-```
-[ Client Browser ]
-       │
-       ▼
-[ Frontend (React/Vite SPA / Nginx) ] ── (VITE_API_URL / Proxy)
-       │
-       ▼
-[ Backend (FastAPI / Uvicorn) ] ── (DATABASE_URL) ──► [ PostgreSQL Database ]
-       │
-       ├─► [ Local ML Model (document_classifier.joblib) ]
-       ├─► [ Storage Volume (Persistent Disk: /app/storage) ]
-       └─► [ Offline Rule Engine + Hybrid LLM Explanation ]
-```
-
-### 1. Backend Service Deployment (Render / Railway / Fly.io / AWS)
-
-- **Runtime**: Python 3.11+ / Docker
-- **Build Command**: `pip install -r backend/requirements.txt`
-- **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}`
-- **Working Directory**: `backend` (or set `PYTHONPATH=.`)
-- **Health Check Endpoint**: `/health` (or `/api/health`)
-
-#### Required Backend Environment Variables:
-
-| Variable            | Example Value                                        | Description                                                  |
-| :------------------ | :--------------------------------------------------- | :----------------------------------------------------------- |
-| `DATABASE_URL`      | `postgresql://user:pass@host:5432/trace_db`          | PostgreSQL connection string (auto-normalizes `postgres://`) |
-| `PORT`              | `8000` or assigned by host                           | HTTP server port                                             |
-| `CORS_ORIGINS`      | `https://trace.yourdomain.com,http://localhost:5173` | Allowed frontend origins (or `*`)                            |
-| `STORAGE_DIR`       | `/app/storage`                                       | Path for uploaded PDFs (mount persistent volume)             |
-| `LLM_PROVIDER`      | `offline`                                            | LLM backend (`offline`, `openai`, `anthropic`)               |
-| `OPENAI_API_KEY`    | `sk-...`                                             | (Optional) If using OpenAI GPT-4o                            |
-| `ANTHROPIC_API_KEY` | `sk-ant-...`                                         | (Optional) If using Claude 3.5                               |
-
-### 2. Frontend Service Deployment (Vercel / Netlify / Render Static)
-
-- **Framework**: Vite / React
-- **Root Directory**: `frontend`
-- **Build Command**: `npm run build`
-- **Publish Directory**: `dist`
-- **Environment Variables**:
-  - `VITE_API_URL`: URL of the deployed backend (e.g. `https://trace-backend.onrender.com`)
-
-### 3. Persistent File Storage Notes
-
-- In containerized environments (Docker, Kubernetes, Cloud Run), uploaded document PDFs are written to `STORAGE_DIR`.
-- **For production data persistence**: Attach a persistent disk / volume mount (e.g. Docker named volume `trace_storage:/app/storage` or Render Persistent Disk mounted at `/app/storage`) so uploads persist across service redeployments.
-
----
-
-## 🧪 Running the Test Suite
+- Document segmentation across multi-document and multi-page PDFs
+- Multi-signal graph linker clustering
+- Deterministic rules execution with `Decimal` precision
+- Independent execution of Rule-Based, AI/LLM, and Hybrid engines
+- Comparator agreement matrix and conflict detection
+- Ground truth benchmark evaluation and metrics calculation
+- End-to-end REST API workflows
 
 ```bash
 cd backend
 python -m pytest tests/ -v
 ```
 
-All 14 unit and end-to-end integration tests verify:
+Expected output:
 
-- Document classification accuracy
-- Sequential table extraction & currency normalization
-- Deterministic rules execution with zero floating-point error
-- Transaction graph clustering
-- End-to-end reconciliation report generation
+```text
+============================== 45 passed in 2.24s ==============================
+```
 
 ---
 
-## 📖 API Reference
+## 📖 Key Research API Endpoints
 
-| Method | Endpoint                              | Description                                            |
-| :----- | :------------------------------------ | :----------------------------------------------------- |
-| `POST` | `/api/v1/documents/upload`            | Upload single/batch PDFs with instant classification   |
-| `GET`  | `/api/v1/documents`                   | List all indexed documents with filter options         |
-| `POST` | `/api/v1/reconciliation/run`          | Execute end-to-end multi-document reconciliation       |
-| `GET`  | `/api/v1/transactions`                | List all discovered transaction clusters               |
-| `GET`  | `/api/v1/transactions/{id}`           | Get full transaction graph, documents, & discrepancies |
-| `POST` | `/api/v1/reconciliation/{id}/explain` | Generate LLM explanation audit report                  |
-| `GET`  | `/api/v1/evaluation/benchmark`        | Run 3-Way empirical benchmark suite                    |
+| Method | Endpoint                                             | Description                                                               |
+| :----- | :--------------------------------------------------- | :------------------------------------------------------------------------ |
+| `POST` | `/api/v1/documents/upload`                           | Upload single or multi-document files with automatic segmentation         |
+| `POST` | `/api/v1/documents/seed-demo`                        | Seed synthetic multi-document transactions for instant testing            |
+| `GET`  | `/api/v1/transactions/graph`                         | Fetch graph representation of transactions, linked documents, and methods |
+| `POST` | `/api/v1/transactions/{id}/reconcile`                | Run 3-way reconciliation on a single transaction                          |
+| `POST` | `/api/v1/reconciliation/compare`                     | Concurrently run Rule-Based, AI/LLM, and Hybrid on a transaction          |
+| `GET`  | `/api/v1/reconciliation/transaction/{id}/comparison` | Retrieve latest 3-way comparison matrix for a transaction                 |
+| `POST` | `/api/v1/evaluation/run`                             | Execute 40-scenario benchmark across all 3 engines                        |
+| `GET`  | `/api/v1/evaluation/results`                         | Retrieve latest benchmark evaluation report and metrics                   |
+| `GET`  | `/api/v1/evaluation/export-report`                   | Download scientific evaluation report in Markdown format                  |
 
 ---
 
-## ⚖️ Scope & Non-Goals
+## ⚖️ Scientific Integrity & Non-Goals
 
-- **Decision-Support Focus**: TRACE is an intelligent decision-support and audit verification tool, not a replacement for human accountants or ERP software.
-- **Mathematical Determinism**: Financial decisions and discrepancy flags are computed with exact decimal arithmetic; LLMs are strictly confined to generating contextual explanations and audit narratives.
+- **Zero Bias**: The system does not presuppose that any single approach is best. All three engines receive identical structured document inputs and are scored against identical ground truth criteria.
+- **Mathematical Determinism**: Financial decisions and discrepancy flags in the rule-based and hybrid pipelines use exact `Decimal` arithmetic. Floating-point numbers are prohibited in financial reconciliation calculations.
+- **Audit Decision Support**: TRACE serves as an empirical research platform and intelligent decision-support tool, not an autonomous replacement for human financial auditors.
 
 ---
 
 ## 📄 License
 
-MIT License. Developed for Academic & Applied Research in MSME Financial Engineering.
+MIT License. Developed for Academic & Applied Research in MSME Financial Engineering and Transaction Reconciliation.

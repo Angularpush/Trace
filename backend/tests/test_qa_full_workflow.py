@@ -101,7 +101,9 @@ def test_step_04_to_07_upload_sample_documents(client):
 
     uploaded_records = []
     for doc_fn in doc_files:
-        path = os.path.join(sample_dir, doc_fn)
+        path = os.path.join(sample_dir, "TXN-002", doc_fn)
+        if not os.path.exists(path):
+            path = os.path.join(sample_dir, doc_fn)
         assert os.path.exists(path), f"File {doc_fn} missing at {path}"
         with open(path, "rb") as f:
             file_bytes = f.read()

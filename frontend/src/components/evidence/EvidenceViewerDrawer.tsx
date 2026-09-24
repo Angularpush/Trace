@@ -218,7 +218,7 @@ export const EvidenceViewerDrawer: React.FC<EvidenceViewerDrawerProps> = ({
                         </div>
 
                         <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 shrink-0">
-                          {Math.round(ev.relevance_score * 100)}% Match
+                          {Math.round((ev.relevance_score ?? 1.0) * 100)}% Match
                         </span>
                       </div>
 

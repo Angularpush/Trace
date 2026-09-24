@@ -30,12 +30,18 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = int(os.environ.get("MAX_UPLOAD_SIZE_MB", "50"))
     
     # AI / LLM Configuration
-    DEFAULT_LLM_PROVIDER: str = "offline"  # "offline", "openai", "anthropic"
-    LLM_PROVIDER: str = "offline"
-    OPENAI_API_KEY: str = ""
-    OPENAI_MODEL: str = "gpt-4o-mini"
-    ANTHROPIC_API_KEY: str = ""
-    ANTHROPIC_MODEL: str = "claude-3-5-sonnet-20241022"
+    DEFAULT_LLM_PROVIDER: str = os.environ.get("DEFAULT_LLM_PROVIDER", "openai")  # "offline", "openai", "anthropic", "gemini"
+    LLM_PROVIDER: str = os.environ.get("LLM_PROVIDER", "openai")
+    
+    # OpenAI / AgentRouter Configuration
+    OPENAI_API_KEY: str = os.environ.get("OPENAI_API_KEY", os.environ.get("AGENTROUTER_API_KEY", "sk-hUMP80hjBvf6CfEYsM0zOzKPOyi9U48h1L3QEw4uMNcGSSYW"))
+    OPENAI_API_BASE: str = os.environ.get("OPENAI_API_BASE", os.environ.get("AGENTROUTER_BASE_URL", "https://agentrouter.org/v1"))
+    OPENAI_MODEL: str = os.environ.get("OPENAI_MODEL", "gpt-6-astra")
+    
+    # Anthropic / Claude Configuration
+    ANTHROPIC_API_KEY: str = os.environ.get("ANTHROPIC_API_KEY", "sk-hUMP80hjBvf6CfEYsM0zOzKPOyi9U48h1L3QEw4uMNcGSSYW")
+    ANTHROPIC_API_BASE: str = os.environ.get("ANTHROPIC_API_BASE", "https://agentrouter.org/v1")
+    ANTHROPIC_MODEL: str = os.environ.get("ANTHROPIC_MODEL", "claude-opus-5")
     EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
     
     # Reconciliation Thresholds (Deterministic)

@@ -1,5 +1,5 @@
 """
-TRACE - Document Pydantic Schemas
+TRACE - Document & File Pydantic Schemas
 """
 
 from typing import Optional, List, Dict, Any
@@ -43,31 +43,67 @@ class ParsedDocumentData(BaseModel):
     reason_for_adjustment: Optional[str] = None
     extra_metadata: Dict[str, Any] = {}
 
+class UploadBatchResponse(BaseModel):
+    id: str
+    uploaded_by: str = "system"
+    upload_time: datetime
+    original_filename: Optional[str] = None
+    number_of_files: int = 1
+    processing_status: str = "COMPLETED"
+
+    model_config = ConfigDict(from_attributes=True)
+
+class FileResponse(BaseModel):
+    id: str
+    upload_batch_id: Optional[str] = None
+    filename: str
+    file_type: str = "pdf"
+    file_size: int = 0
+    storage_path: str
+    checksum: Optional[str] = None
+    upload_time: datetime
+    processing_status: str = "PROCESSED"
+    document_count: Optional[int] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
 class DocumentResponse(BaseModel):
     id: str
-    filename: str
-    file_type: str
-    doc_type: str
-    classification_confidence: float
-    page_count: int
+    file_id: Optional[str] = None
+    document_type: str = "OTHER"
+    page_start: int = 1
+    page_end: int = 1
+    document_number: Optional[str] = None
+    confidence: float = 1.0
+    extracted_text: str = ""
+    structured_data: Dict[str, Any] = {}
+    classification_method: str = "ML_CLASSIFIER"
+
+    # Backwards-compatible fields
+    filename: Optional[str] = ""
+    file_path: Optional[str] = ""
+    file_type: Optional[str] = "pdf"
+    doc_type: Optional[str] = "UNKNOWN"
+    classification_confidence: Optional[float] = 0.0
     original_pdf_id: Optional[str] = None
-    page_number: int = 1
-    page_count: int = 1
-    raw_text: str
-    parsed_data: Dict[str, Any]
-    status: str
-    created_at: datetime
+    page_number: Optional[int] = 1
+    page_count: Optional[int] = 1
+    raw_text: Optional[str] = ""
+    parsed_data: Optional[Dict[str, Any]] = {}
+    status: Optional[str] = "processed"
+    created_at: Optional[datetime] = None
 
-    @property
-    def document_type(self) -> str:
-        return self.doc_type
+    model_config = ConfigDict(from_attributes=True)
 
-    @property
-    def confidence(self) -> float:
-        return self.classification_confidence
-
-    @property
-    def extracted_text(self) -> str:
-        return self.raw_text
+class TransactionDocumentLinkResponse(BaseModel):
+    id: Optional[str] = None
+    transaction_id: str
+    document_id: str
+    link_method: str = "exact_identifier"
+    link_confidence: float = 1.0
+    confirmed: bool = False
+    link_details: Dict[str, Any] = {}
+    created_at: Optional[datetime] = None
+    document: Optional[DocumentResponse] = None
 
     model_config = ConfigDict(from_attributes=True)

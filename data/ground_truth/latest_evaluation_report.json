@@ -1,0 +1,644 @@
+{
+  "benchmark_id": "bench_1790224299",
+  "run_timestamp": "2026-09-24T04:31:39.980528",
+  "dataset_size": 40,
+  "categories_tested": 12,
+  "rule_based_metrics": {
+    "approach": "RULE_BASED",
+    "total_evaluated_transactions": 40,
+    "precision": 0.4444,
+    "recall": 1.0,
+    "f1_score": 0.6154,
+    "linking_accuracy": 1.0,
+    "evidence_accuracy": 1.0,
+    "reconciliation_accuracy": 0.6154,
+    "avg_execution_time_ms": 0.22,
+    "total_cost_usd": 0.0,
+    "cost_per_transaction_usd": 0.0,
+    "category_breakdown": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "DUPLICATE_DOCUMENT",
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 15,
+        "false_negatives": 0,
+        "precision": 0.1667,
+        "recall": 1.0,
+        "f1_score": 0.2857
+      },
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "true_positives": 3,
+        "false_positives": 25,
+        "false_negatives": 0,
+        "precision": 0.1071,
+        "recall": 1.0,
+        "f1_score": 0.1935
+      },
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      }
+    ]
+  },
+  "ai_llm_metrics": {
+    "approach": "AI_LLM",
+    "total_evaluated_transactions": 40,
+    "precision": 0.4186,
+    "recall": 0.5625,
+    "f1_score": 0.48,
+    "linking_accuracy": 1.0,
+    "evidence_accuracy": 1.0,
+    "reconciliation_accuracy": 0.48,
+    "avg_execution_time_ms": 38.65,
+    "total_cost_usd": 0.003263,
+    "cost_per_transaction_usd": 8.2e-05,
+    "category_breakdown": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "DUPLICATE_DOCUMENT",
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "true_positives": 3,
+        "false_positives": 25,
+        "false_negatives": 0,
+        "precision": 0.1071,
+        "recall": 1.0,
+        "f1_score": 0.1935
+      },
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      }
+    ]
+  },
+  "hybrid_metrics": {
+    "approach": "HYBRID",
+    "total_evaluated_transactions": 40,
+    "precision": 0.4444,
+    "recall": 1.0,
+    "f1_score": 0.6154,
+    "linking_accuracy": 1.0,
+    "evidence_accuracy": 1.0,
+    "reconciliation_accuracy": 0.6154,
+    "avg_execution_time_ms": 0.64,
+    "total_cost_usd": 0.003263,
+    "cost_per_transaction_usd": 8.2e-05,
+    "category_breakdown": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "DUPLICATE_DOCUMENT",
+        "true_positives": 2,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 15,
+        "false_negatives": 0,
+        "precision": 0.1667,
+        "recall": 1.0,
+        "f1_score": 0.2857
+      },
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "true_positives": 3,
+        "false_positives": 25,
+        "false_negatives": 0,
+        "precision": 0.1071,
+        "recall": 1.0,
+        "f1_score": 0.1935
+      },
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "true_positives": 4,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      }
+    ]
+  },
+  "key_findings": [
+    "Rule-Based achieves fastest execution (0.2ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.",
+    "AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (38.6ms/txn) and token cost ($0.0033).",
+    "Hybrid achieves balanced performance (F1: 61.54%) by combining deterministic Decimal precision for arithmetic with semantic/LLM reasoning for edge cases.",
+    "Document linking achieved 100.0% accuracy using multi-signal exact identifier + metadata matching."
+  ],
+  "modes": {
+    "RULE_BASED": {
+      "approach": "RULE_BASED",
+      "total_evaluated_transactions": 40,
+      "precision": 0.4444,
+      "recall": 1.0,
+      "f1_score": 0.6154,
+      "linking_accuracy": 1.0,
+      "evidence_accuracy": 1.0,
+      "reconciliation_accuracy": 0.6154,
+      "avg_execution_time_ms": 0.22,
+      "total_cost_usd": 0.0,
+      "cost_per_transaction_usd": 0.0,
+      "category_breakdown": [
+        {
+          "discrepancy_type": "DATE_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "DUPLICATE_DOCUMENT",
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "ITEM_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 15,
+          "false_negatives": 0,
+          "precision": 0.1667,
+          "recall": 1.0,
+          "f1_score": 0.2857
+        },
+        {
+          "discrepancy_type": "MISSING_DOCUMENT",
+          "true_positives": 3,
+          "false_positives": 25,
+          "false_negatives": 0,
+          "precision": 0.1071,
+          "recall": 1.0,
+          "f1_score": 0.1935
+        },
+        {
+          "discrepancy_type": "PAYMENT_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "PRICE_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "QUANTITY_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "SUPPLIER_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "TAX_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "TOTAL_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        }
+      ]
+    },
+    "AI_ONLY": {
+      "approach": "AI_LLM",
+      "total_evaluated_transactions": 40,
+      "precision": 0.4186,
+      "recall": 0.5625,
+      "f1_score": 0.48,
+      "linking_accuracy": 1.0,
+      "evidence_accuracy": 1.0,
+      "reconciliation_accuracy": 0.48,
+      "avg_execution_time_ms": 38.65,
+      "total_cost_usd": 0.003263,
+      "cost_per_transaction_usd": 8.2e-05,
+      "category_breakdown": [
+        {
+          "discrepancy_type": "DATE_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "DUPLICATE_DOCUMENT",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0
+        },
+        {
+          "discrepancy_type": "ITEM_MISMATCH",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0
+        },
+        {
+          "discrepancy_type": "MISSING_DOCUMENT",
+          "true_positives": 3,
+          "false_positives": 25,
+          "false_negatives": 0,
+          "precision": 0.1071,
+          "recall": 1.0,
+          "f1_score": 0.1935
+        },
+        {
+          "discrepancy_type": "PAYMENT_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "PRICE_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "QUANTITY_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "SUPPLIER_MISMATCH",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0
+        },
+        {
+          "discrepancy_type": "TAX_MISMATCH",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0
+        },
+        {
+          "discrepancy_type": "TOTAL_MISMATCH",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0
+        }
+      ]
+    },
+    "HYBRID": {
+      "approach": "HYBRID",
+      "total_evaluated_transactions": 40,
+      "precision": 0.4444,
+      "recall": 1.0,
+      "f1_score": 0.6154,
+      "linking_accuracy": 1.0,
+      "evidence_accuracy": 1.0,
+      "reconciliation_accuracy": 0.6154,
+      "avg_execution_time_ms": 0.64,
+      "total_cost_usd": 0.003263,
+      "cost_per_transaction_usd": 8.2e-05,
+      "category_breakdown": [
+        {
+          "discrepancy_type": "DATE_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "DUPLICATE_DOCUMENT",
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "ITEM_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 15,
+          "false_negatives": 0,
+          "precision": 0.1667,
+          "recall": 1.0,
+          "f1_score": 0.2857
+        },
+        {
+          "discrepancy_type": "MISSING_DOCUMENT",
+          "true_positives": 3,
+          "false_positives": 25,
+          "false_negatives": 0,
+          "precision": 0.1071,
+          "recall": 1.0,
+          "f1_score": 0.1935
+        },
+        {
+          "discrepancy_type": "PAYMENT_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "PRICE_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "QUANTITY_MISMATCH",
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "SUPPLIER_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "TAX_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        },
+        {
+          "discrepancy_type": "TOTAL_MISMATCH",
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0
+        }
+      ]
+    }
+  }
+}

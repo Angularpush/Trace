@@ -65,6 +65,23 @@ def init_db():
                         if col not in tcol_names:
                             conn.exec_driver_sql(f"ALTER TABLE transactions ADD COLUMN {col} {col_type}")
 
+                # Check transaction_documents association table columns
+                tdres = conn.exec_driver_sql("PRAGMA table_info(transaction_documents)").fetchall()
+                tdcol_names = [row[1] for row in tdres]
+                if tdcol_names:
+                    new_td_cols = {
+                        "link_method": "VARCHAR DEFAULT 'exact_identifier'",
+                        "link_confidence": "FLOAT DEFAULT 1.0",
+                        "confirmed": "BOOLEAN DEFAULT 0",
+                        "created_at": "DATETIME DEFAULT NULL"
+                    }
+                    for col, col_type in new_td_cols.items():
+                        if col not in tdcol_names:
+                            try:
+                                conn.exec_driver_sql(f"ALTER TABLE transaction_documents ADD COLUMN {col} {col_type}")
+                            except Exception:
+                                pass
+
                 # Check discrepancies table columns
                 res = conn.exec_driver_sql("PRAGMA table_info(discrepancies)").fetchall()
                 col_names = [row[1] for row in res]

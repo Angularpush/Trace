@@ -104,8 +104,49 @@ class TaxMismatchRule(BaseReconciliationRule):
         inv_data = inv_doc.get("parsed_data", {})
         stated_subtotal = normalize_decimal(inv_data.get("subtotal"))
         stated_tax = normalize_decimal(inv_data.get("tax_total"))
+        items = inv_data.get("items", []) or []
 
-        if stated_subtotal > Decimal("0.00") and stated_tax > Decimal("0.00"):
+        # Check line item tax sum vs stated tax total
+        calc_tax = Decimal("0.00")
+        has_item_tax = False
+        for it in items:
+            t_amt = it.get("tax_amount")
+            t_rate = it.get("tax_rate")
+            it_tot = normalize_decimal(it.get("total_amount"))
+            if t_amt is not None and normalize_decimal(t_amt) > Decimal("0.00"):
+                calc_tax += normalize_decimal(t_amt)
+                has_item_tax = True
+            elif t_rate is not None and normalize_decimal(t_rate) > Decimal("0.00"):
+                calc_tax += (it_tot * (normalize_decimal(t_rate) / Decimal("100.00"))).quantize(Decimal("0.01"))
+                has_item_tax = True
+
+        if has_item_tax and abs(stated_tax - calc_tax) > Decimal("1.00"):
+            diff = abs(stated_tax - calc_tax)
+            discrepancies.append(DiscrepancyResult(
+                rule_code=self.rule_code,
+                discrepancy_type="TAX_CALCULATION_MISMATCH",
+                title=f"Tax Calculation Mismatch: Stated INR {stated_tax} != Line Items Tax (INR {calc_tax})",
+                description=f"Invoice stated tax total (INR {stated_tax:.2f}) does not match the sum of tax calculated from line item tax rates (INR {calc_tax:.2f}).",
+                severity="HIGH",
+                confidence=0.98,
+                difference_amount=diff,
+                expected_value=f"₹{calc_tax:.2f}",
+                actual_value=f"₹{stated_tax:.2f}",
+                difference_value=f"₹{diff:.2f} tax variance",
+                evidences=[
+                    RuleEvidenceItem(
+                        document_id=inv_doc.get("id", "INV"),
+                        document_name=inv_doc.get("filename", "Invoice.pdf"),
+                        page_number=1,
+                        field_name="tax_total",
+                        exact_value=f"INR {stated_tax}",
+                        snippet=f"Stated Tax Total: INR {stated_tax}",
+                        relevance_score=1.0
+                    )
+                ]
+            ))
+
+        elif stated_subtotal > Decimal("0.00") and stated_tax > Decimal("0.00"):
             # Standard GST rates in India: 5%, 12%, 18%, 28%
             valid_gst_rates = [Decimal("0.05"), Decimal("0.12"), Decimal("0.18"), Decimal("0.28"), Decimal("0.00")]
             effective_rate = (stated_tax / stated_subtotal).quantize(Decimal("0.01"))

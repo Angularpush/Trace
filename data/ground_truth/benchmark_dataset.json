@@ -1,0 +1,2556 @@
+[
+  {
+    "transaction_id": "txn_txn-clean-001",
+    "transaction_reference": "TXN-CLEAN-001",
+    "category": "CLEAN_RECONCILED",
+    "supplier": "Bharat Engineering Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-CLEAN-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-CLEAN-001_Purchase_Order.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-C001",
+          "document_date": "2024-01-01",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 100,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 25000.0
+            }
+          ],
+          "subtotal": "25000.0",
+          "tax_total": "4500.0",
+          "grand_total": "29500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-001_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-CLEAN-001_Delivery_Challan.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "DN-2024-C001",
+          "po_reference": "PO-2024-C001",
+          "document_date": "2024-01-03",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 100,
+              "unit": "PCS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-CLEAN-001_Tax_Invoice.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "INV-2024-C001",
+          "po_reference": "PO-2024-C001",
+          "document_date": "2024-01-05",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 100,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 25000.0
+            }
+          ],
+          "subtotal": "25000.0",
+          "tax_total": "4500.0",
+          "grand_total": "29500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-001_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-CLEAN-001_Payment_Receipt.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "REC-2024-C001",
+          "invoice_reference": "INV-2024-C001",
+          "document_date": "2024-01-10",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "29500.0",
+          "grand_total": "29500.0",
+          "transaction_reference": "NEFT-UTR-TXN-CLEAN-001-01"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-clean-002",
+    "transaction_reference": "TXN-CLEAN-002",
+    "category": "CLEAN_RECONCILED",
+    "supplier": "Bharat Engineering Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-CLEAN-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-CLEAN-002_Purchase_Order.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-C002",
+          "document_date": "2024-02-01",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 200,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 50000.0
+            }
+          ],
+          "subtotal": "50000.0",
+          "tax_total": "9000.0",
+          "grand_total": "59000.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-002_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-CLEAN-002_Delivery_Challan.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "DN-2024-C002",
+          "po_reference": "PO-2024-C002",
+          "document_date": "2024-02-03",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 200,
+              "unit": "PCS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-CLEAN-002_Tax_Invoice.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "INV-2024-C002",
+          "po_reference": "PO-2024-C002",
+          "document_date": "2024-02-05",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 200,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 50000.0
+            }
+          ],
+          "subtotal": "50000.0",
+          "tax_total": "9000.0",
+          "grand_total": "59000.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-002_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-CLEAN-002_Payment_Receipt.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "REC-2024-C002",
+          "invoice_reference": "INV-2024-C002",
+          "document_date": "2024-02-10",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "59000.0",
+          "grand_total": "59000.0",
+          "transaction_reference": "NEFT-UTR-TXN-CLEAN-002-01"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-clean-003",
+    "transaction_reference": "TXN-CLEAN-003",
+    "category": "CLEAN_RECONCILED",
+    "supplier": "Bharat Engineering Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-CLEAN-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-CLEAN-003_Purchase_Order.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-C003",
+          "document_date": "2024-03-01",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 300,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "subtotal": "75000.0",
+          "tax_total": "13500.0",
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-003_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-CLEAN-003_Delivery_Challan.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "DN-2024-C003",
+          "po_reference": "PO-2024-C003",
+          "document_date": "2024-03-03",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 300,
+              "unit": "PCS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-CLEAN-003_Tax_Invoice.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "INV-2024-C003",
+          "po_reference": "PO-2024-C003",
+          "document_date": "2024-03-05",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 300,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "subtotal": "75000.0",
+          "tax_total": "13500.0",
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-003_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-CLEAN-003_Payment_Receipt.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "REC-2024-C003",
+          "invoice_reference": "INV-2024-C003",
+          "document_date": "2024-03-10",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "88500.0",
+          "grand_total": "88500.0",
+          "transaction_reference": "NEFT-UTR-TXN-CLEAN-003-01"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-clean-004",
+    "transaction_reference": "TXN-CLEAN-004",
+    "category": "CLEAN_RECONCILED",
+    "supplier": "Bharat Engineering Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-CLEAN-004_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-CLEAN-004_Purchase_Order.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-C004",
+          "document_date": "2024-04-01",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 400,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 100000.0
+            }
+          ],
+          "subtotal": "100000.0",
+          "tax_total": "18000.0",
+          "grand_total": "118000.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-004_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-CLEAN-004_Delivery_Challan.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "DN-2024-C004",
+          "po_reference": "PO-2024-C004",
+          "document_date": "2024-04-03",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 400,
+              "unit": "PCS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-004_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-CLEAN-004_Tax_Invoice.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "INV-2024-C004",
+          "po_reference": "PO-2024-C004",
+          "document_date": "2024-04-05",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 400,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 100000.0
+            }
+          ],
+          "subtotal": "100000.0",
+          "tax_total": "18000.0",
+          "grand_total": "118000.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-004_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-CLEAN-004_Payment_Receipt.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "REC-2024-C004",
+          "invoice_reference": "INV-2024-C004",
+          "document_date": "2024-04-10",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "118000.0",
+          "grand_total": "118000.0",
+          "transaction_reference": "NEFT-UTR-TXN-CLEAN-004-01"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-clean-005",
+    "transaction_reference": "TXN-CLEAN-005",
+    "category": "CLEAN_RECONCILED",
+    "supplier": "Bharat Engineering Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-CLEAN-005_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-CLEAN-005_Purchase_Order.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-C005",
+          "document_date": "2024-05-01",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 500,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 125000.0
+            }
+          ],
+          "subtotal": "125000.0",
+          "tax_total": "22500.0",
+          "grand_total": "147500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-005_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-CLEAN-005_Delivery_Challan.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "DN-2024-C005",
+          "po_reference": "PO-2024-C005",
+          "document_date": "2024-05-03",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 500,
+              "unit": "PCS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-005_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-CLEAN-005_Tax_Invoice.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "INV-2024-C005",
+          "po_reference": "PO-2024-C005",
+          "document_date": "2024-05-05",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "M12 High Tensile Hex Bolts",
+              "quantity": 500,
+              "unit": "PCS",
+              "unit_price": 250.0,
+              "tax_rate": 18.0,
+              "total_amount": 125000.0
+            }
+          ],
+          "subtotal": "125000.0",
+          "tax_total": "22500.0",
+          "grand_total": "147500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-CLEAN-005_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-CLEAN-005_Payment_Receipt.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "REC-2024-C005",
+          "invoice_reference": "INV-2024-C005",
+          "document_date": "2024-05-10",
+          "supplier_name": "Bharat Engineering Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "147500.0",
+          "grand_total": "147500.0",
+          "transaction_reference": "NEFT-UTR-TXN-CLEAN-005-01"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-qty-001",
+    "transaction_reference": "TXN-QTY-001",
+    "category": "QUANTITY_MISMATCH",
+    "supplier": "Precision Fasteners Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-QTY-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-QTY-001_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-Q001",
+          "document_date": "2024-02-01",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-001_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-QTY-001_DN.pdf",
+        "parsed_data": {
+          "document_number": "DN-2024-Q001",
+          "po_reference": "PO-2024-Q001",
+          "document_date": "2024-02-04",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 400
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-QTY-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-Q001",
+          "po_reference": "PO-2024-Q001",
+          "document_date": "2024-02-05",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "severity": "CRITICAL",
+        "expected_value": "400.00 PCS",
+        "actual_value": "500.00 PCS"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-qty-002",
+    "transaction_reference": "TXN-QTY-002",
+    "category": "QUANTITY_MISMATCH",
+    "supplier": "Precision Fasteners Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-QTY-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-QTY-002_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-Q002",
+          "document_date": "2024-02-01",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-002_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-QTY-002_DN.pdf",
+        "parsed_data": {
+          "document_number": "DN-2024-Q002",
+          "po_reference": "PO-2024-Q002",
+          "document_date": "2024-02-04",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 400
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-QTY-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-Q002",
+          "po_reference": "PO-2024-Q002",
+          "document_date": "2024-02-05",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "severity": "CRITICAL",
+        "expected_value": "400.00 PCS",
+        "actual_value": "500.00 PCS"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-qty-003",
+    "transaction_reference": "TXN-QTY-003",
+    "category": "QUANTITY_MISMATCH",
+    "supplier": "Precision Fasteners Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-QTY-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-QTY-003_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-Q003",
+          "document_date": "2024-02-01",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-003_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-QTY-003_DN.pdf",
+        "parsed_data": {
+          "document_number": "DN-2024-Q003",
+          "po_reference": "PO-2024-Q003",
+          "document_date": "2024-02-04",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 400
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-QTY-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-Q003",
+          "po_reference": "PO-2024-Q003",
+          "document_date": "2024-02-05",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "severity": "CRITICAL",
+        "expected_value": "400.00 PCS",
+        "actual_value": "500.00 PCS"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-qty-004",
+    "transaction_reference": "TXN-QTY-004",
+    "category": "QUANTITY_MISMATCH",
+    "supplier": "Precision Fasteners Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-QTY-004_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-QTY-004_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-Q004",
+          "document_date": "2024-02-01",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-004_DN",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-QTY-004_DN.pdf",
+        "parsed_data": {
+          "document_number": "DN-2024-Q004",
+          "po_reference": "PO-2024-Q004",
+          "document_date": "2024-02-04",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 400
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-QTY-004_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-QTY-004_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-Q004",
+          "po_reference": "PO-2024-Q004",
+          "document_date": "2024-02-05",
+          "supplier_name": "Precision Fasteners Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Stainless Steel Flange 2 Inch",
+              "quantity": 500,
+              "unit_price": 150.0,
+              "total_amount": 75000.0
+            }
+          ],
+          "grand_total": "88500.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "QUANTITY_MISMATCH",
+        "severity": "CRITICAL",
+        "expected_value": "400.00 PCS",
+        "actual_value": "500.00 PCS"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-price-001",
+    "transaction_reference": "TXN-PRICE-001",
+    "category": "PRICE_MISMATCH",
+    "supplier": "Dynamic Valve Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PRICE-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-PRICE-001_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-P001",
+          "document_date": "2024-03-01",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1200.0,
+              "total_amount": 24000.0
+            }
+          ],
+          "grand_total": "28320.0"
+        }
+      },
+      {
+        "id": "doc_TXN-PRICE-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PRICE-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-P001",
+          "po_reference": "PO-2024-P001",
+          "document_date": "2024-03-05",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1450.0,
+              "total_amount": 29000.0
+            }
+          ],
+          "grand_total": "34220.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b91200.00",
+        "actual_value": "\u20b91450.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-price-002",
+    "transaction_reference": "TXN-PRICE-002",
+    "category": "PRICE_MISMATCH",
+    "supplier": "Dynamic Valve Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PRICE-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-PRICE-002_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-P002",
+          "document_date": "2024-03-01",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1200.0,
+              "total_amount": 24000.0
+            }
+          ],
+          "grand_total": "28320.0"
+        }
+      },
+      {
+        "id": "doc_TXN-PRICE-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PRICE-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-P002",
+          "po_reference": "PO-2024-P002",
+          "document_date": "2024-03-05",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1450.0,
+              "total_amount": 29000.0
+            }
+          ],
+          "grand_total": "34220.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b91200.00",
+        "actual_value": "\u20b91450.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-price-003",
+    "transaction_reference": "TXN-PRICE-003",
+    "category": "PRICE_MISMATCH",
+    "supplier": "Dynamic Valve Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PRICE-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-PRICE-003_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-P003",
+          "document_date": "2024-03-01",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1200.0,
+              "total_amount": 24000.0
+            }
+          ],
+          "grand_total": "28320.0"
+        }
+      },
+      {
+        "id": "doc_TXN-PRICE-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PRICE-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-P003",
+          "po_reference": "PO-2024-P003",
+          "document_date": "2024-03-05",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1450.0,
+              "total_amount": 29000.0
+            }
+          ],
+          "grand_total": "34220.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b91200.00",
+        "actual_value": "\u20b91450.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-price-004",
+    "transaction_reference": "TXN-PRICE-004",
+    "category": "PRICE_MISMATCH",
+    "supplier": "Dynamic Valve Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PRICE-004_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-PRICE-004_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-P004",
+          "document_date": "2024-03-01",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1200.0,
+              "total_amount": 24000.0
+            }
+          ],
+          "grand_total": "28320.0"
+        }
+      },
+      {
+        "id": "doc_TXN-PRICE-004_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PRICE-004_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-P004",
+          "po_reference": "PO-2024-P004",
+          "document_date": "2024-03-05",
+          "supplier_name": "Dynamic Valve Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Industrial Ball Valve 50mm",
+              "quantity": 20,
+              "unit_price": 1450.0,
+              "total_amount": 29000.0
+            }
+          ],
+          "grand_total": "34220.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PRICE_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b91200.00",
+        "actual_value": "\u20b91450.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-tax-001",
+    "transaction_reference": "TXN-TAX-001",
+    "category": "TAX_MISMATCH",
+    "supplier": "Standard Chemicals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TAX-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TAX-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-T001",
+          "document_date": "2024-04-01",
+          "supplier_name": "Standard Chemicals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Solvent Chemical Grade A",
+              "quantity": 10,
+              "unit_price": 5000.0,
+              "tax_rate": 18.0,
+              "tax_amount": 9000.0,
+              "total_amount": 50000.0
+            }
+          ],
+          "subtotal": "50000.0",
+          "tax_total": "14000.0",
+          "grand_total": "64000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b99000.00",
+        "actual_value": "\u20b914000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-tax-002",
+    "transaction_reference": "TXN-TAX-002",
+    "category": "TAX_MISMATCH",
+    "supplier": "Standard Chemicals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TAX-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TAX-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-T002",
+          "document_date": "2024-04-01",
+          "supplier_name": "Standard Chemicals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Solvent Chemical Grade A",
+              "quantity": 10,
+              "unit_price": 5000.0,
+              "tax_rate": 18.0,
+              "tax_amount": 9000.0,
+              "total_amount": 50000.0
+            }
+          ],
+          "subtotal": "50000.0",
+          "tax_total": "14000.0",
+          "grand_total": "64000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b99000.00",
+        "actual_value": "\u20b914000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-tax-003",
+    "transaction_reference": "TXN-TAX-003",
+    "category": "TAX_MISMATCH",
+    "supplier": "Standard Chemicals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TAX-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TAX-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-T003",
+          "document_date": "2024-04-01",
+          "supplier_name": "Standard Chemicals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Solvent Chemical Grade A",
+              "quantity": 10,
+              "unit_price": 5000.0,
+              "tax_rate": 18.0,
+              "tax_amount": 9000.0,
+              "total_amount": 50000.0
+            }
+          ],
+          "subtotal": "50000.0",
+          "tax_total": "14000.0",
+          "grand_total": "64000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TAX_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b99000.00",
+        "actual_value": "\u20b914000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-total-001",
+    "transaction_reference": "TXN-TOTAL-001",
+    "category": "TOTAL_MISMATCH",
+    "supplier": "Universal Components",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TOTAL-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TOTAL-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-TOT001",
+          "document_date": "2024-04-10",
+          "supplier_name": "Universal Components",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Roller Bearing 6204",
+              "quantity": 50,
+              "unit_price": 600.0,
+              "total_amount": 30000.0
+            }
+          ],
+          "subtotal": "30000.00",
+          "tax_total": "0.00",
+          "grand_total": "35000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b930000.00",
+        "actual_value": "\u20b935000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-total-002",
+    "transaction_reference": "TXN-TOTAL-002",
+    "category": "TOTAL_MISMATCH",
+    "supplier": "Universal Components",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TOTAL-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TOTAL-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-TOT002",
+          "document_date": "2024-04-10",
+          "supplier_name": "Universal Components",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Roller Bearing 6204",
+              "quantity": 50,
+              "unit_price": 600.0,
+              "total_amount": 30000.0
+            }
+          ],
+          "subtotal": "30000.00",
+          "tax_total": "0.00",
+          "grand_total": "35000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b930000.00",
+        "actual_value": "\u20b935000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-total-003",
+    "transaction_reference": "TXN-TOTAL-003",
+    "category": "TOTAL_MISMATCH",
+    "supplier": "Universal Components",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-TOTAL-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-TOTAL-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-TOT003",
+          "document_date": "2024-04-10",
+          "supplier_name": "Universal Components",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Roller Bearing 6204",
+              "quantity": 50,
+              "unit_price": 600.0,
+              "total_amount": 30000.0
+            }
+          ],
+          "subtotal": "30000.00",
+          "tax_total": "0.00",
+          "grand_total": "35000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "TOTAL_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "\u20b930000.00",
+        "actual_value": "\u20b935000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-pay-001",
+    "transaction_reference": "TXN-PAY-001",
+    "category": "PAYMENT_MISMATCH",
+    "supplier": "Metro Electricals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PAY-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PAY-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-PAY001",
+          "document_date": "2024-05-01",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "grand_total": "75000.0",
+          "items": [
+            {
+              "description": "Copper Cable 4 sqmm",
+              "quantity": 100,
+              "unit_price": 750.0,
+              "total_amount": 75000.0
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-PAY-001_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-PAY-001_REC.pdf",
+        "parsed_data": {
+          "document_number": "REC-2024-PAY001",
+          "invoice_reference": "INV-2024-PAY001",
+          "document_date": "2024-05-10",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "60000.0",
+          "grand_total": "60000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b975000.00",
+        "actual_value": "\u20b960000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-pay-002",
+    "transaction_reference": "TXN-PAY-002",
+    "category": "PAYMENT_MISMATCH",
+    "supplier": "Metro Electricals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PAY-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PAY-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-PAY002",
+          "document_date": "2024-05-01",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "grand_total": "75000.0",
+          "items": [
+            {
+              "description": "Copper Cable 4 sqmm",
+              "quantity": 100,
+              "unit_price": 750.0,
+              "total_amount": 75000.0
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-PAY-002_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-PAY-002_REC.pdf",
+        "parsed_data": {
+          "document_number": "REC-2024-PAY002",
+          "invoice_reference": "INV-2024-PAY002",
+          "document_date": "2024-05-10",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "60000.0",
+          "grand_total": "60000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b975000.00",
+        "actual_value": "\u20b960000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-pay-003",
+    "transaction_reference": "TXN-PAY-003",
+    "category": "PAYMENT_MISMATCH",
+    "supplier": "Metro Electricals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PAY-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PAY-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-PAY003",
+          "document_date": "2024-05-01",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "grand_total": "75000.0",
+          "items": [
+            {
+              "description": "Copper Cable 4 sqmm",
+              "quantity": 100,
+              "unit_price": 750.0,
+              "total_amount": 75000.0
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-PAY-003_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-PAY-003_REC.pdf",
+        "parsed_data": {
+          "document_number": "REC-2024-PAY003",
+          "invoice_reference": "INV-2024-PAY003",
+          "document_date": "2024-05-10",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "60000.0",
+          "grand_total": "60000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b975000.00",
+        "actual_value": "\u20b960000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-pay-004",
+    "transaction_reference": "TXN-PAY-004",
+    "category": "PAYMENT_MISMATCH",
+    "supplier": "Metro Electricals Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-PAY-004_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-PAY-004_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-PAY004",
+          "document_date": "2024-05-01",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "grand_total": "75000.0",
+          "items": [
+            {
+              "description": "Copper Cable 4 sqmm",
+              "quantity": 100,
+              "unit_price": 750.0,
+              "total_amount": 75000.0
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-PAY-004_REC",
+        "doc_type": "PAYMENT_RECEIPT",
+        "document_type": "PAYMENT_RECEIPT",
+        "filename": "TXN-PAY-004_REC.pdf",
+        "parsed_data": {
+          "document_number": "REC-2024-PAY004",
+          "invoice_reference": "INV-2024-PAY004",
+          "document_date": "2024-05-10",
+          "supplier_name": "Metro Electricals Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "payment_amount": "60000.0",
+          "grand_total": "60000.0"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "PAYMENT_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "\u20b975000.00",
+        "actual_value": "\u20b960000.00"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-date-001",
+    "transaction_reference": "TXN-DATE-001",
+    "category": "DATE_MISMATCH",
+    "supplier": "Pioneer Hydraulics",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-DATE-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-DATE-001_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-D001",
+          "document_date": "2024-06-15",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-DATE-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DATE-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-D001",
+          "po_reference": "PO-2024-D001",
+          "document_date": "2024-06-05",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Invoice Date >= PO Date",
+        "actual_value": "2024-06-05 < 2024-06-15"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-date-002",
+    "transaction_reference": "TXN-DATE-002",
+    "category": "DATE_MISMATCH",
+    "supplier": "Pioneer Hydraulics",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-DATE-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-DATE-002_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-D002",
+          "document_date": "2024-06-15",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-DATE-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DATE-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-D002",
+          "po_reference": "PO-2024-D002",
+          "document_date": "2024-06-05",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Invoice Date >= PO Date",
+        "actual_value": "2024-06-05 < 2024-06-15"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-date-003",
+    "transaction_reference": "TXN-DATE-003",
+    "category": "DATE_MISMATCH",
+    "supplier": "Pioneer Hydraulics",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-DATE-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-DATE-003_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-D003",
+          "document_date": "2024-06-15",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-DATE-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DATE-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-D003",
+          "po_reference": "PO-2024-D003",
+          "document_date": "2024-06-05",
+          "supplier_name": "Pioneer Hydraulics",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Hydraulic Pump 10HP",
+              "quantity": 2,
+              "unit_price": 45000.0,
+              "total_amount": 90000.0
+            }
+          ],
+          "grand_total": "90000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "DATE_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Invoice Date >= PO Date",
+        "actual_value": "2024-06-05 < 2024-06-15"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-supp-001",
+    "transaction_reference": "TXN-SUPP-001",
+    "category": "SUPPLIER_MISMATCH",
+    "supplier": "Apex Heavy Industries Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-SUPP-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-SUPP-001_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-S001",
+          "document_date": "2024-07-01",
+          "supplier_name": "Apex Heavy Industries Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-SUPP-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-SUPP-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-S001",
+          "po_reference": "PO-2024-S001",
+          "document_date": "2024-07-05",
+          "supplier_name": "Completely Different Vendor Enterprises",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "Apex Heavy Industries Pvt Ltd",
+        "actual_value": "Completely Different Vendor Enterprises"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-supp-002",
+    "transaction_reference": "TXN-SUPP-002",
+    "category": "SUPPLIER_MISMATCH",
+    "supplier": "Apex Heavy Industries Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-SUPP-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-SUPP-002_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-S002",
+          "document_date": "2024-07-01",
+          "supplier_name": "Apex Heavy Industries Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-SUPP-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-SUPP-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-S002",
+          "po_reference": "PO-2024-S002",
+          "document_date": "2024-07-05",
+          "supplier_name": "Completely Different Vendor Enterprises",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "Apex Heavy Industries Pvt Ltd",
+        "actual_value": "Completely Different Vendor Enterprises"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-supp-003",
+    "transaction_reference": "TXN-SUPP-003",
+    "category": "SUPPLIER_MISMATCH",
+    "supplier": "Apex Heavy Industries Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-SUPP-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-SUPP-003_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-S003",
+          "document_date": "2024-07-01",
+          "supplier_name": "Apex Heavy Industries Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-SUPP-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-SUPP-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-S003",
+          "po_reference": "PO-2024-S003",
+          "document_date": "2024-07-05",
+          "supplier_name": "Completely Different Vendor Enterprises",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Steel Girders 6M",
+              "quantity": 10,
+              "unit_price": 12000.0,
+              "total_amount": 120000.0
+            }
+          ],
+          "grand_total": "120000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "SUPPLIER_MISMATCH",
+        "severity": "HIGH",
+        "expected_value": "Apex Heavy Industries Pvt Ltd",
+        "actual_value": "Completely Different Vendor Enterprises"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-item-001",
+    "transaction_reference": "TXN-ITEM-001",
+    "category": "ITEM_MISMATCH",
+    "supplier": "Global Tooling Corporation",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-ITEM-001_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-ITEM-001_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-IT001",
+          "document_date": "2024-08-01",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Carbide End Mill Cutter 12mm 4-Flute",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-ITEM-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-ITEM-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-IT001",
+          "po_reference": "PO-2024-IT001",
+          "document_date": "2024-08-05",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Standard HSS Twist Drill Bit Set",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Carbide End Mill Cutter 12mm 4-Flute",
+        "actual_value": "Standard HSS Twist Drill Bit Set"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-item-002",
+    "transaction_reference": "TXN-ITEM-002",
+    "category": "ITEM_MISMATCH",
+    "supplier": "Global Tooling Corporation",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-ITEM-002_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-ITEM-002_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-IT002",
+          "document_date": "2024-08-01",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Carbide End Mill Cutter 12mm 4-Flute",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-ITEM-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-ITEM-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-IT002",
+          "po_reference": "PO-2024-IT002",
+          "document_date": "2024-08-05",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Standard HSS Twist Drill Bit Set",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Carbide End Mill Cutter 12mm 4-Flute",
+        "actual_value": "Standard HSS Twist Drill Bit Set"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-item-003",
+    "transaction_reference": "TXN-ITEM-003",
+    "category": "ITEM_MISMATCH",
+    "supplier": "Global Tooling Corporation",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-ITEM-003_PO",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-ITEM-003_PO.pdf",
+        "parsed_data": {
+          "document_number": "PO-2024-IT003",
+          "document_date": "2024-08-01",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Carbide End Mill Cutter 12mm 4-Flute",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-ITEM-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-ITEM-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-IT003",
+          "po_reference": "PO-2024-IT003",
+          "document_date": "2024-08-05",
+          "supplier_name": "Global Tooling Corporation",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Standard HSS Twist Drill Bit Set",
+              "quantity": 5,
+              "unit_price": 3200.0,
+              "total_amount": 16000.0
+            }
+          ],
+          "grand_total": "16000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "ITEM_MISMATCH",
+        "severity": "MEDIUM",
+        "expected_value": "Carbide End Mill Cutter 12mm 4-Flute",
+        "actual_value": "Standard HSS Twist Drill Bit Set"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-miss-001",
+    "transaction_reference": "TXN-MISS-001",
+    "category": "MISSING_DOCUMENT",
+    "supplier": "Eastern Steel Tubes",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-MISS-001_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-MISS-001_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-M001",
+          "document_date": "2024-08-20",
+          "supplier_name": "Eastern Steel Tubes",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Seamless Steel Pipe 3 Inch",
+              "quantity": 30,
+              "unit_price": 2800.0,
+              "total_amount": 84000.0
+            }
+          ],
+          "grand_total": "84000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "severity": "HIGH",
+        "expected_value": "PURCHASE_ORDER, DELIVERY_NOTE present",
+        "actual_value": "Missing"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-miss-002",
+    "transaction_reference": "TXN-MISS-002",
+    "category": "MISSING_DOCUMENT",
+    "supplier": "Eastern Steel Tubes",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-MISS-002_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-MISS-002_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-M002",
+          "document_date": "2024-08-20",
+          "supplier_name": "Eastern Steel Tubes",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Seamless Steel Pipe 3 Inch",
+              "quantity": 30,
+              "unit_price": 2800.0,
+              "total_amount": 84000.0
+            }
+          ],
+          "grand_total": "84000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "severity": "HIGH",
+        "expected_value": "PURCHASE_ORDER, DELIVERY_NOTE present",
+        "actual_value": "Missing"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-miss-003",
+    "transaction_reference": "TXN-MISS-003",
+    "category": "MISSING_DOCUMENT",
+    "supplier": "Eastern Steel Tubes",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-MISS-003_INV",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-MISS-003_INV.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-M003",
+          "document_date": "2024-08-20",
+          "supplier_name": "Eastern Steel Tubes",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Seamless Steel Pipe 3 Inch",
+              "quantity": 30,
+              "unit_price": 2800.0,
+              "total_amount": 84000.0
+            }
+          ],
+          "grand_total": "84000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "MISSING_DOCUMENT",
+        "severity": "HIGH",
+        "expected_value": "PURCHASE_ORDER, DELIVERY_NOTE present",
+        "actual_value": "Missing"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-dup-001",
+    "transaction_reference": "TXN-DUP-001",
+    "category": "DUPLICATE_DOCUMENT",
+    "supplier": "Omega Logistics Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-DUP-001_INV1",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DUP-001_Invoice_Copy1.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-DUP-001",
+          "document_date": "2024-09-01",
+          "supplier_name": "Omega Logistics Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Freight Transportation Service",
+              "quantity": 1,
+              "unit_price": 42000.0,
+              "total_amount": 42000.0
+            }
+          ],
+          "grand_total": "42000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-DUP-001_INV2",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DUP-001_Invoice_Copy2.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-DUP-001",
+          "document_date": "2024-09-01",
+          "supplier_name": "Omega Logistics Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Freight Transportation Service",
+              "quantity": 1,
+              "unit_price": 42000.0,
+              "total_amount": 42000.0
+            }
+          ],
+          "grand_total": "42000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "DUPLICATE_DOCUMENT",
+        "severity": "CRITICAL",
+        "expected_value": "Unique document numbers",
+        "actual_value": "Duplicate document: INV-2024-DUP-001"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-dup-002",
+    "transaction_reference": "TXN-DUP-002",
+    "category": "DUPLICATE_DOCUMENT",
+    "supplier": "Omega Logistics Pvt Ltd",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-DUP-002_INV1",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DUP-002_Invoice_Copy1.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-DUP-002",
+          "document_date": "2024-09-01",
+          "supplier_name": "Omega Logistics Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Freight Transportation Service",
+              "quantity": 1,
+              "unit_price": 42000.0,
+              "total_amount": 42000.0
+            }
+          ],
+          "grand_total": "42000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-DUP-002_INV2",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-DUP-002_Invoice_Copy2.pdf",
+        "parsed_data": {
+          "document_number": "INV-2024-DUP-002",
+          "document_date": "2024-09-01",
+          "supplier_name": "Omega Logistics Pvt Ltd",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "Freight Transportation Service",
+              "quantity": 1,
+              "unit_price": 42000.0,
+              "total_amount": 42000.0
+            }
+          ],
+          "grand_total": "42000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": [
+      {
+        "discrepancy_type": "DUPLICATE_DOCUMENT",
+        "severity": "CRITICAL",
+        "expected_value": "Unique document numbers",
+        "actual_value": "Duplicate document: INV-2024-DUP-002"
+      }
+    ]
+  },
+  {
+    "transaction_id": "txn_txn-combined-001",
+    "transaction_reference": "TXN-COMBINED-001",
+    "category": "MULTI_DOC_COMBINED_PDF",
+    "supplier": "Zenith Automation Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-COMBINED-001_P1_PO",
+        "file_id": "file_TXN-COMBINED-001_combined.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-COMBINED-001_Scan_Page1.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-COMB001",
+          "document_date": "2024-09-10",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-001_P2_DN",
+        "file_id": "file_TXN-COMBINED-001_combined.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-COMBINED-001_Scan_Page2.pdf",
+        "page_start": 2,
+        "page_end": 2,
+        "parsed_data": {
+          "document_number": "DN-2024-COMB001",
+          "po_reference": "PO-2024-COMB001",
+          "document_date": "2024-09-12",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-001_P3_INV",
+        "file_id": "file_TXN-COMBINED-001_combined.pdf",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-COMBINED-001_Scan_Page3.pdf",
+        "page_start": 3,
+        "page_end": 3,
+        "parsed_data": {
+          "document_number": "INV-2024-COMB001",
+          "po_reference": "PO-2024-COMB001",
+          "document_date": "2024-09-13",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-combined-002",
+    "transaction_reference": "TXN-COMBINED-002",
+    "category": "MULTI_DOC_COMBINED_PDF",
+    "supplier": "Zenith Automation Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-COMBINED-002_P1_PO",
+        "file_id": "file_TXN-COMBINED-002_combined.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-COMBINED-002_Scan_Page1.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-COMB002",
+          "document_date": "2024-09-10",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-002_P2_DN",
+        "file_id": "file_TXN-COMBINED-002_combined.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-COMBINED-002_Scan_Page2.pdf",
+        "page_start": 2,
+        "page_end": 2,
+        "parsed_data": {
+          "document_number": "DN-2024-COMB002",
+          "po_reference": "PO-2024-COMB002",
+          "document_date": "2024-09-12",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-002_P3_INV",
+        "file_id": "file_TXN-COMBINED-002_combined.pdf",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-COMBINED-002_Scan_Page3.pdf",
+        "page_start": 3,
+        "page_end": 3,
+        "parsed_data": {
+          "document_number": "INV-2024-COMB002",
+          "po_reference": "PO-2024-COMB002",
+          "document_date": "2024-09-13",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  },
+  {
+    "transaction_id": "txn_txn-combined-003",
+    "transaction_reference": "TXN-COMBINED-003",
+    "category": "MULTI_DOC_COMBINED_PDF",
+    "supplier": "Zenith Automation Systems",
+    "customer": "Apex Industrial Solutions",
+    "documents": [
+      {
+        "id": "doc_TXN-COMBINED-003_P1_PO",
+        "file_id": "file_TXN-COMBINED-003_combined.pdf",
+        "doc_type": "PURCHASE_ORDER",
+        "document_type": "PURCHASE_ORDER",
+        "filename": "TXN-COMBINED-003_Scan_Page1.pdf",
+        "page_start": 1,
+        "page_end": 1,
+        "parsed_data": {
+          "document_number": "PO-2024-COMB003",
+          "document_date": "2024-09-10",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-003_P2_DN",
+        "file_id": "file_TXN-COMBINED-003_combined.pdf",
+        "doc_type": "DELIVERY_NOTE",
+        "document_type": "DELIVERY_NOTE",
+        "filename": "TXN-COMBINED-003_Scan_Page2.pdf",
+        "page_start": 2,
+        "page_end": 2,
+        "parsed_data": {
+          "document_number": "DN-2024-COMB003",
+          "po_reference": "PO-2024-COMB003",
+          "document_date": "2024-09-12",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "doc_TXN-COMBINED-003_P3_INV",
+        "file_id": "file_TXN-COMBINED-003_combined.pdf",
+        "doc_type": "INVOICE",
+        "document_type": "INVOICE",
+        "filename": "TXN-COMBINED-003_Scan_Page3.pdf",
+        "page_start": 3,
+        "page_end": 3,
+        "parsed_data": {
+          "document_number": "INV-2024-COMB003",
+          "po_reference": "PO-2024-COMB003",
+          "document_date": "2024-09-13",
+          "supplier_name": "Zenith Automation Systems",
+          "customer_name": "Apex Industrial Solutions",
+          "items": [
+            {
+              "description": "PLC Controller Module",
+              "quantity": 4,
+              "unit_price": 28000.0,
+              "total_amount": 112000.0
+            }
+          ],
+          "grand_total": "112000.00"
+        }
+      }
+    ],
+    "ground_truth_discrepancies": []
+  }
+]

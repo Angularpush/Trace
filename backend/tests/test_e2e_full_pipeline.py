@@ -28,7 +28,7 @@ def test_e2e_full_pipeline(db_session, tmp_path):
     samples_dir = os.path.join(os.path.dirname(__file__), "..", "..", "sample_data", "raw_documents")
     assert os.path.exists(samples_dir), f"Sample directory not found at {samples_dir}"
     
-    files = sorted(os.listdir(samples_dir))
+    files = sorted([f for f in os.listdir(samples_dir) if f.endswith('.pdf')])
     assert len(files) == 8, f"Expected 8 sample PDFs, found {len(files)}"
     
     ingested_docs = []

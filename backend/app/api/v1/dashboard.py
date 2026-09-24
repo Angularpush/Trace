@@ -1,8 +1,11 @@
 """
 TRACE - Dashboard Analytics API Endpoints
-Aggregates real-time metrics across documents, transactions, and discrepancies directly from the database.
+Aggregates real-time metrics across documents, transactions, and discrepancies,
+plus the 3-way approach comparison matrix for research analytics.
 """
 
+import os
+import json
 from typing import Dict, Any, List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -12,19 +15,24 @@ from app.core.database import get_db
 from app.models.document import Document
 from app.models.transaction import Transaction
 from app.models.discrepancy import Discrepancy
+from app.models.reconciliation import ReconciliationRun
 
 router = APIRouter(prefix="/dashboard", tags=["dashboard"])
 
 @router.get("/stats")
 def get_dashboard_stats(db: Session = Depends(get_db)) -> Dict[str, Any]:
     """
-    Computes real, un-mocked operational KPI metrics from database records.
+    Computes real operational KPI metrics and loads 3-way approach benchmark comparison.
     """
     total_txns = db.query(Transaction).count()
-    reconciled_txns = db.query(Transaction).filter(Transaction.reconciliation_status == "RECONCILED").count()
-    discrepancy_txns = db.query(Transaction).filter(Transaction.reconciliation_status == "DISCREPANCY_FOUND").count()
+    reconciled_txns = db.query(Transaction).filter(
+        (Transaction.reconciliation_status == "RECONCILED") | (Transaction.status == "RECONCILED")
+    ).count()
+    discrepancy_txns = db.query(Transaction).filter(
+        (Transaction.reconciliation_status == "DISCREPANCY_FOUND") | (Transaction.status == "DISCREPANCIES_FOUND")
+    ).count()
     needs_review_txns = db.query(Transaction).filter(
-        Transaction.reconciliation_status.in_(["INCOMPLETE", "MINOR_VARIANCE", "PENDING"])
+        Transaction.status.in_(["INCOMPLETE", "MINOR_VARIANCE", "PENDING"])
     ).count()
 
     total_docs = db.query(Document).count()
@@ -36,8 +44,6 @@ def get_dashboard_stats(db: Session = Depends(get_db)) -> Dict[str, Any]:
         if d.rule_code == "PAYMENT_MISMATCH" or "SHORTFALL" in d.discrepancy_type.upper()
     ]
     total_outstanding = sum(payment_shortfalls) if payment_shortfalls else 0.0
-
-    # Total Invoiced Amount across all transactions
     total_invoiced = db.query(func.sum(Transaction.total_amount)).scalar() or 0.0
 
     # Discrepancies by Type
@@ -54,13 +60,21 @@ def get_dashboard_stats(db: Session = Depends(get_db)) -> Dict[str, Any]:
         "LOW": sum(1 for d in all_discrepancies if d.severity == "LOW"),
     }
 
-    # Status distribution
-    status_counts = {
+    # Load 3-way approach benchmark metrics
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    report_path = os.path.join(base_dir, "data", "ground_truth", "latest_evaluation_report.json")
+    benchmark_summary = None
+    if os.path.exists(report_path):
+        try:
+            with open(report_path, "r", encoding="utf-8") as f:
+                benchmark_summary = json.load(f)
+        except Exception:
+            pass
+
+    status_distribution = {
         "RECONCILED": reconciled_txns,
         "DISCREPANCY_FOUND": discrepancy_txns,
-        "INCOMPLETE": db.query(Transaction).filter(Transaction.reconciliation_status == "INCOMPLETE").count(),
-        "MINOR_VARIANCE": db.query(Transaction).filter(Transaction.reconciliation_status == "MINOR_VARIANCE").count(),
-        "PENDING": db.query(Transaction).filter(Transaction.reconciliation_status == "PENDING").count(),
+        "NEEDS_REVIEW": needs_review_txns
     }
 
     return {
@@ -68,11 +82,12 @@ def get_dashboard_stats(db: Session = Depends(get_db)) -> Dict[str, Any]:
         "reconciled_transactions": reconciled_txns,
         "discrepancy_transactions": discrepancy_txns,
         "needs_review_transactions": needs_review_txns,
+        "status_distribution": status_distribution,
         "total_documents": total_docs,
         "total_outstanding_amount": round(total_outstanding, 2),
         "total_invoiced_amount": round(total_invoiced, 2),
         "total_discrepancies": len(all_discrepancies),
         "discrepancies_by_type": type_counts,
         "discrepancies_by_severity": severity_counts,
-        "status_distribution": status_counts
+        "benchmark_summary": benchmark_summary
     }
