@@ -263,6 +263,11 @@ class ResearchBenchmarkEvaluator:
 
         for cat, vals in sorted(cat_map.items()):
             md += f"| `{cat}` | {vals['rule']:.2%} | {vals['ai']:.2%} | {vals['hybrid']:.2%} |\n"
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(md)
+        return md
+
     @classmethod
     def run_ablation_study(cls) -> Dict[str, Any]:
         """
@@ -272,10 +277,8 @@ class ResearchBenchmarkEvaluator:
         3. Rules + LLM Reasoning (No Vector Embeddings)
         4. Full Multi-Source Hybrid (TRACE)
         """
+        import time
         dataset = cls.load_benchmark_dataset()
-
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(md)
         # Engine variants for ablation
         class RulesPlusFAISSEngine:
             @property

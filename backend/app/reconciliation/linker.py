@@ -247,15 +247,20 @@ class TransactionLinker:
         return clusters
 
     @classmethod
-    def link_database_documents(cls, db) -> List[Any]:
+    def link_database_documents(cls, db, upload_batch_id: Optional[str] = None) -> List[Any]:
         """
-        Scans all documents in DB, links them into Transaction clusters,
+        Scans all documents in DB (or matching upload_batch_id), links them into Transaction clusters,
         and saves explicit TransactionDocument link entities with provenance.
         """
         from app.models.document import Document, TransactionDocument
         from app.models.transaction import Transaction
 
-        docs = db.query(Document).all()
+        query = db.query(Document)
+        if upload_batch_id:
+            docs = query.filter(Document.upload_batch_id == upload_batch_id).all()
+        else:
+            docs = query.all()
+
         if not docs:
             return []
 
@@ -290,9 +295,13 @@ class TransactionLinker:
                     continue
 
             # Find or create Transaction
-            existing_txn = db.query(Transaction).filter(
-                (Transaction.transaction_reference == ref_key) | (Transaction.transaction_ref == ref_key)
-            ).first()
+            txn_filter = (Transaction.transaction_reference == ref_key) | (Transaction.transaction_ref == ref_key)
+            if upload_batch_id:
+                matching_txns = db.query(Transaction).filter(txn_filter, Transaction.upload_batch_id == upload_batch_id).all()
+            else:
+                matching_txns = db.query(Transaction).filter(txn_filter).all()
+
+            existing_txn = matching_txns[0] if matching_txns else None
 
             supplier = ""
             customer = ""
@@ -329,7 +338,8 @@ class TransactionLinker:
                     currency="INR",
                     total_amount=total_amt,
                     status="PENDING",
-                    reconciliation_status="PENDING"
+                    reconciliation_status="PENDING",
+                    upload_batch_id=upload_batch_id
                 )
                 db.add(txn)
                 db.flush()
@@ -342,6 +352,14 @@ class TransactionLinker:
                 if supplier and not target_txn.supplier:
                     target_txn.supplier = supplier
                     target_txn.supplier_name = supplier
+
+                # Clean up duplicate transactions for the same ref_key
+                for extra_txn in matching_txns[1:]:
+                    for extra_d in list(extra_txn.documents):
+                        if extra_d not in target_txn.documents:
+                            target_txn.documents.append(extra_d)
+                    db.delete(extra_txn)
+                db.flush()
 
             # Link documents to Transaction & create TransactionDocument links
             for cd in cluster_docs:
@@ -377,6 +395,8 @@ class TransactionLinker:
                     db.add(link_rec)
 
         db.commit()
+        if upload_batch_id:
+            return db.query(Transaction).filter(Transaction.upload_batch_id == upload_batch_id).all()
         return db.query(Transaction).all()
 
     @classmethod

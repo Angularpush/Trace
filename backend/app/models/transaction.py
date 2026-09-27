@@ -32,6 +32,7 @@ class Transaction(Base):
     reconciliation_status = Column(String, default="PENDING")
     reconciliation_summary = Column(Text, default="")
     metadata_json = Column(JSON, default=dict)
+    upload_batch_id = Column(String, nullable=True, index=True)
 
     # Relationships
     documents = relationship("Document", secondary=transaction_documents, back_populates="transactions")

@@ -131,6 +131,32 @@ def clean_item_description(desc: Optional[str]) -> str:
     text = re.sub(r"(?i)\bnos\b", "Pieces", text)
     text = re.sub(r"(?i)\bpcs\b", "Pieces", text)
     # Metric fastener size equivalence: 10mm <-> M10, 12mm <-> M12, 16mm <-> M16
-    text = re.sub(r"(?i)\b(\d+)mm\b", r"M\1", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
+
+def canonicalize_doc_type(dtype: Optional[str]) -> str:
+    """
+    Standardizes heterogeneous document type strings into canonical categories:
+    PURCHASE_ORDER, INVOICE, DELIVERY_NOTE, PAYMENT_RECEIPT, BANK_STATEMENT, CREDIT_NOTE, DEBIT_NOTE, QUOTATION, OTHER
+    """
+    if not dtype:
+        return "OTHER"
+    dt = str(dtype).upper().strip().replace(" ", "_").replace("-", "_")
+    if dt in ["INVOICE", "TAX_INVOICE", "SALES_INVOICE", "BILL", "COMMERCIAL_INVOICE"]:
+        return "INVOICE"
+    if dt in ["PURCHASE_ORDER", "PO", "ORDER"]:
+        return "PURCHASE_ORDER"
+    if dt in ["DELIVERY_NOTE", "DELIVERY_CHALLAN", "CHALLAN", "DISPATCH_NOTE", "GOODS_RECEIPT", "DELIVERY"]:
+        return "DELIVERY_NOTE"
+    if dt in ["PAYMENT_RECEIPT", "PAYMENT", "RECEIPT", "PAYMENT_VOUCHER", "BANK_RECEIPT", "VOUCHER"]:
+        return "PAYMENT_RECEIPT"
+    if dt in ["BANK_STATEMENT", "STATEMENT", "BANK"]:
+        return "BANK_STATEMENT"
+    if dt in ["CREDIT_NOTE", "CREDIT_MEMO"]:
+        return "CREDIT_NOTE"
+    if dt in ["DEBIT_NOTE", "DEBIT_MEMO"]:
+        return "DEBIT_NOTE"
+    if dt in ["QUOTATION", "QUOTE", "PROFORMA_INVOICE"]:
+        return "QUOTATION"
+    return dt
+

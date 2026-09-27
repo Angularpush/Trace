@@ -90,6 +90,7 @@ class DocumentResponse(BaseModel):
     page_count: Optional[int] = 1
     raw_text: Optional[str] = ""
     parsed_data: Optional[Dict[str, Any]] = {}
+    upload_batch_id: Optional[str] = None
     status: Optional[str] = "processed"
     created_at: Optional[datetime] = None
 

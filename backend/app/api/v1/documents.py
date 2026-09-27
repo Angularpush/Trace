@@ -114,6 +114,7 @@ async def upload_documents(
                 db_doc = Document(
                     id=doc_id,
                     file_id=file_id,
+                    upload_batch_id=batch_id,
                     document_type=seg.get("document_type", "OTHER"),
                     doc_type=seg.get("document_type", "OTHER"),  # backward compat
                     page_start=p_start,
@@ -145,9 +146,9 @@ async def upload_documents(
     upload_batch.processing_status = "COMPLETED"
     db.commit()
 
-    # 4. Trigger Automatic Multi-Signal Transaction Clustering
+    # 4. Trigger Automatic Multi-Signal Transaction Clustering (Scoped strictly to this upload batch)
     try:
-        transaction_linker.link_database_documents(db)
+        transaction_linker.link_database_documents(db, upload_batch_id=batch_id)
     except Exception as e:
         print(f"[DocumentUpload] Linking step note: {e}")
 
@@ -159,6 +160,7 @@ async def upload_documents(
 @router.get("", response_model=List[DocumentResponse])
 @router.get("/", response_model=List[DocumentResponse])
 def list_documents(
+    batch_id: Optional[str] = Query(None, description="Optional upload batch ID filter"),
     skip: int = 0,
     limit: int = 100,
     doc_type: Optional[str] = None,
@@ -169,6 +171,8 @@ def list_documents(
     Returns segmented business documents.
     """
     query = db.query(Document)
+    if batch_id:
+        query = query.filter(Document.upload_batch_id == batch_id)
     if doc_type:
         query = query.filter(
             (Document.document_type == doc_type.upper()) | (Document.doc_type == doc_type.upper())

@@ -1,17 +1,17 @@
 {
-  "benchmark_id": "bench_1790246032",
-  "run_timestamp": "2026-09-24T10:33:52.508909",
+  "benchmark_id": "bench_1790333995",
+  "run_timestamp": "2026-09-25T10:59:55.632364",
   "dataset_size": 40,
   "categories_tested": 12,
   "rule_based_metrics": {
     "approach": "RULE_BASED",
     "total_evaluated_transactions": 40,
-    "precision": 0.4444,
+    "precision": 0.4211,
     "recall": 1.0,
-    "f1_score": 0.6154,
+    "f1_score": 0.5926,
     "linking_accuracy": 1.0,
     "evidence_accuracy": 1.0,
-    "reconciliation_accuracy": 0.6154,
+    "reconciliation_accuracy": 0.5926,
     "avg_execution_time_ms": 0.13,
     "total_cost_usd": 0.0,
     "cost_per_transaction_usd": 0.0,
@@ -100,11 +100,11 @@
       {
         "discrepancy_type": "TOTAL_MISMATCH",
         "true_positives": 3,
-        "false_positives": 0,
+        "false_positives": 4,
         "false_negatives": 0,
-        "precision": 1.0,
+        "precision": 0.4286,
         "recall": 1.0,
-        "f1_score": 1.0
+        "f1_score": 0.6
       }
     ]
   },
@@ -216,13 +216,13 @@
   "hybrid_metrics": {
     "approach": "HYBRID",
     "total_evaluated_transactions": 40,
-    "precision": 0.4444,
+    "precision": 0.4211,
     "recall": 1.0,
-    "f1_score": 0.6154,
+    "f1_score": 0.5926,
     "linking_accuracy": 1.0,
     "evidence_accuracy": 1.0,
-    "reconciliation_accuracy": 0.6154,
-    "avg_execution_time_ms": 0.3,
+    "reconciliation_accuracy": 0.5926,
+    "avg_execution_time_ms": 0.18,
     "total_cost_usd": 0.003263,
     "cost_per_transaction_usd": 8.2e-05,
     "category_breakdown": [
@@ -310,30 +310,30 @@
       {
         "discrepancy_type": "TOTAL_MISMATCH",
         "true_positives": 3,
-        "false_positives": 0,
+        "false_positives": 4,
         "false_negatives": 0,
-        "precision": 1.0,
+        "precision": 0.4286,
         "recall": 1.0,
-        "f1_score": 1.0
+        "f1_score": 0.6
       }
     ]
   },
   "key_findings": [
     "Rule-Based achieves fastest execution (0.1ms/txn) at zero cost ($0.00), with high precision on exact arithmetic checks.",
     "AI/LLM exhibits strong semantic comprehension for text nuances but has higher latency (0.0ms/txn) and token cost ($0.0033).",
-    "Hybrid achieves balanced performance (F1: 61.54%) by combining deterministic Decimal precision for arithmetic with semantic/LLM reasoning for edge cases.",
+    "Hybrid achieves balanced performance (F1: 59.26%) by combining deterministic Decimal precision for arithmetic with semantic/LLM reasoning for edge cases.",
     "Document linking achieved 100.0% accuracy using multi-signal exact identifier + metadata matching."
   ],
   "modes": {
     "RULE_BASED": {
       "approach": "RULE_BASED",
       "total_evaluated_transactions": 40,
-      "precision": 0.4444,
+      "precision": 0.4211,
       "recall": 1.0,
-      "f1_score": 0.6154,
+      "f1_score": 0.5926,
       "linking_accuracy": 1.0,
       "evidence_accuracy": 1.0,
-      "reconciliation_accuracy": 0.6154,
+      "reconciliation_accuracy": 0.5926,
       "avg_execution_time_ms": 0.13,
       "total_cost_usd": 0.0,
       "cost_per_transaction_usd": 0.0,
@@ -422,11 +422,11 @@
         {
           "discrepancy_type": "TOTAL_MISMATCH",
           "true_positives": 3,
-          "false_positives": 0,
+          "false_positives": 4,
           "false_negatives": 0,
-          "precision": 1.0,
+          "precision": 0.4286,
           "recall": 1.0,
-          "f1_score": 1.0
+          "f1_score": 0.6
         }
       ]
     },
@@ -538,13 +538,13 @@
     "HYBRID": {
       "approach": "HYBRID",
       "total_evaluated_transactions": 40,
-      "precision": 0.4444,
+      "precision": 0.4211,
       "recall": 1.0,
-      "f1_score": 0.6154,
+      "f1_score": 0.5926,
       "linking_accuracy": 1.0,
       "evidence_accuracy": 1.0,
-      "reconciliation_accuracy": 0.6154,
-      "avg_execution_time_ms": 0.3,
+      "reconciliation_accuracy": 0.5926,
+      "avg_execution_time_ms": 0.18,
       "total_cost_usd": 0.003263,
       "cost_per_transaction_usd": 8.2e-05,
       "category_breakdown": [
@@ -632,11 +632,11 @@
         {
           "discrepancy_type": "TOTAL_MISMATCH",
           "true_positives": 3,
-          "false_positives": 0,
+          "false_positives": 4,
           "false_negatives": 0,
-          "precision": 1.0,
+          "precision": 0.4286,
           "recall": 1.0,
-          "f1_score": 1.0
+          "f1_score": 0.6
         }
       ]
     }

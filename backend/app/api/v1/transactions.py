@@ -22,11 +22,19 @@ router = APIRouter(prefix="/transactions", tags=["transactions"])
 
 @router.get("", response_model=List[TransactionResponse])
 @router.get("/", response_model=List[TransactionResponse])
-def list_transactions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def list_transactions(
+    batch_id: Optional[str] = Query(None, description="Optional upload batch ID filter"),
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db)
+):
     """
-    Returns all transaction clusters ordered by most recent.
+    Returns all transaction clusters ordered by most recent (or filtered by batch_id).
     """
-    return db.query(Transaction).order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
+    query = db.query(Transaction)
+    if batch_id:
+        query = query.filter(Transaction.upload_batch_id == batch_id)
+    return query.order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
 
 @router.get("/{txn_id}", response_model=TransactionResponse)
 def get_transaction(txn_id: str, db: Session = Depends(get_db)):
@@ -51,11 +59,14 @@ def get_transaction_graph(txn_id: str, db: Session = Depends(get_db)):
 
 @router.post("/match", response_model=List[TransactionResponse])
 @router.post("/auto-link", response_model=List[TransactionResponse])
-def match_transactions(db: Session = Depends(get_db)):
+def match_transactions(
+    batch_id: Optional[str] = Query(None, description="Optional upload batch ID filter"),
+    db: Session = Depends(get_db)
+):
     """
     Scans all unlinked/linked documents and clusters them into multi-document transactions using multi-signal graph.
     """
-    return transaction_linker.link_database_documents(db)
+    return transaction_linker.link_database_documents(db, upload_batch_id=batch_id)
 
 @router.post("/{txn_id}/links/{link_id}/confirm")
 def confirm_document_link(txn_id: str, link_id: str, db: Session = Depends(get_db)):

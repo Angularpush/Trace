@@ -125,17 +125,36 @@ class SemanticMatcher:
                 "match_score": match_score
             })
 
-        # Step 2: Handle remaining unaligned Invoice items (e.g. unbilled items on PO)
+        # Step 2: Match remaining unaligned Invoice items against unused Delivery items
         for i_idx, inv_it in enumerate(invoice_items):
-            if i_idx not in used_inv_indices:
-                inv_desc = inv_it.get("normalized_description") or inv_it.get("description", "")
-                aligned.append({
-                    "item_key": inv_desc,
-                    "po_item": None,
-                    "invoice_item": inv_it,
-                    "delivery_item": None,
-                    "match_score": 0.0
-                })
+            if i_idx in used_inv_indices:
+                continue
+            inv_desc = clean_item_description(inv_it.get("normalized_description") or inv_it.get("description", ""))
+
+            best_dn_idx = -1
+            best_dn_sim = 0.0
+            for d_idx, dn_it in enumerate(delivery_items):
+                if d_idx in used_dn_indices:
+                    continue
+                dn_desc = clean_item_description(dn_it.get("normalized_description") or dn_it.get("description", ""))
+                sim, is_match = SemanticMatcher.match_item(inv_desc, dn_desc)
+                if is_match and sim > best_dn_sim:
+                    best_dn_sim = sim
+                    best_dn_idx = d_idx
+
+            matched_dn = None
+            if best_dn_idx >= 0:
+                matched_dn = delivery_items[best_dn_idx]
+                used_dn_indices.add(best_dn_idx)
+
+            used_inv_indices.add(i_idx)
+            aligned.append({
+                "item_key": inv_desc,
+                "po_item": None,
+                "invoice_item": inv_it,
+                "delivery_item": matched_dn,
+                "match_score": best_dn_sim if matched_dn else 0.0
+            })
 
         # Step 3: Handle remaining unaligned Delivery items
         for d_idx, dn_it in enumerate(delivery_items):

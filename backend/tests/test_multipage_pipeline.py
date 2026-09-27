@@ -20,6 +20,100 @@ SAMPLE_4PAGE_PDF = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../../storage/doc_cdb819b150_sample_invoice_document_set.pdf")
 )
 
+def ensure_sample_pdf():
+    if os.path.exists(SAMPLE_4PAGE_PDF):
+        return
+    os.makedirs(os.path.dirname(SAMPLE_4PAGE_PDF), exist_ok=True)
+    from reportlab.lib.pagesizes import letter
+    from reportlab.pdfgen import canvas
+
+    c = canvas.Canvas(SAMPLE_4PAGE_PDF, pagesize=letter)
+
+    # Page 1: Purchase Order
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(50, 750, "PURCHASE ORDER")
+    c.setFont("Helvetica", 11)
+    c.drawString(50, 720, "PO Number: PO-2026-1048")
+    c.drawString(50, 705, "Date: 15-Sep-2026")
+    c.drawString(50, 690, "Buyer: ABC TECHNOLOGIES INDIA PVT. LTD.")
+    c.drawString(50, 675, "Supplier: ACME OFFICE SOLUTIONS PVT. LTD.")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(50, 640, "Item Description                    Qty    Unit Price (INR)    Total (INR)")
+    c.line(50, 635, 550, 635)
+    c.setFont("Helvetica", 10)
+    c.drawString(50, 615, "Laptop Computers                    25          52000.00      1300000.00")
+    c.drawString(50, 595, "Wireless Keyboard & Mouse           25           1500.00        37500.00")
+    c.drawString(50, 575, "USB-C Docking Station               10           6500.00        65000.00")
+    c.line(50, 560, 550, 560)
+    c.drawString(350, 540, "Subtotal:        1402500.00")
+    c.drawString(350, 520, "GST (18%):        252450.00")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(350, 500, "Grand Total:     1654950.00")
+    c.showPage()
+
+    # Page 2: Tax Invoice
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(50, 750, "TAX INVOICE")
+    c.setFont("Helvetica", 11)
+    c.drawString(50, 720, "Invoice Number: INV-2026-2231")
+    c.drawString(50, 705, "Invoice Date: 19-Sep-2026")
+    c.drawString(50, 690, "PO Reference: PO-2026-1048")
+    c.drawString(50, 675, "Supplier: ACME OFFICE SOLUTIONS PVT. LTD.")
+    c.drawString(50, 660, "GSTIN: 09ABCDE1234F1Z5")
+    c.drawString(50, 645, "Customer / Buyer: ABC TECHNOLOGIES INDIA PVT. LTD.")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(50, 610, "Item Description                    Qty    Unit Price (INR)    Total (INR)")
+    c.line(50, 605, 550, 605)
+    c.setFont("Helvetica", 10)
+    c.drawString(50, 585, "Laptop Computers                     5          52000.00       260000.00")
+    c.drawString(50, 565, "Wireless Keyboard & Mouse            5           1500.00         7500.00")
+    c.drawString(50, 545, "USB-C Docking Station                2           6500.00        13000.00")
+    c.line(50, 530, 550, 530)
+    c.drawString(350, 510, "Subtotal:         280500.00")
+    c.drawString(350, 490, "GST (18%):         50490.00")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(350, 470, "Grand Total:      330990.00")
+    c.showPage()
+
+    # Page 3: Delivery Note
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(50, 750, "DELIVERY NOTE / CHALLAN")
+    c.setFont("Helvetica", 11)
+    c.drawString(50, 720, "Challan Number: DC-2026-1048")
+    c.drawString(50, 705, "Date: 19-Sep-2026")
+    c.drawString(50, 690, "PO Reference: PO-2026-1048")
+    c.drawString(50, 675, "Supplier: ACME OFFICE SOLUTIONS PVT. LTD.")
+    c.drawString(50, 660, "Recipient: ABC TECHNOLOGIES INDIA PVT. LTD.")
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(50, 625, "Item Description                             Quantity Delivered")
+    c.line(50, 620, 550, 620)
+    c.setFont("Helvetica", 10)
+    c.drawString(50, 600, "Laptop Computers                                      5")
+    c.drawString(50, 580, "Wireless Keyboard & Mouse                             5")
+    c.drawString(50, 560, "USB-C Docking Station                                 2")
+    c.showPage()
+
+    # Page 4: Payment Receipt
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(50, 750, "PAYMENT RECEIPT")
+    c.setFont("Helvetica", 11)
+    c.drawString(50, 720, "Receipt Number: PAY-2026-9901")
+    c.drawString(50, 705, "Payment Date: 20-Sep-2026")
+    c.drawString(50, 690, "Invoice Reference: INV-2026-2231")
+    c.drawString(50, 675, "Payer: ABC TECHNOLOGIES INDIA PVT. LTD.")
+    c.drawString(50, 660, "Payee: ACME OFFICE SOLUTIONS PVT. LTD.")
+    c.drawString(50, 645, "Payment Mode: Bank Transfer / NEFT")
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(50, 615, "Payment Amount Received: INR 330990.00")
+    c.drawString(50, 595, "Status: SUCCESSFUL / PAID")
+    c.showPage()
+
+    c.save()
+
+@pytest.fixture(autouse=True)
+def setup_pdf():
+    ensure_sample_pdf()
+
 def test_currency_and_ocr_glyph_normalization():
     """Requirement 13 & 14: Strip black squares (■), OCR artifacts (I, ?), and currencies."""
     assert normalize_decimal("■3,30,990") == Decimal("330990.00")

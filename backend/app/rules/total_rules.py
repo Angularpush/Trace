@@ -56,34 +56,34 @@ class TotalMismatchRule(BaseReconciliationRule):
                     ]
                 ))
 
-            # Check Grand Total = Subtotal + Tax
-            if stated_grand > 0 and stated_subtotal > 0:
-                expected_grand = stated_subtotal + stated_tax
-                if abs(stated_grand - expected_grand) > Decimal("1.00"):
-                    diff = abs(stated_grand - expected_grand)
-                    discrepancies.append(DiscrepancyResult(
-                        rule_code=self.rule_code,
-                        discrepancy_type="GRAND_TOTAL_MATH_ERROR",
-                        title=f"Grand Total Math Error: INR {stated_grand} != Subtotal + Tax (INR {expected_grand})",
-                        description=f"Invoice grand total (INR {stated_grand:.2f}) differs from Subtotal (INR {stated_subtotal:.2f}) + Tax (INR {stated_tax:.2f}).",
-                        severity="HIGH",
-                        confidence=0.99,
-                        difference_amount=diff,
-                        expected_value=f"₹{expected_grand:.2f}",
-                        actual_value=f"₹{stated_grand:.2f}",
-                        difference_value=f"₹{diff:.2f} summation error",
-                        evidences=[
-                            RuleEvidenceItem(
-                                document_id=inv_doc.get("id", "INV"),
-                                document_name=inv_doc.get("filename", "Invoice.pdf"),
-                                page_number=1,
-                                field_name="grand_total",
-                                exact_value=f"INR {stated_grand}",
-                                snippet=f"Stated Grand Total: INR {stated_grand}",
-                                relevance_score=1.0
-                            )
-                        ]
-                    ))
+        # Check Grand Total = Subtotal + Tax
+        if stated_grand > 0 and stated_subtotal > 0:
+            expected_grand = stated_subtotal + stated_tax
+            if abs(stated_grand - expected_grand) > Decimal("1.00"):
+                diff = abs(stated_grand - expected_grand)
+                discrepancies.append(DiscrepancyResult(
+                    rule_code=self.rule_code,
+                    discrepancy_type="GRAND_TOTAL_MATH_ERROR",
+                    title=f"Grand Total Math Error: INR {stated_grand} != Subtotal + Tax (INR {expected_grand})",
+                    description=f"Invoice grand total (INR {stated_grand:.2f}) differs from Subtotal (INR {stated_subtotal:.2f}) + Tax (INR {stated_tax:.2f}).",
+                    severity="HIGH",
+                    confidence=0.99,
+                    difference_amount=diff,
+                    expected_value=f"₹{expected_grand:.2f}",
+                    actual_value=f"₹{stated_grand:.2f}",
+                    difference_value=f"₹{diff:.2f} summation error",
+                    evidences=[
+                        RuleEvidenceItem(
+                            document_id=inv_doc.get("id", "INV"),
+                            document_name=inv_doc.get("filename", "Invoice.pdf"),
+                            page_number=1,
+                            field_name="grand_total",
+                            exact_value=f"INR {stated_grand}",
+                            snippet=f"Stated Grand Total: INR {stated_grand}",
+                            relevance_score=1.0
+                        )
+                    ]
+                ))
 
         return discrepancies
 
@@ -154,6 +154,8 @@ class TaxMismatchRule(BaseReconciliationRule):
             # Check if effective rate matches standard slab within 1% rounding
             matched_slab = any(abs(effective_rate - rate) <= Decimal("0.01") for rate in valid_gst_rates)
             if not matched_slab:
+                expected_tax = (stated_subtotal * Decimal("0.18")).quantize(Decimal("0.01"))
+                diff = abs(expected_tax - stated_tax)
                 discrepancies.append(DiscrepancyResult(
                     rule_code=self.rule_code,
                     discrepancy_type="INVALID_TAX_CALCULATION",
@@ -164,7 +166,7 @@ class TaxMismatchRule(BaseReconciliationRule):
                     ),
                     severity="MEDIUM",
                     confidence=0.88,
-                    difference_amount=Decimal("0.00"),
+                    difference_amount=diff,
                     expected_value="5%, 12%, 18%, or 28% Standard GST",
                     actual_value=f"{effective_rate * Decimal('100.0'):.1f}% Effective Rate",
                     difference_value="Non-standard tax slab",

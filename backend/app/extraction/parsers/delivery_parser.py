@@ -172,8 +172,40 @@ class DeliveryNoteParser:
                                 "tax_rate": "0.00",
                                 "tax_amount": "0.00",
                                 "total_amount": "0.00",
-                                "evidence_snippet": f"{desc} | Qty Delivered: {qty} {unit}",
                                 "evidence_snippet": line,
+                                "page_number": page_num
+                            })
+
+        # Strategy C: Space/pipe/tab delimited delivery table rows fallback
+        if not items:
+            for p_idx, p in enumerate(pages):
+                page_num = p.get("page_number", p_idx + 1)
+                lines = p.get("lines", [])
+                for line in lines:
+                    clean_l = line.strip()
+                    if not clean_l or any(k in clean_l.lower() for k in ["quantity delivered", "item description", "challan number", "po reference", "supplier", "recipient", "vehicle", "condition", "stores"]):
+                        continue
+                    m = re.match(
+                        r"^(?:(?P<sno>\d+)[\.\|\s]+)?(?P<desc>[A-Za-z][A-Za-z0-9\s\-\&\(\)\.,\/\+]+?)\s*(?:\||\s{2,}|\t)\s*(?P<qty>\d+(?:\.\d+)?)\s*(?:(?P<unit>PCS|NOS|SETS|KG|MTR|UNITS|BOX|EA))?$",
+                        clean_l,
+                        re.IGNORECASE
+                    )
+                    if m:
+                        desc = m.group("desc").strip(" -:|,")
+                        if len(desc) >= 3:
+                            qty = normalize_decimal(m.group("qty"))
+                            unit = (m.group("unit") or "PCS").strip().upper()
+                            items.append({
+                                "description": desc,
+                                "normalized_description": clean_item_description(desc),
+                                "quantity": str(qty),
+                                "unit": unit,
+                                "unit_price": "0.00",
+                                "discount": "0.00",
+                                "tax_rate": "0.00",
+                                "tax_amount": "0.00",
+                                "total_amount": "0.00",
+                                "evidence_snippet": clean_l,
                                 "page_number": page_num
                             })
 

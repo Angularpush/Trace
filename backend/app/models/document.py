@@ -72,6 +72,7 @@ class Document(Base):
     page_count = Column(Integer, default=1)
     raw_text = Column(Text, default="")
     parsed_data = Column(JSON, default=dict)
+    upload_batch_id = Column(String, nullable=True, index=True)
     status = Column(String, default="processed")
     created_at = Column(DateTime, default=datetime.utcnow)
 

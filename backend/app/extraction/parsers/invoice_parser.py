@@ -189,19 +189,60 @@ class InvoiceParser:
                                 "page_number": page_num
                             })
 
+        # Strategy C: Space/pipe/tab delimited table rows fallback
+        if not items:
+            for p_idx, p in enumerate(pages):
+                page_num = p.get("page_number", p_idx + 1)
+                lines = p.get("lines", [])
+                for line in lines:
+                    clean_l = line.strip()
+                    if not clean_l or any(k in clean_l.lower() for k in ["subtotal", "grand total", "total (inr)", "unit price", "taxable", "cgst", "sgst", "igst", "gstin", "declaration", "terms", "invoice number", "po reference", "buyer", "supplier", "date:"]):
+                        continue
+                    m = re.match(
+                        r"^(?:(?P<sno>\d+)[\.\|\s]+)?(?P<desc>[A-Za-z][A-Za-z0-9\s\-\&\(\)\.,\/\+]+?)\s*(?:\||\s+)\s*(?P<qty>\d+(?:\.\d+)?)\s*(?:\||\s+)\s*(?:(?P<unit>PCS|NOS|SETS|KG|MTR|UNITS|BOX|EA)\s*(?:\||\s+))?(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*(?P<price>[\d,]+(?:\.\d+)?)\s*(?:\||\s+)\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*(?P<total>[\d,]+(?:\.\d+)?)$",
+                        clean_l,
+                        re.IGNORECASE
+                    )
+                    if m:
+                        desc = m.group("desc").strip(" -:|,")
+                        if len(desc) >= 3 and not any(k in desc.lower() for k in ["item description", "particulars", "description of goods"]):
+                            qty = normalize_decimal(m.group("qty"))
+                            price = normalize_decimal(m.group("price"))
+                            total = normalize_decimal(m.group("total"))
+                            unit = (m.group("unit") or "PCS").strip().upper()
+                            if total == Decimal("0.00") and qty > 0 and price > 0:
+                                total = (qty * price).quantize(Decimal("0.01"))
+                            elif price == Decimal("0.00") and qty > 0 and total > 0:
+                                price = (total / qty).quantize(Decimal("0.01"))
+                            tax_amount = (total * Decimal("0.18")).quantize(Decimal("0.01"))
+                            items.append({
+                                "description": desc,
+                                "normalized_description": clean_item_description(desc),
+                                "quantity": str(qty),
+                                "unit": unit,
+                                "unit_price": str(price),
+                                "discount": "0.00",
+                                "tax_rate": "18.00",
+                                "tax_amount": str(tax_amount),
+                                "total_amount": str(total),
+                                "evidence_snippet": clean_l,
+                                "page_number": page_num
+                            })
+
         # 8. Totals and Taxes
-        subtotal_match = re.search(r"(?:Taxable\s*Subtotal|Total\s*Taxable|Subtotal|Taxable\s*Amount)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
-        if not subtotal_match:
-            subtotal_match = re.search(r"(?:Taxable\s*Value)[:\s]*[:=]\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
-        
+        subtotal_match = re.search(r"((?:Taxable\s*Subtotal|Total\s*Taxable|Subtotal|Taxable\s*Amount|Taxable\s*Value)(?:\s*\([^)]+\))?[:\s]*[:=]?\n*(?:\([^)]+\)\n*)?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
         if subtotal_match:
-            data["subtotal"] = str(normalize_decimal(subtotal_match.group(1)))
+            data["subtotal"] = str(normalize_decimal(subtotal_match.group(2)))
+            data["extra_metadata"]["subtotal_snippet"] = subtotal_match.group(1).replace("\n", " ").strip()
         elif items:
             data["subtotal"] = str(sum(Decimal(it["total_amount"]) for it in items))
 
-        tax_match = re.search(r"(?:Total\s*Tax[^\n:]*|Total\s*GST[^\n:]*|CGST\s*\+\s*SGST[^\n:]*|IGST[^\n:]*)[:\s]*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        tax_match = re.search(r"((?:Total\s*Tax[^\n:]*|Total\s*GST[^\n:]*|GST\s*\(\d+%\)|GST\s*@\s*\d+%|CGST\s*\+\s*SGST[^\n:]*|IGST[^\n:]*)(?:\s*\([^)]+\))?[:\s]*\n*(?:\([^)]+\)\n*)?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
+        if not tax_match:
+            tax_match = re.search(r"((?:Tax\s*Summary:.*?GST.*?:\s*)(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
         if tax_match:
-            data["tax_total"] = str(normalize_decimal(tax_match.group(1)))
+            data["tax_total"] = str(normalize_decimal(tax_match.group(2)))
+            data["extra_metadata"]["tax_snippet"] = tax_match.group(1).replace("\n", " ").strip()
         else:
             cgst_m = re.search(r"CGST[^\n:]*[:\s]+(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
             sgst_m = re.search(r"SGST[^\n:]*[:\s]+(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
@@ -209,12 +250,19 @@ class InvoiceParser:
                 c_tax = normalize_decimal(cgst_m.group(1))
                 s_tax = normalize_decimal(sgst_m.group(1))
                 data["tax_total"] = str(c_tax + s_tax)
+            elif items:
+                calc_tax = sum(Decimal(it.get("tax_amount", 0)) for it in items)
+                if calc_tax > 0:
+                    data["tax_total"] = str(calc_tax)
 
-        grand_match = re.search(r"(?:Total\s*Invoice\s*Amount|Grand\s*Total|Gross\s*Total|Total\s*Amount|Total\s*Payable|Total\s*Due|Invoice\s*Total)[:\s]*[:=]?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+        grand_match = re.search(r"((?:Grand\s*\n*\s*Total|Total\s*Invoice\s*Amount|Gross\s*Total|Total\s*Amount|Total\s*Payable|Total\s*Due|Invoice\s*Total)(?:\s*\([^)]+\))?[:\s]*[:=]?\n*(?:\([^)]+\)\n*)?\s*(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
         if not grand_match:
-            grand_match = re.search(r"(?:^|\n)\s*Total[:\s]+(?:INR|Rs\.|Rs|₹|[I\|■\?])\s*([\d,]+(?:\.\d+)?)", text, re.IGNORECASE)
+            grand_match = re.search(r"((?:Tax\s*Summary:.*?Total[:\s]+)(?:INR|Rs\.|Rs|₹|[I\|■\?])?\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
+        if not grand_match:
+            grand_match = re.search(r"((?:^|\n)\s*Total[:\s]+(?:INR|Rs\.|Rs|₹|[I\|■\?])\s*([\d,]+(?:\.\d+)?))", text, re.IGNORECASE)
         if grand_match:
-            data["grand_total"] = str(normalize_decimal(grand_match.group(1)))
+            data["grand_total"] = str(normalize_decimal(grand_match.group(2)))
+            data["extra_metadata"]["total_snippet"] = grand_match.group(1).replace("\n", " ").strip()
 
         if items and data["grand_total"] == "0.00":
             calc_sub = sum(Decimal(it["total_amount"]) for it in items)
@@ -225,3 +273,5 @@ class InvoiceParser:
 
         data["items"] = items
         return data
+
+TaxInvoiceParser = InvoiceParser

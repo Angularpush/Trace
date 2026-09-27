@@ -29,6 +29,7 @@ class TransactionResponse(BaseModel):
     reconciliation_status: Optional[str] = "PENDING"
     reconciliation_summary: Optional[str] = ""
     metadata_json: Dict[str, Any] = {}
+    upload_batch_id: Optional[str] = None
 
     documents: List[DocumentResponse] = []
     document_links: List[TransactionDocumentLinkResponse] = []
